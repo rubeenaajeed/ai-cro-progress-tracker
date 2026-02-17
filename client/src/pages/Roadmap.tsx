@@ -7,14 +7,19 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
 import { roadmapData, Week } from "@shared/roadmapData";
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import QuizModal from "@/components/QuizModal";
 
 export default function Roadmap() {
   const { user } = useAuth();
   const [currentWeekNumber, setCurrentWeekNumber] = useState(1);
   const [personalNote, setPersonalNote] = useState("");
   const [completedTasks, setCompletedTasks] = useState<Set<string>>(new Set());
+  const [quizOpen, setQuizOpen] = useState(false);
+  const [quizData, setQuizData] = useState<any>(null);
+  const [pendingTaskId, setPendingTaskId] = useState<string | null>(null);
+  const [quizLoading, setQuizLoading] = useState(false);
 
   const currentWeek = roadmapData.find(w => w.weekNumber === currentWeekNumber);
 
@@ -27,6 +32,7 @@ export default function Roadmap() {
   const toggleTaskMutation = trpc.roadmap.toggleTask.useMutation();
   const saveNoteMutation = trpc.roadmap.savePersonalNote.useMutation();
   const updateProgressMutation = trpc.roadmap.updateWeekProgress.useMutation();
+  const generateQuizMutation = trpc.roadmap.generateQuiz.useMutation();
 
   // Initialize data
   useEffect(() => {
@@ -44,19 +50,50 @@ export default function Roadmap() {
     }
   }, [weekTasks]);
 
-  const handleTaskToggle = async (taskId: string) => {
+  const handleTaskToggle = async (taskId: string, taskText: string) => {
     const newCompleted = new Set(completedTasks);
-    if (newCompleted.has(taskId)) {
-      newCompleted.delete(taskId);
+    const isMarking = !newCompleted.has(taskId);
+
+    if (isMarking) {
+      // Show quiz before marking complete
+      setPendingTaskId(taskId);
+      setQuizLoading(true);
+      setQuizOpen(true);
+
+      try {
+        const result = await generateQuizMutation.mutateAsync({
+          taskText,
+          weekNumber: currentWeekNumber,
+        });
+        setQuizData(result);
+      } catch (error) {
+        console.error("Failed to generate quiz:", error);
+        // If quiz generation fails, allow manual completion
+        setQuizOpen(false);
+        completeTask(taskId, newCompleted);
+      } finally {
+        setQuizLoading(false);
+      }
     } else {
-      newCompleted.add(taskId);
+      // Unchecking - just remove
+      newCompleted.delete(taskId);
+      setCompletedTasks(newCompleted);
+      await toggleTaskMutation.mutateAsync({
+        weekNumber: currentWeekNumber,
+        taskId,
+        completed: false,
+      });
     }
+  };
+
+  const completeTask = async (taskId: string, newCompleted: Set<string>) => {
+    newCompleted.add(taskId);
     setCompletedTasks(newCompleted);
 
     await toggleTaskMutation.mutateAsync({
       weekNumber: currentWeekNumber,
       taskId,
-      completed: newCompleted.has(taskId),
+      completed: true,
     });
 
     // Update progress
@@ -68,6 +105,16 @@ export default function Roadmap() {
         totalTasks,
       });
     }
+  };
+
+  const handleQuizComplete = async (passed: boolean) => {
+    if (passed && pendingTaskId) {
+      const newCompleted = new Set(completedTasks);
+      await completeTask(pendingTaskId, newCompleted);
+    }
+    setQuizOpen(false);
+    setQuizData(null);
+    setPendingTaskId(null);
   };
 
   const handleSaveNote = async () => {
@@ -101,6 +148,22 @@ export default function Roadmap() {
 
   return (
     <DashboardLayout>
+      {/* Quiz Modal */}
+      {quizOpen && (
+        <QuizModal
+          isOpen={quizOpen}
+          onClose={() => {
+            setQuizOpen(false);
+            setQuizData(null);
+            setPendingTaskId(null);
+          }}
+          onComplete={handleQuizComplete}
+          questions={quizData?.questions || []}
+          taskText={quizData?.taskText || ""}
+          isLoading={quizLoading}
+        />
+      )}
+
       <div className="space-y-6">
         {/* Week Navigation */}
         <div className="flex items-center justify-between">
@@ -187,7 +250,8 @@ export default function Roadmap() {
                 <div key={objective.id} className="flex items-start gap-3 p-3 rounded-lg hover:bg-accent transition-colors">
                   <Checkbox
                     checked={completedTasks.has(objective.id)}
-                    onCheckedChange={() => handleTaskToggle(objective.id)}
+                    onCheckedChange={() => handleTaskToggle(objective.id, objective.text)}
+                    disabled={quizLoading && pendingTaskId === objective.id}
                     className="mt-1"
                   />
                   <label className={`flex-1 text-sm cursor-pointer ${completedTasks.has(objective.id) ? "line-through text-muted-foreground" : ""}`}>
@@ -289,3 +353,4 @@ export default function Roadmap() {
     </DashboardLayout>
   );
 }
+

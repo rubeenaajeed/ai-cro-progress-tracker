@@ -4,6 +4,8 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import * as db from "./db";
+import { invokeLLM } from "./_core/llm";
+
 
 export const appRouter = router({
   system: systemRouter,
@@ -100,6 +102,77 @@ export const appRouter = router({
           input.links,
           input.notes
         );
+      }),
+
+    // Quiz generation
+    generateQuiz: protectedProcedure
+      .input(z.object({ taskText: z.string(), weekNumber: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        try {
+          const response = await invokeLLM({
+            messages: [
+              {
+                role: "system",
+                content: "You are an educational quiz generator. Generate exactly 3 multiple-choice questions to test understanding of the given topic. Return ONLY valid JSON with no additional text.",
+              },
+              {
+                role: "user",
+                content: `Generate 3 multiple-choice questions to verify understanding of this learning objective: "${input.taskText}". 
+                
+Return as JSON array with this exact structure (no markdown, no extra text):
+[
+  {
+    "question": "Question text?",
+    "options": ["Option A", "Option B", "Option C", "Option D"],
+    "correctAnswer": 0,
+    "explanation": "Why this is correct"
+  }
+]`,
+              },
+            ],
+            response_format: {
+              type: "json_schema",
+              json_schema: {
+                name: "quiz_questions",
+                strict: true,
+                schema: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      question: { type: "string" },
+                      options: { type: "array", items: { type: "string" } },
+                      correctAnswer: { type: "number" },
+                      explanation: { type: "string" },
+                    },
+                    required: ["question", "options", "correctAnswer", "explanation"],
+                    additionalProperties: false,
+                  },
+                },
+              },
+            },
+          });
+
+          const messageContent = response.choices[0]?.message.content;
+          if (!messageContent) {
+            throw new Error("No content in response");
+          }
+
+          const content = typeof messageContent === 'string' ? messageContent : JSON.stringify(messageContent);
+          const questions = JSON.parse(content);
+          return {
+            success: true,
+            questions,
+            taskText: input.taskText,
+            weekNumber: input.weekNumber,
+          };
+        } catch (error) {
+          console.error("Quiz generation error:", error);
+          return {
+            success: false,
+            error: "Failed to generate quiz. Please try again.",
+          };
+        }
       }),
   }),
 });
