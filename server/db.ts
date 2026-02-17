@@ -230,7 +230,7 @@ export async function createOrUpdatePortfolioProject(userId: number, projectName
 // Personal Notes Queries
 export async function getPersonalNote(userId: number, weekNumber: number) {
   const db = await getDb();
-  if (!db) return undefined;
+  if (!db) return null;
 
   const result = await db
     .select()
@@ -238,7 +238,7 @@ export async function getPersonalNote(userId: number, weekNumber: number) {
     .where(and(eq(personalNotes.userId, userId), eq(personalNotes.weekNumber, weekNumber)))
     .limit(1);
 
-  return result.length > 0 ? result[0] : undefined;
+  return result.length > 0 ? result[0] : null;
 }
 
 export async function createOrUpdatePersonalNote(userId: number, weekNumber: number, content: string) {
