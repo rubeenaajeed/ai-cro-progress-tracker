@@ -59,7 +59,7 @@ export default function Home() {
         {/* Tracker Selection Cards */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* AI+CRO Tracker */}
-          <Card className="hover:shadow-lg transition-all cursor-pointer border-2 hover:border-blue-500" onClick={() => setLocation("/")}>
+          <Card className="hover:shadow-lg transition-all cursor-pointer border-2 hover:border-blue-500">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-3 bg-blue-100 rounded-lg">
@@ -93,14 +93,17 @@ export default function Home() {
                   <span>Portfolio project tracking</span>
                 </li>
               </ul>
-              <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700">
+              <Button 
+                className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
+                onClick={() => setLocation("/dashboard")}
+              >
                 Start Learning <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </CardContent>
           </Card>
 
           {/* PTE Tracker */}
-          <Card className="hover:shadow-lg transition-all cursor-pointer border-2 hover:border-green-500" onClick={() => setLocation("/pte")}>
+          <Card className="hover:shadow-lg transition-all cursor-pointer border-2 hover:border-green-500">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-3 bg-green-100 rounded-lg">
@@ -134,7 +137,10 @@ export default function Home() {
                   <span>Daily practice tracking</span>
                 </li>
               </ul>
-              <Button className="w-full mt-4 bg-green-600 hover:bg-green-700">
+              <Button 
+                className="w-full mt-4 bg-green-600 hover:bg-green-700"
+                onClick={() => setLocation("/pte")}
+              >
                 Start Practicing <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </CardContent>

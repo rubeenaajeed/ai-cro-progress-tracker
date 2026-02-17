@@ -2,7 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Pen, Mic, TrendingUp, Zap } from "lucide-react";
+import { Pen, Mic, TrendingUp, Zap, ArrowLeft } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function PteDashboard() {
@@ -34,11 +34,17 @@ export default function PteDashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">PTE Writing & Speaking Coach</h1>
-          <p className="text-lg text-slate-600">Welcome back, {user?.name}! Get detailed AI feedback on your essays and speeches</p>
-          <p className="text-sm text-slate-500 mt-2">💡 Use ApeUni for Reading & Listening practice. This platform provides expert feedback for Writing & Speaking.</p>
+        {/* Header with Back Button */}
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold text-slate-900 mb-2">PTE Writing & Speaking Coach</h1>
+            <p className="text-lg text-slate-600">Welcome back, {user?.name}! Get detailed AI feedback on your essays and speeches</p>
+            <p className="text-sm text-slate-500 mt-2">💡 Use ApeUni for Reading & Listening practice. This platform provides expert feedback for Writing & Speaking.</p>
+          </div>
+          <Button variant="outline" onClick={() => setLocation("/")} className="flex items-center gap-2">
+            <ArrowLeft className="w-4 h-4" />
+            Back to Home
+          </Button>
         </div>
 
         {/* Overall Stats */}
