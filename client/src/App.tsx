@@ -9,6 +9,8 @@ import Roadmap from "./pages/Roadmap";
 import Portfolio from "./pages/Portfolio";
 import Progress from "./pages/Progress";
 import Streak from "./pages/Streak";
+import PteDashboard from "./pages/PteDashboard";
+import PteWriting from "./pages/PteWriting";
 
 function Router() {
   return (
@@ -18,6 +20,8 @@ function Router() {
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/progress"} component={Progress} />
       <Route path={"/streak"} component={Streak} />
+      <Route path={"/pte"} component={PteDashboard} />
+      <Route path={"/pte/writing"} component={PteWriting} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

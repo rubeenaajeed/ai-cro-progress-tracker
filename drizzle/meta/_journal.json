@@ -15,6 +15,13 @@
       "when": 1771312293137,
       "tag": "0001_wooden_earthquake",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1771324416709,
+      "tag": "0002_youthful_king_bedlam",
+      "breakpoints": true
     }
   ]
 }

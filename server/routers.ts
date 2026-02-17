@@ -5,6 +5,7 @@ import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import * as db from "./db";
 import { invokeLLM } from "./_core/llm";
+import { pteRouter } from "./pte-routers";
 
 
 export const appRouter = router({
@@ -175,6 +176,8 @@ Return as JSON array with this exact structure (no markdown, no extra text):
         }
       }),
   }),
+
+  pte: pteRouter,
 });
 
 export type AppRouter = typeof appRouter;

@@ -108,3 +108,108 @@ export const taskCompletions = mysqlTable("task_completions", {
 
 export type TaskCompletion = typeof taskCompletions.$inferSelect;
 export type InsertTaskCompletion = typeof taskCompletions.$inferInsert;
+
+/**
+ * PTE Practice Questions Table
+ * Stores all practice questions for Reading, Writing, Speaking, Listening
+ */
+export const pteQuestions = mysqlTable("pte_questions", {
+  id: int("id").autoincrement().primaryKey(),
+  questionId: varchar("questionId", { length: 64 }).notNull().unique(),
+  section: mysqlEnum("section", ["reading", "writing", "speaking", "listening"]).notNull(),
+  questionType: varchar("questionType", { length: 100 }).notNull(),
+  difficulty: mysqlEnum("difficulty", ["easy", "medium", "hard"]).default("medium").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  content: text("content").notNull(),
+  audioUrl: varchar("audioUrl", { length: 500 }),
+  options: text("options"), // JSON string
+  correctAnswer: text("correctAnswer"),
+  correctAnswerExplanation: text("correctAnswerExplanation"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PteQuestion = typeof pteQuestions.$inferSelect;
+export type InsertPteQuestion = typeof pteQuestions.$inferInsert;
+
+/**
+ * User Answers Table
+ * Stores all user responses to practice questions
+ */
+export const pteAnswers = mysqlTable("pte_answers", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  questionId: varchar("questionId", { length: 64 }).notNull(),
+  userAnswer: text("userAnswer").notNull(),
+  isCorrect: int("isCorrect").default(0).notNull(), // 0 or 1
+  score: varchar("score", { length: 10 }), // PTE band score (0-90)
+  feedback: text("feedback"),
+  feedbackDetails: text("feedbackDetails"), // JSON string
+  attemptNumber: int("attemptNumber").default(1).notNull(),
+  timeSpentSeconds: int("timeSpentSeconds"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PteAnswer = typeof pteAnswers.$inferSelect;
+export type InsertPteAnswer = typeof pteAnswers.$inferInsert;
+
+/**
+ * User Progress Table
+ * Tracks overall progress across sections and question types
+ */
+export const pteProgress = mysqlTable("pte_progress", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  section: mysqlEnum("section", ["reading", "writing", "speaking", "listening"]).notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  totalQuestions: int("totalQuestions").default(0).notNull(),
+  correctAnswers: int("correctAnswers").default(0).notNull(),
+  averageScore: varchar("averageScore", { length: 10 }).default("0.00"),
+  completionPercentage: int("completionPercentage").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PteProgress = typeof pteProgress.$inferSelect;
+export type InsertPteProgress = typeof pteProgress.$inferInsert;
+
+/**
+ * Mock Test Results Table
+ * Stores results from full mock tests (Weeks 4, 8, 12)
+ */
+export const pteMockTests = mysqlTable("pte_mock_tests", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  mockTestNumber: int("mockTestNumber").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  readingScore: varchar("readingScore", { length: 10 }),
+  writingScore: varchar("writingScore", { length: 10 }),
+  speakingScore: varchar("speakingScore", { length: 10 }),
+  listeningScore: varchar("listeningScore", { length: 10 }),
+  overallScore: varchar("overallScore", { length: 10 }),
+  totalQuestions: int("totalQuestions").notNull(),
+  correctAnswers: int("correctAnswers").notNull(),
+  completionTime: int("completionTime").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PteMockTest = typeof pteMockTests.$inferSelect;
+export type InsertPteMockTest = typeof pteMockTests.$inferInsert;
+
+/**
+ * User Notes Table
+ * Stores user notes on difficult questions
+ */
+export const pteUserNotes = mysqlTable("pte_user_notes", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  questionId: varchar("questionId", { length: 64 }).notNull(),
+  notes: text("notes"),
+  isFlagged: int("isFlagged").default(0).notNull(), // 0 or 1
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PteUserNotes = typeof pteUserNotes.$inferSelect;
+export type InsertPteUserNotes = typeof pteUserNotes.$inferInsert;
