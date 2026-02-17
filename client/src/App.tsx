@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Roadmap from "./pages/Roadmap";
 import Portfolio from "./pages/Portfolio";
@@ -15,7 +16,8 @@ import PteWriting from "./pages/PteWriting";
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Dashboard} />
+      <Route path={"/"} component={Home} />
+      <Route path={"/ai-cro"} component={Dashboard} />
       <Route path={"/roadmap"} component={Roadmap} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/progress"} component={Progress} />

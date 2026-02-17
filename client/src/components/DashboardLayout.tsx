@@ -21,20 +21,19 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Pen } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
 
-import { BarChart3, BookOpen, CheckCircle2, Flame, Target } from "lucide-react";
-
 const menuItems = [
-  { icon: BarChart3, label: "Dashboard", path: "/" },
-  { icon: BookOpen, label: "Roadmap", path: "/roadmap" },
-  { icon: Target, label: "Portfolio", path: "/portfolio" },
-  { icon: CheckCircle2, label: "Progress", path: "/progress" },
-  { icon: Flame, label: "Streak", path: "/streak" },
+  { icon: BarChart3, label: "Dashboard", path: "/", section: "AI+CRO" },
+  { icon: BookOpen, label: "Roadmap", path: "/roadmap", section: "AI+CRO" },
+  { icon: Target, label: "Portfolio", path: "/portfolio", section: "AI+CRO" },
+  { icon: CheckCircle2, label: "Progress", path: "/progress", section: "AI+CRO" },
+  { icon: Flame, label: "Streak", path: "/streak", section: "AI+CRO" },
+  { icon: Pen, label: "PTE Writing", path: "/pte/writing", section: "PTE" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -112,7 +111,7 @@ function DashboardLayoutContent({
   setSidebarWidth,
 }: DashboardLayoutContentProps) {
   const { user, logout } = useAuth();
-  const [location, setLocation] = useLocation();
+  const [location] = useLocation();
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
   const [isResizing, setIsResizing] = useState(false);
@@ -190,15 +189,17 @@ function DashboardLayoutContent({
                 return (
                   <SidebarMenuItem key={item.path}>
                     <SidebarMenuButton
+                      asChild
                       isActive={isActive}
-                      onClick={() => setLocation(item.path)}
                       tooltip={item.label}
                       className={`h-10 transition-all font-normal`}
                     >
-                      <item.icon
-                        className={`h-4 w-4 ${isActive ? "text-primary" : ""}`}
-                      />
-                      <span>{item.label}</span>
+                      <a href={item.path}>
+                        <item.icon
+                          className={`h-4 w-4 ${isActive ? "text-primary" : ""}`}
+                        />
+                        <span>{item.label}</span>
+                      </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
