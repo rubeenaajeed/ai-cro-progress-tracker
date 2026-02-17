@@ -31,18 +31,167 @@ export interface Week {
 }
 
 export const roadmapData: Week[] = [
-  // MONTH 1: AI Foundations & Strategic Prompting
+  // MONTH 1: Consumer Psychology & CRO Foundations
   {
     weekNumber: 1,
     month: 1,
     phase: "Foundations",
+    title: "Consumer Psychology Fundamentals",
+    goal: "Understand the core principles that drive human behavior and purchasing decisions. Learn Cialdini's 6 Principles of Persuasion.",
+    objectives: [
+      { id: "1-1", text: "Learn Cialdini's 6 Principles of Persuasion (Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity)" },
+      { id: "1-2", text: "Understand psychological triggers in e-commerce" },
+      { id: "1-3", text: "Learn how emotions drive purchasing decisions" },
+      { id: "1-4", text: "Identify psychological principles in 3 successful brands" },
+    ],
+    resources: [
+      {
+        title: "Influence: The Psychology of Persuasion (Cialdini)",
+        url: "https://www.influenceatwork.com/",
+        type: "book",
+      },
+      {
+        title: "CXL Blog – Psychology & CRO",
+        url: "https://cxl.com/blog/",
+        type: "article",
+      },
+      {
+        title: "YouTube – Cialdini's Principles Explained",
+        url: "https://www.youtube.com/results?search_query=cialdini+principles",
+        type: "article",
+      },
+    ],
+    miniProject: {
+      title: "Psychology Audit of Your Clothing Brand",
+      description: "Analyze your clothing brand's website and identify which psychological principles are already in use",
+      deliverable: "Document showing which Cialdini principles are present and where they could be strengthened",
+    },
+    learningFocus: ["Persuasion principles", "Psychological triggers", "Consumer behavior"],
+  },
+  {
+    weekNumber: 2,
+    month: 1,
+    phase: "Foundations",
+    title: "CRO Fundamentals & User Journey Mapping",
+    goal: "Learn the CRO process, key metrics, and how to map user journeys to identify friction points and conversion opportunities.",
+    objectives: [
+      { id: "2-1", text: "Learn the CRO process and methodology" },
+      { id: "2-2", text: "Master key CRO metrics (Conversion Rate, AOV, Bounce Rate, CTR)" },
+      { id: "2-3", text: "Understand conversion stages (Awareness → Interest → Decision → Action)" },
+      { id: "2-4", text: "Learn user journey mapping techniques" },
+      { id: "2-5", text: "Map a full e-commerce user journey with friction points" },
+    ],
+    resources: [
+      {
+        title: "CXL Institute – CRO Resources",
+        url: "https://cxl.com/blog/",
+        type: "article",
+      },
+      {
+        title: "Optimizely CRO Blog",
+        url: "https://www.optimizely.com/blog/",
+        type: "article",
+      },
+      {
+        title: "VWO – CRO Fundamentals",
+        url: "https://vwo.com/blog/",
+        type: "article",
+      },
+    ],
+    miniProject: {
+      title: "User Journey Mapping",
+      description: "Map a full e-commerce user journey for your clothing business with friction points identified",
+      deliverable: "Journey map identifying friction points, drop-off stages, and conversion opportunities",
+    },
+    learningFocus: ["CRO fundamentals", "User journeys", "Conversion metrics"],
+  },
+  {
+    weekNumber: 3,
+    month: 1,
+    phase: "Foundations",
+    title: "Psychology in Action: A/B Testing & Experimentation",
+    goal: "Learn how to design A/B tests based on psychological principles. Understand hypothesis generation, test design, and statistical significance.",
+    objectives: [
+      { id: "3-1", text: "Learn hypothesis generation based on psychology" },
+      { id: "3-2", text: "Master A/B test design and execution" },
+      { id: "3-3", text: "Understand statistical significance and sample size" },
+      { id: "3-4", text: "Learn common A/B testing mistakes to avoid" },
+      { id: "3-5", text: "Design 3 psychology-based A/B test hypotheses for your business" },
+    ],
+    resources: [
+      {
+        title: "Optimizely – A/B Testing Guide",
+        url: "https://www.optimizely.com/",
+        type: "article",
+      },
+      {
+        title: "CXL – A/B Testing Course",
+        url: "https://cxl.com/blog/",
+        type: "article",
+      },
+      {
+        title: "VWO – Statistical Significance Calculator",
+        url: "https://vwo.com/blog/",
+        type: "tool",
+      },
+    ],
+    miniProject: {
+      title: "Psychology-Based A/B Test Plan",
+      description: "Design 3 A/B tests for your clothing brand based on psychological principles",
+      deliverable: "A/B test plan with 3 hypotheses, expected outcomes, and success metrics",
+    },
+    learningFocus: ["Hypothesis generation", "A/B testing", "Statistical analysis"],
+  },
+  {
+    weekNumber: 4,
+    month: 1,
+    phase: "Foundations",
+    title: "Behavioral Data & User Friction Analysis",
+    goal: "Learn to analyze user behavior data (heatmaps, session replays) to identify friction points and apply psychology to improve UX.",
+    objectives: [
+      { id: "4-1", text: "Learn heatmap and session replay analysis" },
+      { id: "4-2", text: "Understand user friction identification techniques" },
+      { id: "4-3", text: "Learn to connect behavior data to psychological principles" },
+      { id: "4-4", text: "Master UX improvement recommendations based on behavior" },
+      { id: "4-5", text: "Analyze your clothing brand's user behavior and propose improvements" },
+    ],
+    resources: [
+      {
+        title: "Hotjar – Heatmaps & Session Replays",
+        url: "https://www.hotjar.com/",
+        type: "tool",
+      },
+      {
+        title: "Microsoft Clarity",
+        url: "https://clarity.microsoft.com/",
+        type: "tool",
+      },
+      {
+        title: "CXL – Behavioral Analytics",
+        url: "https://cxl.com/blog/",
+        type: "article",
+      },
+    ],
+    miniProject: {
+      title: "User Behavior Analysis & UX Improvements",
+      description: "Analyze user behavior data and propose psychology-driven UX improvements",
+      deliverable: "Analysis report with friction points, behavioral insights, and recommended UX changes",
+    },
+    learningFocus: ["User behavior analysis", "Heatmaps", "UX optimization"],
+  },
+
+  // MONTH 2: AI Fundamentals & Prompting
+  {
+    weekNumber: 5,
+    month: 2,
+    phase: "Content & CRO",
     title: "What GenAI Actually Is",
     goal: "Understand LLMs, how GenAI works at a high level, its strengths, limitations, and real business use cases.",
     objectives: [
-      { id: "1-1", text: "Learn what LLMs are and how they work at a high level" },
-      { id: "1-2", text: "Understand AI strengths vs limitations in business" },
-      { id: "1-3", text: "Identify real business use cases for GenAI" },
-      { id: "1-4", text: "Write a 1-page note: 'Where AI fits in digital, content, and CRO'" },
+      { id: "5-1", text: "Learn what LLMs are and how they work at a high level" },
+      { id: "5-2", text: "Understand AI strengths vs limitations in business" },
+      { id: "5-3", text: "Identify real business use cases for GenAI" },
+      { id: "5-4", text: "Write a 1-page note: 'How AI Amplifies Psychology & CRO'" },
     ],
     resources: [
       {
@@ -59,49 +208,17 @@ export const roadmapData: Week[] = [
     learningFocus: ["LLM fundamentals", "GenAI capabilities", "Business applications"],
   },
   {
-    weekNumber: 2,
-    month: 1,
-    phase: "Foundations",
-    title: "Business Use of AI & Consumer Psychology Basics",
-    goal: "Explore AI in marketing, e-commerce, content, and CRO. Understand risks, bias, hallucinations. Learn core consumer psychology principles.",
-    objectives: [
-      { id: "2-1", text: "Explore AI in marketing, e-commerce, content, and CRO" },
-      { id: "2-2", text: "Understand risks, bias, and hallucinations in AI" },
-      { id: "2-3", text: "Learn Cialdini's 6 Principles of Persuasion" },
-      { id: "2-4", text: "List 10 ways AI could improve your current role and business" },
-      { id: "2-5", text: "Identify 3 psychological triggers you can apply to a product page" },
-    ],
-    resources: [
-      {
-        title: "HubSpot Academy – AI for Marketing",
-        url: "https://academy.hubspot.com/courses/ai-for-marketing",
-        type: "course",
-      },
-      {
-        title: "CXL Blog – CRO & Psychology",
-        url: "https://cxl.com/blog/",
-        type: "article",
-      },
-      {
-        title: "Influence: The Psychology of Persuasion (Cialdini)",
-        url: "https://www.influenceatwork.com/",
-        type: "book",
-      },
-    ],
-    learningFocus: ["Consumer psychology", "Persuasion principles", "AI risks and ethics"],
-  },
-  {
-    weekNumber: 3,
-    month: 1,
-    phase: "Foundations",
+    weekNumber: 6,
+    month: 2,
+    phase: "Content & CRO",
     title: "Prompting Fundamentals",
-    goal: "Learn role prompting, context windows, constraints, iteration, and output evaluation.",
+    goal: "Learn role prompting, context windows, constraints, iteration, and output evaluation. Apply to CRO and psychology-based tasks.",
     objectives: [
-      { id: "3-1", text: "Master role prompting techniques" },
-      { id: "3-2", text: "Understand context windows and constraints" },
-      { id: "3-3", text: "Learn iteration and output evaluation methods" },
-      { id: "3-4", text: "Practice prompting for content briefs, email copy, and UX microcopy" },
-      { id: "3-5", text: "Save 5 reusable prompt templates" },
+      { id: "6-1", text: "Master role prompting techniques" },
+      { id: "6-2", text: "Understand context windows and constraints" },
+      { id: "6-3", text: "Learn iteration and output evaluation methods" },
+      { id: "6-4", text: "Practice prompting for psychology-based content and CRO hypotheses" },
+      { id: "6-5", text: "Save 5 reusable prompt templates for CRO tasks" },
     ],
     resources: [
       {
@@ -116,24 +233,24 @@ export const roadmapData: Week[] = [
       },
     ],
     miniProject: {
-      title: "Prompt Template Library",
-      description: "Create and test 5 reusable prompt templates for your work and business",
-      deliverable: "Document with 5 templates saved for future use",
+      title: "CRO-Focused Prompt Template Library",
+      description: "Create and test 5 reusable prompt templates for CRO and psychology-based tasks",
+      deliverable: "Document with 5 templates for hypothesis generation, content optimization, and UX analysis",
     },
     learningFocus: ["Role prompting", "Constraints and evaluation", "Prompt templates"],
   },
   {
-    weekNumber: 4,
-    month: 1,
-    phase: "Foundations",
-    title: "Prompting for Business & CRO Outcomes",
-    goal: "Focus on asking for structure, options, and trade-offs from AI. Apply prompting to generate CRO hypotheses and A/B test ideas.",
+    weekNumber: 7,
+    month: 2,
+    phase: "Content & CRO",
+    title: "AI for CRO Hypothesis Generation & Testing",
+    goal: "Learn to use AI to generate CRO hypotheses based on psychology, create A/B test variations, and analyze results.",
     objectives: [
-      { id: "4-1", text: "Learn to ask for structure from AI" },
-      { id: "4-2", text: "Master asking for options and trade-offs" },
-      { id: "4-3", text: "Apply prompting to generate CRO hypotheses" },
-      { id: "4-4", text: "Create A/B test ideas using AI" },
-      { id: "4-5", text: "Use AI to improve one real webpage or campaign end-to-end" },
+      { id: "7-1", text: "Use AI to generate psychology-based CRO hypotheses" },
+      { id: "7-2", text: "Create A/B test variations using AI" },
+      { id: "7-3", text: "Use AI to analyze test results and recommend next steps" },
+      { id: "7-4", text: "Apply psychology principles when prompting AI for CRO" },
+      { id: "7-5", text: "Design an AI-enhanced A/B test plan for your business" },
     ],
     resources: [
       {
@@ -148,26 +265,24 @@ export const roadmapData: Week[] = [
       },
     ],
     miniProject: {
-      title: "AI-Powered Webpage Improvement",
-      description: "Use AI to improve one real webpage (SFCC product page or marketing campaign)",
-      deliverable: "Before/after comparison with AI-generated improvements",
+      title: "AI-Enhanced A/B Test Plan",
+      description: "Design an A/B test using AI to generate psychology-based hypotheses",
+      deliverable: "A/B test plan with 3-5 AI-generated hypotheses and success metrics",
     },
-    learningFocus: ["Structured prompting", "CRO hypothesis generation", "Business outcomes"],
+    learningFocus: ["Hypothesis generation", "A/B testing", "AI for CRO"],
   },
-
-  // MONTH 2: AI for Content & Digital Platforms
   {
-    weekNumber: 5,
+    weekNumber: 8,
     month: 2,
     phase: "Content & CRO",
     title: "AI for Content Audits & CRO Opportunities",
-    goal: "Learn to identify content gaps, optimize for SEO, and facilitate content reuse and localization using AI. Identify content areas ripe for CRO improvements.",
+    goal: "Learn to use AI to identify content gaps, optimize for psychology triggers, and find CRO opportunities.",
     objectives: [
-      { id: "5-1", text: "Learn content gap analysis techniques" },
-      { id: "5-2", text: "Master SEO optimization with AI" },
-      { id: "5-3", text: "Understand content reuse and localization" },
-      { id: "5-4", text: "Identify CRO opportunities in content" },
-      { id: "5-5", text: "Conduct an AI-assisted content audit" },
+      { id: "8-1", text: "Learn content gap analysis techniques with AI" },
+      { id: "8-2", text: "Use AI to identify missing psychology triggers in content" },
+      { id: "8-3", text: "Master content optimization for conversion" },
+      { id: "8-4", text: "Identify CRO opportunities using AI analysis" },
+      { id: "8-5", text: "Conduct an AI-assisted content audit for CRO" },
     ],
     resources: [
       {
@@ -182,24 +297,26 @@ export const roadmapData: Week[] = [
       },
     ],
     miniProject: {
-      title: "AI-Assisted Content Audit",
-      description: "Conduct an AI-assisted content audit for your SFCC site or clothing store",
-      deliverable: "Audit report with SEO and CRO optimization suggestions",
+      title: "AI-Assisted Content Audit for CRO",
+      description: "Conduct an AI-assisted content audit for your clothing store focusing on psychology and conversion",
+      deliverable: "Audit report with psychology trigger analysis and CRO optimization suggestions",
     },
-    learningFocus: ["Content auditing", "SEO optimization", "CRO opportunities"],
+    learningFocus: ["Content auditing", "Psychology optimization", "CRO opportunities"],
   },
+
+  // MONTH 3: AI for Content Operations & CRO Workflows
   {
-    weekNumber: 6,
-    month: 2,
+    weekNumber: 9,
+    month: 3,
     phase: "Content & CRO",
     title: "AI for Content Operations & CRO Workflows",
-    goal: "Understand how AI ensures style consistency, streamlines editorial workflows, and scales content without quality loss. Integrate CRO considerations into content planning.",
+    goal: "Understand how AI ensures style consistency, streamlines editorial workflows, and scales content while maintaining psychology and CRO best practices.",
     objectives: [
-      { id: "6-1", text: "Learn style consistency techniques with AI" },
-      { id: "6-2", text: "Understand editorial workflow automation" },
-      { id: "6-3", text: "Master content scaling without quality loss" },
-      { id: "6-4", text: "Integrate CRO best practices into content planning" },
-      { id: "6-5", text: "Design an AI-assisted content workflow" },
+      { id: "9-1", text: "Learn style consistency techniques with AI" },
+      { id: "9-2", text: "Understand editorial workflow automation" },
+      { id: "9-3", text: "Master content scaling without quality loss" },
+      { id: "9-4", text: "Integrate CRO and psychology best practices into content planning" },
+      { id: "9-5", text: "Design an AI-assisted content workflow with CRO checkpoints" },
     ],
     resources: [
       {
@@ -215,23 +332,55 @@ export const roadmapData: Week[] = [
     ],
     miniProject: {
       title: "AI-Assisted Content Workflow Design",
-      description: "Design an AI-assisted content workflow for SFCC or your clothing brand",
-      deliverable: "Workflow diagram with AI integration points and CRO checkpoints",
+      description: "Design an AI-assisted content workflow with CRO and psychology checkpoints",
+      deliverable: "Workflow diagram showing AI integration points and CRO quality gates",
     },
     learningFocus: ["Content operations", "Workflow automation", "Quality at scale"],
   },
   {
-    weekNumber: 7,
-    month: 2,
+    weekNumber: 10,
+    month: 3,
+    phase: "Content & CRO",
+    title: "AI-Powered User Segmentation & Personalization",
+    goal: "Learn about behavioral clustering and smart targeting with AI. Apply this to personalize content and offers based on psychology for CRO.",
+    objectives: [
+      { id: "10-1", text: "Understand behavioral clustering concepts" },
+      { id: "10-2", text: "Learn predictive signals and smart targeting" },
+      { id: "10-3", text: "Master personalization strategies based on psychology" },
+      { id: "10-4", text: "Apply segmentation to CRO" },
+      { id: "10-5", text: "Design AI-based customer segments with psychology in mind" },
+    ],
+    resources: [
+      {
+        title: "HubSpot Academy – AI for Marketing",
+        url: "https://academy.hubspot.com/courses/ai-for-marketing",
+        type: "course",
+      },
+      {
+        title: "CXL Blog – Segmentation",
+        url: "https://cxl.com/blog/",
+        type: "article",
+      },
+    ],
+    miniProject: {
+      title: "AI-Based Customer Segmentation",
+      description: "Design AI-based customer segments for your clothing brand with psychology-driven personalization",
+      deliverable: "Segmentation strategy with personalized messaging for each segment",
+    },
+    learningFocus: ["Behavioral clustering", "Personalization", "Smart targeting"],
+  },
+  {
+    weekNumber: 11,
+    month: 3,
     phase: "Content & CRO",
     title: "AI + CMS Thinking (SFCC & CRO Integration)",
-    goal: "Explore where AI sits within CMS workflows (like SFCC), governance, approvals, and human-in-the-loop models. Focus on how AI can support dynamic content for personalization and testing.",
+    goal: "Explore where AI sits within CMS workflows, governance, and human-in-the-loop models. Focus on dynamic content for personalization and testing.",
     objectives: [
-      { id: "7-1", text: "Understand AI within CMS workflows" },
-      { id: "7-2", text: "Learn governance and approval processes" },
-      { id: "7-3", text: "Master human-in-the-loop models" },
-      { id: "7-4", text: "Explore AI for dynamic content and personalization" },
-      { id: "7-5", text: "Diagram SFCC + AI workflow with CRO integration points" },
+      { id: "11-1", text: "Understand AI within CMS workflows" },
+      { id: "11-2", text: "Learn governance and approval processes" },
+      { id: "11-3", text: "Master human-in-the-loop models" },
+      { id: "11-4", text: "Explore AI for dynamic content and personalization" },
+      { id: "11-5", text: "Diagram SFCC + AI workflow with CRO integration points" },
     ],
     resources: [
       {
@@ -253,17 +402,17 @@ export const roadmapData: Week[] = [
     learningFocus: ["CMS integration", "Governance", "Dynamic content"],
   },
   {
-    weekNumber: 8,
-    month: 2,
+    weekNumber: 12,
+    month: 3,
     phase: "Content & CRO",
     title: "Content Performance + AI (GA4, Power BI & CRO)",
-    goal: "Learn to use AI to analyze GA4 data, summarize reports, and turn insights into actionable content and CRO decisions.",
+    goal: "Learn to use AI to analyze GA4 data, summarize reports, and turn insights into actionable CRO decisions.",
     objectives: [
-      { id: "8-1", text: "Master GA4 data analysis with AI" },
-      { id: "8-2", text: "Learn report summarization techniques" },
-      { id: "8-3", text: "Understand content performance metrics" },
-      { id: "8-4", text: "Connect performance data to CRO actions" },
-      { id: "8-5", text: "Create a GA4 → AI insights → CRO decision flow" },
+      { id: "12-1", text: "Master GA4 data analysis with AI" },
+      { id: "12-2", text: "Learn report summarization techniques" },
+      { id: "12-3", text: "Understand content performance metrics for CRO" },
+      { id: "12-4", text: "Connect performance data to CRO actions" },
+      { id: "12-5", text: "Create a GA4 → AI insights → CRO decision flow" },
     ],
     resources: [
       {
@@ -285,137 +434,7 @@ export const roadmapData: Week[] = [
     learningFocus: ["GA4 analysis", "Data storytelling", "CRO decisions"],
   },
 
-  // MONTH 3: AI for CRO & User Experience
-  {
-    weekNumber: 9,
-    month: 3,
-    phase: "Content & CRO",
-    title: "CRO Fundamentals & User Journey Mapping",
-    goal: "Review the CRO process, key metrics, and how to map user journeys. Understand the stages of conversion.",
-    objectives: [
-      { id: "9-1", text: "Learn the CRO process and methodology" },
-      { id: "9-2", text: "Master key CRO metrics (CR, AOV, bounce rate, etc.)" },
-      { id: "9-3", text: "Understand conversion stages" },
-      { id: "9-4", text: "Learn user journey mapping techniques" },
-      { id: "9-5", text: "Map a full e-commerce user journey with friction points" },
-    ],
-    resources: [
-      {
-        title: "CXL Institute – CRO Resources",
-        url: "https://cxl.com/blog/",
-        type: "article",
-      },
-      {
-        title: "Optimizely CRO Blog",
-        url: "https://www.optimizely.com/blog/",
-        type: "article",
-      },
-    ],
-    miniProject: {
-      title: "User Journey Mapping",
-      description: "Map a full e-commerce user journey for your clothing business",
-      deliverable: "Journey map identifying friction points and conversion opportunities",
-    },
-    learningFocus: ["CRO fundamentals", "User journeys", "Conversion metrics"],
-  },
-  {
-    weekNumber: 10,
-    month: 3,
-    phase: "Content & CRO",
-    title: "AI-Powered User Segmentation & Personalization",
-    goal: "Learn about behavioral clustering, predictive signals, and smart targeting with AI. Apply this to personalize content and offers for CRO.",
-    objectives: [
-      { id: "10-1", text: "Understand behavioral clustering concepts" },
-      { id: "10-2", text: "Learn predictive signals and smart targeting" },
-      { id: "10-3", text: "Master personalization strategies" },
-      { id: "10-4", text: "Apply segmentation to CRO" },
-      { id: "10-5", text: "Design AI-based customer segments" },
-    ],
-    resources: [
-      {
-        title: "HubSpot Academy – AI for Marketing",
-        url: "https://academy.hubspot.com/courses/ai-for-marketing",
-        type: "course",
-      },
-      {
-        title: "CXL Blog – Segmentation",
-        url: "https://cxl.com/blog/",
-        type: "article",
-      },
-    ],
-    miniProject: {
-      title: "AI-Based Customer Segmentation",
-      description: "Design AI-based customer segments for your clothing brand",
-      deliverable: "Segmentation strategy with personalization recommendations",
-    },
-    learningFocus: ["Behavioral clustering", "Personalization", "Smart targeting"],
-  },
-  {
-    weekNumber: 11,
-    month: 3,
-    phase: "Content & CRO",
-    title: "AI in A/B Testing & Experimentation",
-    goal: "Explore AI's role in generating A/B test hypotheses, analyzing results, and optimizing elements like subject lines, CTAs, and landing page layouts.",
-    objectives: [
-      { id: "11-1", text: "Learn hypothesis generation for A/B tests" },
-      { id: "11-2", text: "Master A/B test design and execution" },
-      { id: "11-3", text: "Understand statistical significance" },
-      { id: "11-4", text: "Learn AI-powered result analysis" },
-      { id: "11-5", text: "Design an AI-enhanced A/B test plan" },
-    ],
-    resources: [
-      {
-        title: "Optimizely – A/B Testing Guide",
-        url: "https://www.optimizely.com/",
-        type: "article",
-      },
-      {
-        title: "VWO – CRO Blog",
-        url: "https://vwo.com/blog/",
-        type: "article",
-      },
-    ],
-    miniProject: {
-      title: "AI-Enhanced A/B Test Plan",
-      description: "Design an A/B test for a specific element with AI-generated hypotheses",
-      deliverable: "A/B test plan with 3-5 hypotheses and success metrics",
-    },
-    learningFocus: ["Hypothesis generation", "A/B testing", "Statistical analysis"],
-  },
-  {
-    weekNumber: 12,
-    month: 3,
-    phase: "Content & CRO",
-    title: "CRO Analytics + AI (Heatmaps, Session Replays)",
-    goal: "Understand how AI can summarize user behavior data (heatmaps, session replays), provide insights into user friction, and recommend UX improvements.",
-    objectives: [
-      { id: "12-1", text: "Learn heatmap and session replay analysis" },
-      { id: "12-2", text: "Understand user friction identification" },
-      { id: "12-3", text: "Master AI-powered UX recommendations" },
-      { id: "12-4", text: "Learn to connect behavior data to CRO actions" },
-      { id: "12-5", text: "Analyze user behavior and propose UX improvements" },
-    ],
-    resources: [
-      {
-        title: "Hotjar – Heatmaps & Session Replays",
-        url: "https://www.hotjar.com/",
-        type: "tool",
-      },
-      {
-        title: "Microsoft Clarity",
-        url: "https://clarity.microsoft.com/",
-        type: "tool",
-      },
-    ],
-    miniProject: {
-      title: "User Behavior Analysis & UX Improvements",
-      description: "Analyze user behavior data and propose AI-driven UX improvements",
-      deliverable: "Analysis report with friction points and recommended UX changes",
-    },
-    learningFocus: ["User behavior analysis", "Heatmaps", "UX optimization"],
-  },
-
-  // MONTH 4: Analytics, Automation & Technical Fluency
+  // MONTH 4: Advanced AI & Automation for CRO
   {
     weekNumber: 13,
     month: 4,
@@ -453,7 +472,7 @@ export const roadmapData: Week[] = [
     month: 4,
     phase: "Analytics & Automation",
     title: "Automation Basics (APIs & Webhooks) for CRO",
-    goal: "Understand what APIs and webhooks are conceptually, and explore no-code automation possibilities for marketing and CRO tasks.",
+    goal: "Understand what APIs and webhooks are conceptually, and explore no-code automation possibilities for CRO and marketing tasks.",
     objectives: [
       { id: "14-1", text: "Learn API concepts and use cases" },
       { id: "14-2", text: "Understand webhooks and event-driven automation" },
@@ -485,13 +504,13 @@ export const roadmapData: Week[] = [
     month: 4,
     phase: "Analytics & Automation",
     title: "RAG & Internal AI Tools for Growth",
-    goal: "Learn about Retrieval Augmented Generation (RAG) and its application in internal knowledge assistants for marketing, sales, or customer support.",
+    goal: "Learn about Retrieval Augmented Generation (RAG) and its application in internal knowledge assistants for marketing and CRO.",
     objectives: [
       { id: "15-1", text: "Understand RAG (Retrieval Augmented Generation)" },
       { id: "15-2", text: "Learn internal knowledge assistant use cases" },
-      { id: "15-3", text: "Understand AI for customer support" },
-      { id: "15-4", text: "Learn personalized recommendation systems" },
-      { id: "15-5", text: "Design a conceptual internal AI assistant" },
+      { id: "15-3", text: "Understand AI for customer support and personalization" },
+      { id: "15-4", text: "Learn recommendation systems for CRO" },
+      { id: "15-5", text: "Design a conceptual internal AI assistant for CRO" },
     ],
     resources: [
       {
@@ -507,7 +526,7 @@ export const roadmapData: Week[] = [
     ],
     miniProject: {
       title: "Internal AI Assistant Design",
-      description: "Design an AI assistant for your marketing team or customer support",
+      description: "Design an AI assistant for your marketing team or CRO optimization",
       deliverable: "Conceptual design document with use cases and AI integration points",
     },
     learningFocus: ["RAG systems", "Knowledge assistants", "AI for support"],
@@ -517,7 +536,7 @@ export const roadmapData: Week[] = [
     month: 4,
     phase: "Analytics & Automation",
     title: "Ethics, Governance & Trust in AI for CRO",
-    goal: "Understand data privacy, brand voice control, and the importance of human oversight in AI applications, especially concerning personalized marketing and A/B testing.",
+    goal: "Understand data privacy, brand voice control, and the importance of human oversight in AI applications, especially in personalized marketing.",
     objectives: [
       { id: "16-1", text: "Learn data privacy and compliance (GDPR, CCPA)" },
       { id: "16-2", text: "Understand brand voice control in AI" },
@@ -539,7 +558,7 @@ export const roadmapData: Week[] = [
     ],
     miniProject: {
       title: "AI Usage Guidelines",
-      description: "Draft AI usage guidelines for content creation and marketing",
+      description: "Draft AI usage guidelines for content creation and CRO",
       deliverable: "Guidelines document covering ethics, privacy, and governance",
     },
     learningFocus: ["Data privacy", "Ethics", "Governance"],
@@ -550,14 +569,14 @@ export const roadmapData: Week[] = [
     weekNumber: 17,
     month: 5,
     phase: "Portfolio",
-    title: "AI-Driven Content & CRO Optimization Case Study",
-    goal: "Detail a project where you used AI to audit and optimize content (e.g., SFCC product pages, blog posts for your clothing business), demonstrating measurable CRO impact.",
+    title: "Psychology-Driven CRO Case Study",
+    goal: "Detail a project where you applied psychology principles to improve conversion (e.g., adding social proof, scarcity, or urgency to your clothing brand).",
     objectives: [
-      { id: "17-1", text: "Identify a real content optimization project" },
+      { id: "17-1", text: "Identify a real CRO project based on psychology" },
       { id: "17-2", text: "Document the problem and initial state" },
-      { id: "17-3", text: "Explain why AI was used" },
+      { id: "17-3", text: "Explain which psychology principles you applied" },
       { id: "17-4", text: "Detail the changes made" },
-      { id: "17-5", text: "Measure and document the impact" },
+      { id: "17-5", text: "Measure and document the conversion impact" },
     ],
     resources: [
       {
@@ -567,9 +586,9 @@ export const roadmapData: Week[] = [
       },
     ],
     miniProject: {
-      title: "Content Optimization Case Study",
-      description: "Create a detailed case study of your AI-driven content optimization project",
-      deliverable: "Case study document (Google Doc or Notion) with problem, solution, and impact",
+      title: "Psychology-Driven CRO Case Study",
+      description: "Create a detailed case study of your psychology-based CRO project",
+      deliverable: "Case study document with problem, psychology principles applied, and measured impact",
     },
     learningFocus: ["Case study writing", "Impact measurement", "Portfolio building"],
   },
@@ -578,7 +597,7 @@ export const roadmapData: Week[] = [
     month: 5,
     phase: "Portfolio",
     title: "AI-Powered User Experience & Personalization for Conversion",
-    goal: "Showcase a project where AI was used to design or enhance a user journey and personalization strategy (e.g., for your online clothing store), leading to improved conversion.",
+    goal: "Showcase a project where AI was used to design or enhance a user journey and personalization strategy, leading to improved conversion.",
     objectives: [
       { id: "18-1", text: "Identify a personalization/UX project" },
       { id: "18-2", text: "Document the user journey improvements" },
@@ -605,7 +624,7 @@ export const roadmapData: Week[] = [
     month: 5,
     phase: "Portfolio",
     title: "Analytics → AI Insights → CRO Business Decision",
-    goal: "Present a project demonstrating how you used AI to extract actionable insights from GA4/Power BI data, leading to a specific, implemented CRO decision and its impact.",
+    goal: "Present a project demonstrating how you used AI to extract actionable insights from GA4/Power BI data, leading to a specific, implemented CRO decision.",
     objectives: [
       { id: "19-1", text: "Identify a data-driven CRO decision" },
       { id: "19-2", text: "Document the data analysis process" },
@@ -632,7 +651,7 @@ export const roadmapData: Week[] = [
     month: 5,
     phase: "Portfolio",
     title: "Polish & Document Portfolio",
-    goal: "Refine all projects, clearly articulating the problem, why AI and CRO were used, what changed, and the measurable impact.",
+    goal: "Refine all projects, clearly articulating the problem, why psychology/AI and CRO were used, what changed, and the measurable impact.",
     objectives: [
       { id: "20-1", text: "Review and refine all 3 case studies" },
       { id: "20-2", text: "Ensure consistent formatting and structure" },
@@ -666,11 +685,11 @@ export const roadmapData: Week[] = [
     month: 6,
     phase: "Positioning",
     title: "CV Repositioning",
-    goal: "Update your CV to highlight your new AI, CRO, and growth skills and experiences, shifting from 'content' to 'Growth & Martech Specialist (AI-Powered)' with impact-driven bullets.",
+    goal: "Update your CV to highlight your new psychology, CRO, and AI skills, shifting from 'content' to 'Growth & CRO Specialist (AI-Powered)' with impact-driven bullets.",
     objectives: [
       { id: "21-1", text: "Review your current CV" },
       { id: "21-2", text: "Reframe content management experience as growth-focused" },
-      { id: "21-3", text: "Add AI and CRO skills section" },
+      { id: "21-3", text: "Add psychology, CRO, and AI skills section" },
       { id: "21-4", text: "Highlight measurable business impact" },
       { id: "21-5", text: "Update professional headline and summary" },
     ],
@@ -683,8 +702,8 @@ export const roadmapData: Week[] = [
     ],
     miniProject: {
       title: "Updated CV",
-      description: "Reposition your CV to highlight AI and CRO expertise",
-      deliverable: "Updated CV emphasizing growth and AI skills",
+      description: "Reposition your CV to highlight psychology, CRO, and AI expertise",
+      deliverable: "Updated CV emphasizing growth, psychology, and AI skills",
     },
     learningFocus: ["CV writing", "Impact communication", "Personal branding"],
   },
@@ -693,12 +712,12 @@ export const roadmapData: Week[] = [
     month: 6,
     phase: "Positioning",
     title: "LinkedIn Positioning",
-    goal: "Optimize your LinkedIn profile: headline, about section, and feature your new AI + CRO portfolio projects.",
+    goal: "Optimize your LinkedIn profile: headline, about section, and feature your new psychology + CRO + AI portfolio projects.",
     objectives: [
       { id: "22-1", text: "Update LinkedIn headline with new role focus" },
-      { id: "22-2", text: "Rewrite about section highlighting AI and CRO expertise" },
+      { id: "22-2", text: "Rewrite about section highlighting psychology, CRO, and AI expertise" },
       { id: "22-3", text: "Add portfolio projects to featured section" },
-      { id: "22-4", text: "Update skills section with AI and CRO keywords" },
+      { id: "22-4", text: "Update skills section with psychology, CRO, and AI keywords" },
       { id: "22-5", text: "Optimize for discoverability" },
     ],
     resources: [
@@ -710,7 +729,7 @@ export const roadmapData: Week[] = [
     ],
     miniProject: {
       title: "LinkedIn Profile Optimization",
-      description: "Optimize your LinkedIn profile for AI and CRO roles",
+      description: "Optimize your LinkedIn profile for psychology, CRO, and AI roles",
       deliverable: "Updated LinkedIn profile with new headline, about, and featured projects",
     },
     learningFocus: ["Personal branding", "LinkedIn optimization", "Visibility"],
@@ -752,9 +771,9 @@ export const roadmapData: Week[] = [
     month: 6,
     phase: "Positioning",
     title: "Interview Preparation",
-    goal: "Practice explaining AI and CRO concepts simply, discussing trade-offs, and demonstrating judgment over hype and a focus on measurable results.",
+    goal: "Practice explaining psychology, CRO, and AI concepts simply, discussing trade-offs, and demonstrating judgment over hype and a focus on measurable results.",
     objectives: [
-      { id: "24-1", text: "Practice explaining AI concepts to non-technical people" },
+      { id: "24-1", text: "Practice explaining psychology and CRO concepts to non-technical people" },
       { id: "24-2", text: "Prepare answers about AI trade-offs and limitations" },
       { id: "24-3", text: "Develop case study presentations" },
       { id: "24-4", text: "Practice discussing CRO methodology and results" },

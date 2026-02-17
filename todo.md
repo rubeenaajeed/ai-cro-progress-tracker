@@ -69,3 +69,11 @@
 - [ ] Create quiz results tracking in database
 - [x] Integrate quiz into task completion workflow
 - [ ] Add quiz history and performance analytics
+
+
+## Phase 8: Roadmap Reorganization (Psychology-First Approach)
+- [x] Reorder weeks to prioritize Consumer Psychology (Weeks 1-4)
+- [x] Move AI/LLM concepts to Weeks 5-8
+- [x] Reorganize Content & CRO phase to align with psychology foundations
+- [x] Update all week objectives and resources
+- [x] Verify database and progress tracking still works correctly
