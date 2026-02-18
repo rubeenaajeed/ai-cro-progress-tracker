@@ -18,27 +18,64 @@ import {
   SidebarProvider,
   SidebarTrigger,
   useSidebar,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
-const menuItems = [
-  { icon: BarChart3, label: "Dashboard", path: "/", section: "Professional" },
-  { icon: BookOpen, label: "Roadmap", path: "/roadmap", section: "Professional" },
-  { icon: Target, label: "Portfolio", path: "/portfolio", section: "Professional" },
-  { icon: CheckCircle2, label: "Progress", path: "/progress", section: "Professional" },
-  { icon: Flame, label: "Streak", path: "/streak", section: "Professional" },
-  { icon: BookOpen, label: "Learning Proof (Prof.)", path: "/learning-proof-professional", section: "Professional" },
-  { icon: Sparkles, label: "Weekly Reflection (Prof.)", path: "/weekly-reflection-professional", section: "Professional" },
-  { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Personal" },
-  { icon: BookOpen, label: "Learning Proof (Pers.)", path: "/learning-proof-personal", section: "Personal" },
-  { icon: Sparkles, label: "Weekly Reflection (Pers.)", path: "/weekly-reflection-personal", section: "Personal" },
-  { icon: Lightbulb, label: "Content Angle", path: "/content-angle", section: "Personal" },
+type MenuItem = {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  path?: string;
+  section?: string;
+  submenu?: MenuItem[];
+};
+
+const menuItems: MenuItem[] = [
+  { icon: BarChart3, label: "Dashboard", path: "/", section: "Main" },
+  {
+    icon: BookOpen,
+    label: "Roadmap",
+    section: "Main",
+    submenu: [
+      {
+        icon: Target,
+        label: "AI+CRO (Professional)",
+        section: "AI+CRO",
+        submenu: [
+          { icon: BookOpen, label: "Learning Proof", path: "/learning-proof-professional", section: "AI+CRO" },
+          { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-professional", section: "AI+CRO" },
+          { icon: Lightbulb, label: "Content Creation", path: "/content-creation-professional", section: "AI+CRO" },
+        ],
+      },
+      {
+        icon: Target,
+        label: "Personal + Business",
+        section: "Personal",
+        submenu: [
+          { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Personal" },
+          { icon: BookOpen, label: "Learning Proof", path: "/learning-proof-personal", section: "Personal" },
+          { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-personal", section: "Personal" },
+          { icon: Lightbulb, label: "Content Creation", path: "/content-creation-personal", section: "Personal" },
+        ],
+      },
+    ],
+  },
+  { icon: Target, label: "Portfolio", path: "/portfolio", section: "Main" },
+  { icon: CheckCircle2, label: "Progress", path: "/progress", section: "Main" },
+  { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
   { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
 ];
 
@@ -121,8 +158,10 @@ function DashboardLayoutContent({
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
   const [isResizing, setIsResizing] = useState(false);
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    "Roadmap": true,
+  });
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const activeMenuItem = menuItems.find(item => item.path === location);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -161,6 +200,115 @@ function DashboardLayoutContent({
     };
   }, [isResizing, setSidebarWidth]);
 
+  const renderMenuItems = (items: MenuItem[]) => {
+    return items.map(item => {
+      const isActive = item.path === location;
+      const hasSubmenu = item.submenu && item.submenu.length > 0;
+      const isExpanded = expandedSections[item.label] ?? false;
+
+      if (hasSubmenu) {
+        return (
+          <Collapsible
+            key={item.label}
+            open={isExpanded}
+            onOpenChange={(open) =>
+              setExpandedSections(prev => ({ ...prev, [item.label]: open }))
+            }
+          >
+            <SidebarMenuItem>
+              <CollapsibleTrigger asChild>
+                <button className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-accent transition-colors w-full text-left h-10 font-normal text-sm">
+                  <item.icon className="h-4 w-4 shrink-0" />
+                  <span className="flex-1">{item.label}</span>
+                  <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+                </button>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <SidebarMenuSub>
+                  {item.submenu?.map(subitem => {
+                    const subHasSubmenu = subitem.submenu && subitem.submenu.length > 0;
+                    const subIsExpanded = expandedSections[subitem.label] ?? false;
+
+                    if (subHasSubmenu) {
+                      return (
+                        <Collapsible
+                          key={subitem.label}
+                          open={subIsExpanded}
+                          onOpenChange={(open) =>
+                            setExpandedSections(prev => ({ ...prev, [subitem.label]: open }))
+                          }
+                        >
+                          <SidebarMenuSubItem>
+                            <CollapsibleTrigger asChild>
+                              <button className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-accent transition-colors w-full text-left h-9 text-sm">
+                                <subitem.icon className="h-4 w-4 shrink-0" />
+                                <span className="flex-1">{subitem.label}</span>
+                                <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${subIsExpanded ? "rotate-180" : ""}`} />
+                              </button>
+                            </CollapsibleTrigger>
+                            <CollapsibleContent>
+                              <SidebarMenuSub>
+                                {subitem.submenu?.map(leaf => (
+                                  <SidebarMenuSubItem key={leaf.path}>
+                                    <SidebarMenuSubButton
+                                      asChild
+                                      isActive={leaf.path === location}
+                                      className="h-8 text-xs"
+                                    >
+                                      <a href={leaf.path}>
+                                        <leaf.icon className="h-4 w-4" />
+                                        <span>{leaf.label}</span>
+                                      </a>
+                                    </SidebarMenuSubButton>
+                                  </SidebarMenuSubItem>
+                                ))}
+                              </SidebarMenuSub>
+                            </CollapsibleContent>
+                          </SidebarMenuSubItem>
+                        </Collapsible>
+                      );
+                    }
+
+                    return (
+                      <SidebarMenuSubItem key={subitem.path}>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={subitem.path === location}
+                          className="h-9 text-xs"
+                        >
+                          <a href={subitem.path}>
+                            <subitem.icon className="h-4 w-4" />
+                            <span>{subitem.label}</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    );
+                  })}
+                </SidebarMenuSub>
+              </CollapsibleContent>
+            </SidebarMenuItem>
+          </Collapsible>
+        );
+      }
+
+      return (
+        <SidebarMenuItem key={item.path}>
+          <SidebarMenuButton
+            asChild
+            isActive={isActive}
+            tooltip={item.label}
+            className="h-10 transition-all font-normal"
+          >
+            <a href={item.path}>
+              <item.icon className={`h-4 w-4 ${isActive ? "text-primary" : ""}`} />
+              <span>{item.label}</span>
+            </a>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      );
+    });
+  };
+
   return (
     <>
       <div className="relative" ref={sidebarRef}>
@@ -190,26 +338,7 @@ function DashboardLayoutContent({
 
           <SidebarContent className="gap-0">
             <SidebarMenu className="px-2 py-1">
-              {menuItems.map(item => {
-                const isActive = location === item.path;
-                return (
-                  <SidebarMenuItem key={item.path}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={isActive}
-                      tooltip={item.label}
-                      className={`h-10 transition-all font-normal`}
-                    >
-                      <a href={item.path}>
-                        <item.icon
-                          className={`h-4 w-4 ${isActive ? "text-primary" : ""}`}
-                        />
-                        <span>{item.label}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
+              {renderMenuItems(menuItems)}
             </SidebarMenu>
           </SidebarContent>
 
@@ -262,7 +391,7 @@ function DashboardLayoutContent({
               <div className="flex items-center gap-3">
                 <div className="flex flex-col gap-1">
                   <span className="tracking-tight text-foreground">
-                    {activeMenuItem?.label ?? "Menu"}
+                    Dashboard
                   </span>
                 </div>
               </div>

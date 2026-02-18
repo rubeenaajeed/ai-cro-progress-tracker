@@ -18,6 +18,8 @@ import LearningProofProfessional from "./pages/LearningProofProfessional";
 import LearningProofPersonal from "./pages/LearningProofPersonal";
 import WeeklyReflectionProfessional from "./pages/WeeklyReflectionProfessional";
 import WeeklyReflectionPersonal from "./pages/WeeklyReflectionPersonal";
+import ContentCreationProfessional from "./pages/ContentCreationProfessional";
+import ContentCreationPersonal from "./pages/ContentCreationPersonal";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 function AppRoutes() {
@@ -46,6 +48,8 @@ function AppRoutes() {
       <Route path={"/weekly-reflection-professional"} component={WeeklyReflectionProfessional} />
       <Route path={"/weekly-reflection-personal"} component={WeeklyReflectionPersonal} />
       <Route path={"/content-angle"} component={ContentAngle} />
+      <Route path={"/content-creation-professional"} component={ContentCreationProfessional} />
+      <Route path={"/content-creation-personal"} component={ContentCreationPersonal} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
