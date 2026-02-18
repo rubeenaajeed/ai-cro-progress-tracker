@@ -46,18 +46,23 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Influence: The Psychology of Persuasion (Cialdini)",
-        url: "https://www.influenceatwork.com/",
-        type: "book",
-      },
-      {
-        title: "CXL Blog – Psychology & CRO",
-        url: "https://cxl.com/blog/",
+        title: "Cialdini's 6 Principles Explained (YouTube - 30 min)",
+        url: "https://www.youtube.com/results?search_query=cialdini+6+principles+explained",
         type: "article",
       },
       {
-        title: "YouTube – Cialdini's Principles Explained",
-        url: "https://www.youtube.com/results?search_query=cialdini+principles",
+        title: "CXL – Persuasion Psychology for Marketers (Free Course)",
+        url: "https://cxl.com/blog/persuasion-psychology/",
+        type: "course",
+      },
+      {
+        title: "Hooked: How to Build Habit-Forming Products (Summary & Key Insights)",
+        url: "https://www.blinkist.com/books/hooked-en",
+        type: "article",
+      },
+      {
+        title: "Neil Patel – Cialdini's Principles in E-commerce",
+        url: "https://neilpatel.com/blog/",
         type: "article",
       },
     ],
@@ -83,19 +88,24 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "CXL Institute – CRO Resources",
-        url: "https://cxl.com/blog/",
+        title: "CXL – CRO Fundamentals (Free Course)",
+        url: "https://cxl.com/blog/cro-fundamentals/",
+        type: "course",
+      },
+      {
+        title: "Optimizely – User Journey Mapping Guide",
+        url: "https://www.optimizely.com/blog/user-journey-mapping/",
         type: "article",
       },
       {
-        title: "Optimizely CRO Blog",
-        url: "https://www.optimizely.com/blog/",
+        title: "YouTube – E-commerce User Journey Mapping (15 min)",
+        url: "https://www.youtube.com/results?search_query=ecommerce+user+journey+mapping",
         type: "article",
       },
       {
-        title: "VWO – CRO Fundamentals",
-        url: "https://vwo.com/blog/",
-        type: "article",
+        title: "Figma – User Journey Template",
+        url: "https://www.figma.com/community/search?resource_type=file&q=user+journey",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -120,19 +130,24 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Optimizely – A/B Testing Guide",
-        url: "https://www.optimizely.com/",
-        type: "article",
+        title: "CXL – A/B Testing Fundamentals (Free Course)",
+        url: "https://cxl.com/blog/ab-testing/",
+        type: "course",
       },
       {
-        title: "CXL – A/B Testing Course",
-        url: "https://cxl.com/blog/",
+        title: "Optimizely – A/B Testing Best Practices",
+        url: "https://www.optimizely.com/blog/ab-testing-best-practices/",
         type: "article",
       },
       {
         title: "VWO – Statistical Significance Calculator",
-        url: "https://vwo.com/blog/",
+        url: "https://vwo.com/tools/ab-test-calculator/",
         type: "tool",
+      },
+      {
+        title: "YouTube – A/B Testing Explained (20 min)",
+        url: "https://www.youtube.com/results?search_query=ab+testing+explained",
+        type: "article",
       },
     ],
     miniProject: {
@@ -157,18 +172,23 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Hotjar – Heatmaps & Session Replays",
+        title: "Hotjar – Heatmaps & Session Replays (Free Tier)",
         url: "https://www.hotjar.com/",
         type: "tool",
       },
       {
-        title: "Microsoft Clarity",
+        title: "Microsoft Clarity (Free Tool)",
         url: "https://clarity.microsoft.com/",
         type: "tool",
       },
       {
-        title: "CXL – Behavioral Analytics",
-        url: "https://cxl.com/blog/",
+        title: "CXL – Behavioral Analytics Guide",
+        url: "https://cxl.com/blog/behavioral-analytics/",
+        type: "article",
+      },
+      {
+        title: "YouTube – Heatmap Analysis for UX (15 min)",
+        url: "https://www.youtube.com/results?search_query=heatmap+analysis+ux",
         type: "article",
       },
     ],

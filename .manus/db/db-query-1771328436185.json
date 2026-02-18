@@ -1,0 +1,9 @@
+{
+  "query": "\n-- Reset weekly progress\nDELETE FROM weekly_progress WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset daily check-ins\nDELETE FROM daily_check_ins WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset task completions\nDELETE FROM task_completions WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset personal notes\nDELETE FROM personal_notes WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset portfolio projects\nDELETE FROM portfolio_projects WHERE userId IN (SELECT id FROM users LIMIT 1);\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Z84eR9hGvjGXHm.root --database NP47tTynZmxVqthUU3GTN2 --execute \n-- Reset weekly progress\nDELETE FROM weekly_progress WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset daily check-ins\nDELETE FROM daily_check_ins WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset task completions\nDELETE FROM task_completions WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset personal notes\nDELETE FROM personal_notes WHERE userId IN (SELECT id FROM users LIMIT 1);\n\n-- Reset portfolio projects\nDELETE FROM portfolio_projects WHERE userId IN (SELECT id FROM users LIMIT 1);\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 2451
+}

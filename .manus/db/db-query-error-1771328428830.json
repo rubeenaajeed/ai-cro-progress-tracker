@@ -1,0 +1,8 @@
+{
+  "query": "\n-- Get the current user ID (assuming there's only one user in the system for now)\n-- Reset weekly progress\nDELETE FROM weekly_progress WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset daily check-ins\nDELETE FROM daily_checkins WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset task completions\nDELETE FROM task_completions WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset personal notes\nDELETE FROM personal_notes WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset portfolio projects\nDELETE FROM portfolio_projects WHERE user_id IN (SELECT id FROM users LIMIT 1);\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Z84eR9hGvjGXHm.root --database NP47tTynZmxVqthUU3GTN2 --execute \n-- Get the current user ID (assuming there's only one user in the system for now)\n-- Reset weekly progress\nDELETE FROM weekly_progress WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset daily check-ins\nDELETE FROM daily_checkins WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset task completions\nDELETE FROM task_completions WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset personal notes\nDELETE FROM personal_notes WHERE user_id IN (SELECT id FROM users LIMIT 1);\n\n-- Reset portfolio projects\nDELETE FROM portfolio_projects WHERE user_id IN (SELECT id FROM users LIMIT 1);\n",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 4: Unknown column 'user_id' in 'where clause'"
+  ]
+}
