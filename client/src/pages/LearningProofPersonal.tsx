@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, CheckCircle2, BookOpen, Target } from "lucide-react";
-import { roadmapData } from "@shared/roadmapData";
+import { personalRoadmapData } from "@shared/personalRoadmapData";
 
 function LearningProofPersonalContent() {
   const [selectedWeek, setSelectedWeek] = useState<string>("1");
@@ -14,7 +14,7 @@ function LearningProofPersonalContent() {
   const [saving, setSaving] = useState(false);
 
   const weekNumber = parseInt(selectedWeek);
-  const weekData = roadmapData.find(w => w.weekNumber === weekNumber);
+  const weekData = personalRoadmapData.find(w => w.weekNumber === weekNumber);
 
   // Get weekly proofs
   const { data: weeklyProofs = [], isLoading } = trpc.phase2.getWeeklyProofs.useQuery(
@@ -75,7 +75,7 @@ function LearningProofPersonalContent() {
             </SelectTrigger>
             <SelectContent>
               {Array.from({ length: 30 }, (_, i) => i + 1).map(week => {
-                const wd = roadmapData.find(w => w.weekNumber === week);
+                const wd = personalRoadmapData.find(w => w.weekNumber === week);
                 return (
                   <SelectItem key={week} value={week.toString()}>
                     Week {week}: {wd?.title || ""}

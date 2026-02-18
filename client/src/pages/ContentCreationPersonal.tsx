@@ -5,14 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, Lightbulb, Video, Image as ImageIcon, Target } from "lucide-react";
-import { roadmapData } from "@shared/roadmapData";
+import { personalRoadmapData } from "@shared/personalRoadmapData";
 
 function ContentCreationPersonalContent() {
   const [selectedWeek, setSelectedWeek] = useState<string>("1");
   const [generating, setGenerating] = useState(false);
 
   const weekNumber = parseInt(selectedWeek);
-  const weekData = roadmapData.find(w => w.weekNumber === weekNumber);
+  const weekData = personalRoadmapData.find(w => w.weekNumber === weekNumber);
 
   // Get all content suggestions
   const { data: allSuggestions = [], isLoading } = trpc.phase2.getAllContentAngleSuggestions.useQuery();
@@ -72,7 +72,7 @@ function ContentCreationPersonalContent() {
             </SelectTrigger>
             <SelectContent>
               {Array.from({ length: 30 }, (_, i) => i + 1).map(week => {
-                const wd = roadmapData.find(w => w.weekNumber === week);
+                const wd = personalRoadmapData.find(w => w.weekNumber === week);
                 return (
                   <SelectItem key={week} value={week.toString()}>
                     Week {week}: {wd?.title || ""}
