@@ -445,13 +445,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Building Systems with ChatGPT",
+        title: "DeepLearning.AI – Building Systems with ChatGPT (1.5 hours)",
         url: "https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/",
         type: "course",
       },
       {
-        title: "Notion AI",
+        title: "Zapier – AI Workflow Automation Guide",
+        url: "https://zapier.com/blog/ai-automation/",
+        type: "article",
+      },
+      {
+        title: "Make.com – Content Workflow Templates",
+        url: "https://www.make.com/en/templates",
+        type: "tool",
+      },
+      {
+        title: "Notion AI – Content Templates",
         url: "https://www.notion.so/",
+        type: "tool",
+      },
+      {
+        title: "YouTube – Content Workflow Automation (20 min)",
+        url: "https://www.youtube.com/watch?v=7_3nnpL9Kxc",
+        type: "article",
+      },
+      {
+        title: "Buffer – Content Calendar & Scheduling",
+        url: "https://buffer.com/",
         type: "tool",
       },
     ],
@@ -477,13 +497,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "HubSpot Academy – AI for Marketing",
+        title: "HubSpot Academy – AI for Marketing (2 hours)",
         url: "https://academy.hubspot.com/courses/ai-for-marketing",
         type: "course",
       },
       {
-        title: "CXL Blog – Segmentation",
-        url: "https://cxl.com/blog/",
+        title: "CXL – Segmentation & Personalization",
+        url: "https://cxl.com/blog/segmentation/",
+        type: "article",
+      },
+      {
+        title: "YouTube – AI Personalization Strategies (25 min)",
+        url: "https://www.youtube.com/watch?v=HZ1fIj0z8Zw",
+        type: "article",
+      },
+      {
+        title: "Segment – Customer Data Platform",
+        url: "https://segment.com/",
+        type: "tool",
+      },
+      {
+        title: "Klaviyo – Email Segmentation & Personalization",
+        url: "https://www.klaviyo.com/",
+        type: "tool",
+      },
+      {
+        title: "McKinsey – The Power of Personalization",
+        url: "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-power-of-personalization",
         type: "article",
       },
     ],
@@ -509,13 +549,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Building Systems with ChatGPT",
+        title: "DeepLearning.AI – Building Systems with ChatGPT (1.5 hours)",
         url: "https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/",
         type: "course",
       },
       {
-        title: "SFCC Documentation",
+        title: "Salesforce SFCC Documentation",
         url: "https://documentation.b2c.commercecloud.salesforce.com/",
+        type: "article",
+      },
+      {
+        title: "Contentful – Headless CMS & AI",
+        url: "https://www.contentful.com/",
+        type: "tool",
+      },
+      {
+        title: "YouTube – CMS + AI Integration (20 min)",
+        url: "https://www.youtube.com/watch?v=mJxQYWwNCEU",
+        type: "article",
+      },
+      {
+        title: "Strapi – Open Source Headless CMS",
+        url: "https://strapi.io/",
+        type: "tool",
+      },
+      {
+        title: "Gartner – CMS & AI Report",
+        url: "https://www.gartner.com/en/documents/4017899",
         type: "article",
       },
     ],
@@ -541,14 +601,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Google Analytics Academy",
+        title: "Google Analytics Academy – GA4 Fundamentals (3 hours)",
         url: "https://analytics.google.com/analytics/academy/",
         type: "course",
       },
       {
-        title: "Google Sheets",
+        title: "YouTube – GA4 + AI Analysis (30 min)",
+        url: "https://www.youtube.com/watch?v=fvNjPCjKqKs",
+        type: "article",
+      },
+      {
+        title: "Looker Studio – Data Visualization",
+        url: "https://lookerstudio.google.com/",
+        type: "tool",
+      },
+      {
+        title: "Power BI – Analytics & Reporting",
+        url: "https://www.microsoft.com/en-us/power-platform/products/power-bi",
+        type: "tool",
+      },
+      {
+        title: "Google Sheets – Data Analysis",
         url: "https://sheets.google.com/",
         type: "tool",
+      },
+      {
+        title: "Ahrefs – GA4 Guide for Content Performance",
+        url: "https://ahrefs.com/blog/ga4-guide/",
+        type: "article",
       },
     ],
     miniProject: {
