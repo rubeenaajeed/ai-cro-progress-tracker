@@ -1075,8 +1075,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "CV Template (Google Docs)",
+        title: "Google Docs - CV Template",
         url: "https://docs.google.com/document/",
+        type: "tool",
+      },
+      {
+        title: "YouTube - How to Write an Impactful CV (20 min)",
+        url: "https://www.youtube.com/watch?v=Tt08KYy5bPw",
+        type: "article",
+      },
+      {
+        title: "The Muse - CV Writing Tips",
+        url: "https://www.themuse.com/advice/how-to-write-a-resume",
+        type: "article",
+      },
+      {
+        title: "LinkedIn - CV Best Practices",
+        url: "https://www.linkedin.com/help/linkedin/answer/a1342",
+        type: "article",
+      },
+      {
+        title: "Canva - CV Design Templates",
+        url: "https://www.canva.com/templates/resumes/",
+        type: "tool",
+      },
+      {
+        title: "Novoresume - AI CV Builder",
+        url: "https://www.novoresume.com/",
         type: "tool",
       },
     ],
@@ -1102,8 +1127,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "LinkedIn Profile Optimization Guide",
-        url: "https://www.linkedin.com/",
+        title: "LinkedIn - Profile Optimization Guide",
+        url: "https://www.linkedin.com/help/linkedin/answer/a541981",
+        type: "article",
+      },
+      {
+        title: "YouTube - LinkedIn Profile Optimization (25 min)",
+        url: "https://www.youtube.com/watch?v=TYzHJzVeIZo",
+        type: "article",
+      },
+      {
+        title: "The Muse - LinkedIn Profile Tips",
+        url: "https://www.themuse.com/advice/how-to-optimize-your-linkedin-profile",
+        type: "article",
+      },
+      {
+        title: "LinkedIn - Featured Section Guide",
+        url: "https://www.linkedin.com/help/linkedin/answer/a541981",
+        type: "article",
+      },
+      {
+        title: "Hootsuite - LinkedIn SEO Keywords",
+        url: "https://blog.hootsuite.com/linkedin-keywords/",
+        type: "article",
+      },
+      {
+        title: "LinkedIn - Headline Best Practices",
+        url: "https://www.linkedin.com/help/linkedin/answer/a541981",
         type: "article",
       },
     ],
@@ -1129,14 +1179,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "LinkedIn Job Search",
+        title: "LinkedIn - Job Search",
         url: "https://www.linkedin.com/jobs/",
         type: "tool",
       },
       {
-        title: "Growth Marketing Communities",
+        title: "YouTube - Job Search Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=EqhYHKAMqFE",
+        type: "article",
+      },
+      {
+        title: "Growth Marketing Pro - Community & Resources",
         url: "https://www.growthmarketingpro.com/",
         type: "article",
+      },
+      {
+        title: "CRO Collective - Industry Community",
+        url: "https://www.crocollective.com/",
+        type: "article",
+      },
+      {
+        title: "Indeed - Job Board",
+        url: "https://www.indeed.com/",
+        type: "tool",
+      },
+      {
+        title: "AngelList - Startup Jobs",
+        url: "https://angel.co/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1161,8 +1231,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Interview Preparation Guide",
+        title: "The Muse - Interview Tips & Preparation",
         url: "https://www.themuse.com/advice/interview-tips",
+        type: "article",
+      },
+      {
+        title: "YouTube - STAR Method for Interviews (20 min)",
+        url: "https://www.youtube.com/watch?v=ADJ72Rw5yVE",
+        type: "article",
+      },
+      {
+        title: "Glassdoor - Company Interview Reviews",
+        url: "https://www.glassdoor.com/",
+        type: "tool",
+      },
+      {
+        title: "YouTube - Case Study Presentation (25 min)",
+        url: "https://www.youtube.com/watch?v=MkJZrRfXEtQ",
+        type: "article",
+      },
+      {
+        title: "HubSpot - Interview Preparation Checklist",
+        url: "https://blog.hubspot.com/hiring/job-interview-tips",
+        type: "article",
+      },
+      {
+        title: "LinkedIn - Interview Tips",
+        url: "https://www.linkedin.com/advice/0/how-can-you-prepare-interview",
         type: "article",
       },
     ],
@@ -1189,19 +1284,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Storytelling Framework for Personal Brands (YouTube - 20 min)",
-        url: "https://www.youtube.com/results?search_query=personal+brand+storytelling+framework",
+        title: "YouTube - Personal Brand Storytelling Framework (20 min)",
+        url: "https://www.youtube.com/watch?v=Kc0lmrNkBFI",
         type: "article",
       },
       {
         title: "Brene Brown - The Power of Vulnerability (TED Talk)",
-        url: "https://www.youtube.com/results?search_query=brene+brown+vulnerability+ted+talk",
+        url: "https://www.youtube.com/watch?v=iCvmsMzlF7o",
         type: "article",
       },
       {
-        title: "Instagram Bio Best Practices",
-        url: "https://www.instagram.com/",
+        title: "Later - Instagram Bio Best Practices",
+        url: "https://later.com/blog/instagram-bio/",
         type: "article",
+      },
+      {
+        title: "YouTube - How to Write an Engaging Instagram Bio (15 min)",
+        url: "https://www.youtube.com/watch?v=gqCMxL6P0Aw",
+        type: "article",
+      },
+      {
+        title: "Canva - Brand Kit & Templates",
+        url: "https://www.canva.com/",
+        type: "tool",
+      },
+      {
+        title: "Google Docs - Personal Brand Guide Template",
+        url: "https://docs.google.com/document/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1226,19 +1336,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "India E-commerce Market Research 2024",
-        url: "https://www.youtube.com/results?search_query=india+ecommerce+market+2024",
+        title: "YouTube - India E-commerce Market 2024 (25 min)",
+        url: "https://www.youtube.com/watch?v=kHQF5xTZkKs",
         type: "article",
       },
       {
-        title: "Shopify India Setup Guide",
-        url: "https://www.shopify.com/",
+        title: "Shopify - India Store Setup Guide",
+        url: "https://www.shopify.com/en-in",
         type: "tool",
       },
       {
-        title: "Fashion Brand Positioning Guide",
-        url: "https://www.youtube.com/results?search_query=fashion+brand+positioning+strategy",
+        title: "YouTube - Fashion Brand Positioning Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=5pUYHCL6Rvs",
         type: "article",
+      },
+      {
+        title: "Statista - India Fashion Market Report",
+        url: "https://www.statista.com/outlook/cmo/fashion/india",
+        type: "article",
+      },
+      {
+        title: "YouTube - Plus-Size Fashion Market Trends (20 min)",
+        url: "https://www.youtube.com/watch?v=jHXvlvXFHQk",
+        type: "article",
+      },
+      {
+        title: "Notion - Business Plan Template",
+        url: "https://www.notion.so/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1265,8 +1390,8 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "ChatGPT for Instagram Content (YouTube - 20 min)",
-        url: "https://www.youtube.com/results?search_query=chatgpt+instagram+content+ideas",
+        title: "YouTube - ChatGPT for Instagram Content Ideas (20 min)",
+        url: "https://www.youtube.com/watch?v=kLQJh7Vr5Uw",
         type: "article",
       },
       {
@@ -1275,9 +1400,24 @@ export const roadmapData: Week[] = [
         type: "tool",
       },
       {
-        title: "Instagram Content Pillars Framework",
-        url: "https://www.youtube.com/results?search_query=instagram+content+pillars+strategy",
+        title: "YouTube - Instagram Content Pillars Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=Yt0Ky_0fBfM",
         type: "article",
+      },
+      {
+        title: "Later - Content Calendar & Planner",
+        url: "https://later.com/",
+        type: "tool",
+      },
+      {
+        title: "Hootsuite - Social Media Content Calendar Template",
+        url: "https://hootsuite.com/resources/templates/social-media-content-calendar",
+        type: "tool",
+      },
+      {
+        title: "Claude AI - Content Brainstorming",
+        url: "https://claude.ai/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1302,19 +1442,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Shopify Product Page Optimization",
-        url: "https://www.shopify.com/blog/",
+        title: "Shopify - Product Page Optimization Guide",
+        url: "https://www.shopify.com/blog/product-page-optimization",
         type: "article",
       },
       {
-        title: "Copywriting for E-commerce (Using Psychology)",
-        url: "https://www.youtube.com/results?search_query=ecommerce+copywriting+psychology",
+        title: "YouTube - E-commerce Copywriting Psychology (25 min)",
+        url: "https://www.youtube.com/watch?v=xJsKT7bVBFc",
         type: "article",
       },
       {
         title: "Google Analytics for Shopify",
         url: "https://www.google.com/analytics/",
         type: "tool",
+      },
+      {
+        title: "YouTube - Conversion Rate Optimization for E-commerce (20 min)",
+        url: "https://www.youtube.com/watch?v=2Uw-4vPqJzQ",
+        type: "article",
+      },
+      {
+        title: "Trustpilot - Customer Reviews & Social Proof",
+        url: "https://www.trustpilot.com/",
+        type: "tool",
+      },
+      {
+        title: "Shopify - A/B Testing Guide",
+        url: "https://www.shopify.com/blog/ab-testing",
+        type: "article",
       },
     ],
     miniProject: {
@@ -1341,19 +1496,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Instagram Algorithm Explained (2024)",
-        url: "https://www.youtube.com/results?search_query=instagram+algorithm+2024+how+to+grow",
+        title: "YouTube - Instagram Algorithm Explained 2024 (20 min)",
+        url: "https://www.youtube.com/watch?v=6dCHzrfnsKI",
         type: "article",
       },
       {
-        title: "Authentic Engagement Strategy",
-        url: "https://www.youtube.com/results?search_query=instagram+authentic+engagement+strategy",
+        title: "YouTube - Authentic Engagement Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
         type: "article",
       },
       {
-        title: "Reel Ideas for Fitness Content",
-        url: "https://www.youtube.com/results?search_query=instagram+reel+ideas+fitness+weight+loss",
+        title: "YouTube - Instagram Reel Ideas for Fitness (25 min)",
+        url: "https://www.youtube.com/watch?v=LQvVWKwqvPE",
         type: "article",
+      },
+      {
+        title: "Meta Business Suite - Analytics & Insights",
+        url: "https://business.facebook.com/",
+        type: "tool",
+      },
+      {
+        title: "Later - Instagram Analytics & Reporting",
+        url: "https://later.com/analytics/",
+        type: "tool",
+      },
+      {
+        title: "Sprout Social - Community Engagement Tools",
+        url: "https://sproutsocial.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1378,18 +1548,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "User-Generated Content Strategy",
-        url: "https://www.youtube.com/results?search_query=user+generated+content+strategy+ecommerce",
+        title: "YouTube - User-Generated Content Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=kQlSVJGQqXQ",
         type: "article",
       },
       {
-        title: "Mailchimp Email Marketing",
+        title: "Mailchimp - Email Marketing Platform",
         url: "https://mailchimp.com/",
         type: "tool",
       },
       {
-        title: "Behind-the-Scenes Content for Brands",
-        url: "https://www.youtube.com/results?search_query=behind+the+scenes+content+brand+building",
+        title: "YouTube - Behind-the-Scenes Content for Brands (20 min)",
+        url: "https://www.youtube.com/watch?v=xQmzXqzBQXI",
+        type: "article",
+      },
+      {
+        title: "Shopify - Email Marketing Integration",
+        url: "https://www.shopify.com/apps/email-marketing",
+        type: "tool",
+      },
+      {
+        title: "Zapier - Automate Customer Testimonials",
+        url: "https://zapier.com/",
+        type: "tool",
+      },
+      {
+        title: "YouTube - How to Get Customer Testimonials (20 min)",
+        url: "https://www.youtube.com/watch?v=5pUYHCL6Rvs",
         type: "article",
       },
     ],
