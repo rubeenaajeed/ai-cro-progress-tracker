@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS historical_metrics (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL,\n  recordDate VARCHAR(10) NOT NULL,\n  brand ENUM('personal', 'business') NOT NULL,\n  instagramFollowers INT DEFAULT 0,\n  instagramEngagement VARCHAR(10),\n  instagramViews INT DEFAULT 0,\n  youtubeFollowers INT DEFAULT 0,\n  youtubeEngagement VARCHAR(10),\n  youtubeViews INT DEFAULT 0,\n  tiktokFollowers INT DEFAULT 0,\n  tiktokEngagement VARCHAR(10),\n  tiktokViews INT DEFAULT 0,\n  ordersPerMonth INT DEFAULT 0,\n  conversionRate VARCHAR(10),\n  estimatedRevenue VARCHAR(20),\n  notes TEXT,\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Z84eR9hGvjGXHm.root --database NP47tTynZmxVqthUU3GTN2 --execute CREATE TABLE IF NOT EXISTS historical_metrics (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL,\n  recordDate VARCHAR(10) NOT NULL,\n  brand ENUM('personal', 'business') NOT NULL,\n  instagramFollowers INT DEFAULT 0,\n  instagramEngagement VARCHAR(10),\n  instagramViews INT DEFAULT 0,\n  youtubeFollowers INT DEFAULT 0,\n  youtubeEngagement VARCHAR(10),\n  youtubeViews INT DEFAULT 0,\n  tiktokFollowers INT DEFAULT 0,\n  tiktokEngagement VARCHAR(10),\n  tiktokViews INT DEFAULT 0,\n  ordersPerMonth INT DEFAULT 0,\n  conversionRate VARCHAR(10),\n  estimatedRevenue VARCHAR(20),\n  notes TEXT,\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1693
+}

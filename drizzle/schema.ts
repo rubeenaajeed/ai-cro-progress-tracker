@@ -287,6 +287,37 @@ export const phase2Progress = mysqlTable("phase2_progress", {
 export type Phase2Progress = typeof phase2Progress.$inferSelect;
 export type InsertPhase2Progress = typeof phase2Progress.$inferInsert;
 
+/**
+ * Historical Metrics Table
+ * Tracks historical data points for Personal Brand and Clothing Business
+ */
+export const historicalMetrics = mysqlTable("historical_metrics", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  recordDate: varchar("recordDate", { length: 10 }).notNull(), // YYYY-MM-DD format
+  brand: mysqlEnum("brand", ["personal", "business"]).notNull(),
+  // Personal Brand metrics (per platform)
+  instagramFollowers: int("instagramFollowers").default(0),
+  instagramEngagement: varchar("instagramEngagement", { length: 10 }), // percentage
+  instagramViews: int("instagramViews").default(0),
+  youtubeFollowers: int("youtubeFollowers").default(0),
+  youtubeEngagement: varchar("youtubeEngagement", { length: 10 }), // percentage
+  youtubeViews: int("youtubeViews").default(0),
+  tiktokFollowers: int("tiktokFollowers").default(0),
+  tiktokEngagement: varchar("tiktokEngagement", { length: 10 }), // percentage
+  tiktokViews: int("tiktokViews").default(0),
+  // Business metrics
+  ordersPerMonth: int("ordersPerMonth").default(0),
+  conversionRate: varchar("conversionRate", { length: 10 }), // percentage
+  estimatedRevenue: varchar("estimatedRevenue", { length: 20 }), // decimal as string
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type HistoricalMetric = typeof historicalMetrics.$inferSelect;
+export type InsertHistoricalMetric = typeof historicalMetrics.$inferInsert;
+
 
 /**
  * Learning Proof Table

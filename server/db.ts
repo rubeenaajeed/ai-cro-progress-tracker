@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, learningProofs, weeklyReflections, contentAngleSuggestions, postFeedback, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress, InsertLearningProof, InsertWeeklyReflection, InsertContentAngleSuggestion, InsertPostFeedback } from "../drizzle/schema";
+import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, learningProofs, weeklyReflections, contentAngleSuggestions, postFeedback, historicalMetrics, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress, InsertLearningProof, InsertWeeklyReflection, InsertContentAngleSuggestion, InsertPostFeedback, InsertHistoricalMetric } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -633,4 +633,67 @@ export async function getPostFeedback(userId: number, postId: number) {
     .limit(1);
 
   return result.length > 0 ? result[0] : null;
+}
+
+
+// ===== HISTORICAL METRICS QUERIES =====
+
+export async function createHistoricalMetric(userId: number, data: InsertHistoricalMetric) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  return await db.insert(historicalMetrics).values({
+    ...data,
+    userId,
+  });
+}
+
+export async function getHistoricalMetrics(userId: number, brand: string) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db.select().from(historicalMetrics)
+    .where(and(
+      eq(historicalMetrics.userId, userId),
+      eq(historicalMetrics.brand, brand as any)
+    ))
+    .orderBy(desc(historicalMetrics.recordDate));
+}
+
+export async function getHistoricalMetricByDate(userId: number, brand: string, recordDate: string) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(historicalMetrics)
+    .where(and(
+      eq(historicalMetrics.userId, userId),
+      eq(historicalMetrics.brand, brand as any),
+      eq(historicalMetrics.recordDate, recordDate)
+    ))
+    .limit(1);
+
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function updateHistoricalMetric(userId: number, metricId: number, data: Partial<InsertHistoricalMetric>) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  return await db.update(historicalMetrics)
+    .set(data)
+    .where(and(
+      eq(historicalMetrics.id, metricId),
+      eq(historicalMetrics.userId, userId)
+    ));
+}
+
+export async function deleteHistoricalMetric(userId: number, metricId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  return await db.delete(historicalMetrics)
+    .where(and(
+      eq(historicalMetrics.id, metricId),
+      eq(historicalMetrics.userId, userId)
+    ));
 }

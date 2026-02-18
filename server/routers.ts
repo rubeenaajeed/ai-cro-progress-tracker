@@ -343,6 +343,41 @@ Return as JSON array with this exact structure (no markdown, no extra text):
       .query(async ({ ctx, input }) => {
         return await db.getPostFeedback(ctx.user.id, input.postId);
       }),
+
+    // Historical Metrics procedures
+    createHistoricalMetric: protectedProcedure
+      .input(z.object({
+        recordDate: z.string(),
+        brand: z.enum(["personal", "business"]),
+        instagramFollowers: z.number().optional(),
+        instagramEngagement: z.string().optional(),
+        instagramViews: z.number().optional(),
+        youtubeFollowers: z.number().optional(),
+        youtubeEngagement: z.string().optional(),
+        youtubeViews: z.number().optional(),
+        tiktokFollowers: z.number().optional(),
+        tiktokEngagement: z.string().optional(),
+        tiktokViews: z.number().optional(),
+        ordersPerMonth: z.number().optional(),
+        conversionRate: z.string().optional(),
+        estimatedRevenue: z.string().optional(),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.createHistoricalMetric(ctx.user.id, input as any);
+      }),
+
+    getHistoricalMetrics: protectedProcedure
+      .input(z.object({ brand: z.enum(["personal", "business"]) }))
+      .query(async ({ ctx, input }) => {
+        return await db.getHistoricalMetrics(ctx.user.id, input.brand);
+      }),
+
+    deleteHistoricalMetric: protectedProcedure
+      .input(z.object({ metricId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.deleteHistoricalMetric(ctx.user.id, input.metricId);
+      }),
   }),
 });
 

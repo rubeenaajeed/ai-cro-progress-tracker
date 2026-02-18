@@ -1,0 +1,22 @@
+CREATE TABLE `historical_metrics` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`userId` int NOT NULL,
+	`recordDate` varchar(10) NOT NULL,
+	`brand` enum('personal','business') NOT NULL,
+	`instagramFollowers` int DEFAULT 0,
+	`instagramEngagement` varchar(10),
+	`instagramViews` int DEFAULT 0,
+	`youtubeFollowers` int DEFAULT 0,
+	`youtubeEngagement` varchar(10),
+	`youtubeViews` int DEFAULT 0,
+	`tiktokFollowers` int DEFAULT 0,
+	`tiktokEngagement` varchar(10),
+	`tiktokViews` int DEFAULT 0,
+	`ordersPerMonth` int DEFAULT 0,
+	`conversionRate` varchar(10),
+	`estimatedRevenue` varchar(20),
+	`notes` text,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `historical_metrics_id` PRIMARY KEY(`id`)
+);
