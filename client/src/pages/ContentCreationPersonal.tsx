@@ -71,7 +71,7 @@ function ContentCreationPersonalContent() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {Array.from({ length: 24 }, (_, i) => i + 1).map(week => {
+              {Array.from({ length: 30 }, (_, i) => i + 1).map(week => {
                 const wd = roadmapData.find(w => w.weekNumber === week);
                 return (
                   <SelectItem key={week} value={week.toString()}>

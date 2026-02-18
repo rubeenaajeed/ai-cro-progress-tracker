@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -51,7 +51,7 @@ const menuItems: MenuItem[] = [
     section: "Main",
     submenu: [
       {
-        icon: Target,
+        icon: Brain,
         label: "AI+CRO (Professional)",
         section: "AI+CRO",
         submenu: [
@@ -61,7 +61,7 @@ const menuItems: MenuItem[] = [
         ],
       },
       {
-        icon: Target,
+        icon: ShoppingBag,
         label: "Personal + Business",
         section: "Personal",
         submenu: [
