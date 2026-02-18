@@ -1,0 +1,16 @@
+{
+  "query": "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME LIKE '%progress%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Z84eR9hGvjGXHm.root --database NP47tTynZmxVqthUU3GTN2 --execute SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME LIKE '%progress%';",
+  "rows": [
+    {
+      "TABLE_NAME": "weekly_progress"
+    },
+    {
+      "TABLE_NAME": "pte_progress"
+    }
+  ],
+  "messages": [],
+  "stdout": "TABLE_NAME\nweekly_progress\npte_progress\n",
+  "stderr": "",
+  "execution_time_ms": 1490
+}

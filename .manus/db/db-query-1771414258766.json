@@ -1,0 +1,49 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Z84eR9hGvjGXHm.root --database NP47tTynZmxVqthUU3GTN2 --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "daily_check_ins"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "historical_metrics"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "personal_notes"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "portfolio_projects"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "pte_answers"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "pte_mock_tests"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "pte_progress"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "pte_questions"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "pte_user_notes"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "task_completions"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "users"
+    },
+    {
+      "Tables_in_NP47tTynZmxVqthUU3GTN2": "weekly_progress"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_NP47tTynZmxVqthUU3GTN2\n__drizzle_migrations\ndaily_check_ins\nhistorical_metrics\npersonal_notes\nportfolio_projects\npte_answers\npte_mock_tests\npte_progress\npte_questions\npte_user_notes\ntask_completions\nusers\nweekly_progress\n",
+  "stderr": "",
+  "execution_time_ms": 1592
+}
