@@ -65,6 +65,31 @@ export const roadmapData: Week[] = [
         url: "https://neilpatel.com/blog/",
         type: "article",
       },
+      {
+        title: "Predictably Irrational by Dan Ariely (Summary - Blinkist)",
+        url: "https://www.blinkist.com/books/predictably-irrational-en",
+        type: "article",
+      },
+      {
+        title: "The Psychology of Selling by Brian Tracy (YouTube - 45 min)",
+        url: "https://www.youtube.com/results?search_query=psychology+of+selling+brian+tracy",
+        type: "article",
+      },
+      {
+        title: "Derren Brown – Psychology of Persuasion (YouTube - 20 min)",
+        url: "https://www.youtube.com/results?search_query=derren+brown+psychology+persuasion",
+        type: "article",
+      },
+      {
+        title: "Thinking, Fast and Slow by Daniel Kahneman (Summary - Blinkist)",
+        url: "https://www.blinkist.com/books/thinking-fast-and-slow-en",
+        type: "article",
+      },
+      {
+        title: "Neuroscience of Persuasion (YouTube Animated - 15 min)",
+        url: "https://www.youtube.com/results?search_query=neuroscience+of+persuasion+animated",
+        type: "article",
+      },
     ],
     miniProject: {
       title: "Psychology Audit of Your Clothing Brand",
