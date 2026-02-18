@@ -174,21 +174,21 @@ export default function Roadmap() {
       )}
 
       <div className="space-y-6">
-        {/* Phase Selector */}
+        {/* Track Selector */}
         <div className="flex gap-2">
           <Button
             variant={currentPhase === "phase1" ? "default" : "outline"}
             onClick={() => handlePhaseChange("phase1")}
             size="sm"
           >
-            Phase 1: AI + CRO (Weeks 1-24)
+            AI + CRO Professional Track (Weeks 1-24)
           </Button>
           <Button
             variant={currentPhase === "phase2" ? "default" : "outline"}
             onClick={() => handlePhaseChange("phase2")}
             size="sm"
           >
-            Phase 2: Personal + Business (Weeks 25-30)
+            Personal + Business Track (Weeks 1-30)
           </Button>
         </div>
 
