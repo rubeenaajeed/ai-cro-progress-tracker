@@ -655,13 +655,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Google Analytics Academy",
+        title: "Google Analytics Academy - GA4 Fundamentals (3 hours)",
         url: "https://analytics.google.com/analytics/academy/",
         type: "course",
       },
       {
-        title: "Google Sheets",
+        title: "YouTube - Data Storytelling for CRO (25 min)",
+        url: "https://www.youtube.com/watch?v=6dCHzrfnsKI",
+        type: "article",
+      },
+      {
+        title: "CXL - Actionable Metrics for CRO",
+        url: "https://cxl.com/blog/actionable-metrics/",
+        type: "article",
+      },
+      {
+        title: "Power BI - Analytics & Reporting",
+        url: "https://www.microsoft.com/en-us/power-platform/products/power-bi",
+        type: "tool",
+      },
+      {
+        title: "Google Sheets - Data Analysis",
         url: "https://sheets.google.com/",
+        type: "tool",
+      },
+      {
+        title: "Looker Studio - Data Visualization",
+        url: "https://lookerstudio.google.com/",
         type: "tool",
       },
     ],
@@ -687,14 +707,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Zapier – Automation Platform",
+        title: "Zapier - No-Code Automation Platform",
         url: "https://zapier.com/",
         type: "tool",
       },
       {
-        title: "Make – Automation Platform",
+        title: "Make - Workflow Automation",
         url: "https://www.make.com/",
         type: "tool",
+      },
+      {
+        title: "YouTube - APIs & Webhooks Explained (20 min)",
+        url: "https://www.youtube.com/watch?v=s7wmiS2mSXY",
+        type: "article",
+      },
+      {
+        title: "Postman - API Development & Testing",
+        url: "https://www.postman.com/",
+        type: "tool",
+      },
+      {
+        title: "REST API Best Practices Guide",
+        url: "https://restfulapi.net/",
+        type: "article",
+      },
+      {
+        title: "YouTube - No-Code Automation for Marketing (25 min)",
+        url: "https://www.youtube.com/watch?v=2Uw-4vPqJzQ",
+        type: "article",
       },
     ],
     miniProject: {
@@ -719,14 +759,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Notion AI",
+        title: "DeepLearning.AI - RAG Systems (1 hour)",
+        url: "https://www.deeplearning.ai/short-courses/retrieval-augmented-generation-rag/",
+        type: "course",
+      },
+      {
+        title: "YouTube - RAG Explained (20 min)",
+        url: "https://www.youtube.com/watch?v=T-D1OfcDW1M",
+        type: "article",
+      },
+      {
+        title: "Notion AI - Knowledge Base",
         url: "https://www.notion.so/",
         type: "tool",
       },
       {
-        title: "DeepLearning.AI – RAG Concepts",
-        url: "https://www.deeplearning.ai/",
-        type: "course",
+        title: "Langchain - RAG Framework",
+        url: "https://www.langchain.com/",
+        type: "tool",
+      },
+      {
+        title: "OpenAI - Assistants API",
+        url: "https://platform.openai.com/docs/assistants/overview",
+        type: "article",
+      },
+      {
+        title: "Anthropic - Claude API for Knowledge Systems",
+        url: "https://docs.anthropic.com/claude/reference/getting-started-with-the-api",
+        type: "article",
       },
     ],
     miniProject: {
@@ -751,13 +811,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "CXL – AI Ethics",
-        url: "https://cxl.com/blog/",
+        title: "CXL - AI Ethics & Responsible AI",
+        url: "https://cxl.com/blog/ai-ethics/",
         type: "article",
       },
       {
-        title: "GDPR & Data Privacy Resources",
+        title: "GDPR Official Documentation",
         url: "https://gdpr-info.eu/",
+        type: "article",
+      },
+      {
+        title: "YouTube - AI Ethics & Governance (25 min)",
+        url: "https://www.youtube.com/watch?v=SZX9DM_qelI",
+        type: "article",
+      },
+      {
+        title: "Harvard - Responsible AI Framework",
+        url: "https://www.harvard.edu/ai-responsible-use/",
+        type: "article",
+      },
+      {
+        title: "FTC - AI & Consumer Privacy Guidelines",
+        url: "https://www.ftc.gov/business-guidance/blog/2023/02/keep-your-ai-honest",
+        type: "article",
+      },
+      {
+        title: "EU AI Act - Compliance Guide",
+        url: "https://www.europarl.europa.eu/topics/en/article/20230601PRE93019/eu-ai-act-passed-by-parliament",
         type: "article",
       },
     ],
