@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag, Award } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -46,8 +46,8 @@ type MenuItem = {
 const menuItems: MenuItem[] = [
   { icon: BarChart3, label: "Dashboard", path: "/", section: "Main" },
   {
-    icon: BookOpen,
-    label: "Roadmap",
+    icon: Target,
+    label: "Trackers",
     section: "Main",
     submenu: [
       {
@@ -55,8 +55,8 @@ const menuItems: MenuItem[] = [
         label: "AI+CRO",
         section: "AI+CRO",
         submenu: [
-          { icon: BookOpen, label: "Roadmap", path: "/roadmap-professional", section: "AI+CRO" },
-          { icon: BookOpen, label: "Learning Proof", path: "/learning-proof-professional", section: "AI+CRO" },
+          { icon: BookOpen, label: "Learning Plan", path: "/roadmap-professional", section: "AI+CRO" },
+          { icon: Award, label: "Key Takeaways", path: "/learning-proof-professional", section: "AI+CRO" },
           { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-professional", section: "AI+CRO" },
               { icon: Lightbulb, label: "Content Creation", path: "/content-creation-professional", section: "AI+CRO" },
               { icon: BarChart3, label: "Progress Analytics", path: "/progress-analytics-professional", section: "AI+CRO" },
@@ -67,12 +67,12 @@ const menuItems: MenuItem[] = [
         label: "Personal + Business",
         section: "Personal",
         submenu: [
-          { icon: BookOpen, label: "Roadmap", path: "/roadmap-personal", section: "Personal" },
-          { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Personal" },
-          { icon: BookOpen, label: "Learning Proof", path: "/learning-proof-personal", section: "Personal" },
+          { icon: BookOpen, label: "Learning Plan", path: "/roadmap-personal", section: "Personal" },
+          { icon: Award, label: "Key Takeaways", path: "/learning-proof-personal", section: "Personal" },
           { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-personal", section: "Personal" },
-              { icon: Lightbulb, label: "Content Creation", path: "/content-creation-personal", section: "Personal" },
-              { icon: BarChart3, label: "Progress Analytics", path: "/progress-analytics-personal", section: "Personal" },
+          { icon: BarChart3, label: "Progress Analytics", path: "/progress-analytics-personal", section: "Personal" },
+          { icon: Lightbulb, label: "Content Creation", path: "/content-creation-personal", section: "Personal" },
+          { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Personal" },
             ],
           },
     ],
