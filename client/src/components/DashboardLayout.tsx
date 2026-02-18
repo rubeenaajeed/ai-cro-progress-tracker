@@ -28,15 +28,17 @@ import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
 
 const menuItems = [
-  { icon: BarChart3, label: "Dashboard", path: "/", section: "AI+CRO" },
-  { icon: BookOpen, label: "Roadmap", path: "/roadmap", section: "AI+CRO" },
-  { icon: Target, label: "Portfolio", path: "/portfolio", section: "AI+CRO" },
-  { icon: CheckCircle2, label: "Progress", path: "/progress", section: "AI+CRO" },
-  { icon: Flame, label: "Streak", path: "/streak", section: "AI+CRO" },
-  { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Phase 2" },
-  { icon: BookOpen, label: "Learning Proof", path: "/learning-proof", section: "Phase 2" },
-  { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection", section: "Phase 2" },
-  { icon: Lightbulb, label: "Content Angle", path: "/content-angle", section: "Phase 2" },
+  { icon: BarChart3, label: "Dashboard", path: "/", section: "Professional" },
+  { icon: BookOpen, label: "Roadmap", path: "/roadmap", section: "Professional" },
+  { icon: Target, label: "Portfolio", path: "/portfolio", section: "Professional" },
+  { icon: CheckCircle2, label: "Progress", path: "/progress", section: "Professional" },
+  { icon: Flame, label: "Streak", path: "/streak", section: "Professional" },
+  { icon: BookOpen, label: "Learning Proof (Prof.)", path: "/learning-proof-professional", section: "Professional" },
+  { icon: Sparkles, label: "Weekly Reflection (Prof.)", path: "/weekly-reflection-professional", section: "Professional" },
+  { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Personal" },
+  { icon: BookOpen, label: "Learning Proof (Pers.)", path: "/learning-proof-personal", section: "Personal" },
+  { icon: Sparkles, label: "Weekly Reflection (Pers.)", path: "/weekly-reflection-personal", section: "Personal" },
+  { icon: Lightbulb, label: "Content Angle", path: "/content-angle", section: "Personal" },
   { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
 ];
 
