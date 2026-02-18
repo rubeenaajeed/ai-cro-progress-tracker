@@ -129,8 +129,15 @@ export default function Dashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-sm font-bold text-foreground">Foundations</div>
-              <p className="text-xs text-muted-foreground mt-2">Weeks 1-4</p>
+              {allProgress && allProgress.length > 0 ? (() => {
+                const incompleteWeek = allProgress.find(w => w.completionPercentage < 100);
+                const currentWeek = incompleteWeek || allProgress[allProgress.length - 1];
+                const weekData = roadmapData.find(w => w.weekNumber === currentWeek.weekNumber);
+                const phaseWeeks = roadmapData.filter(w => w.phase === weekData?.phase);
+                const phaseStart = Math.min(...phaseWeeks.map(w => w.weekNumber));
+                const phaseEnd = Math.max(...phaseWeeks.map(w => w.weekNumber));
+                return (<><div className="text-sm font-bold text-foreground">{weekData?.phase}</div><p className="text-xs text-muted-foreground mt-2">Weeks {phaseStart}-{phaseEnd}</p></>);
+              })() : (<><div className="text-sm font-bold text-foreground">Foundations</div><p className="text-xs text-muted-foreground mt-2">Weeks 1-4</p></>)}
             </CardContent>
           </Card>
         </div>
@@ -215,22 +222,29 @@ export default function Dashboard() {
         </Card>
 
         {/* Current Week Highlight */}
-        {allProgress && allProgress.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Current Focus</CardTitle>
-              <CardDescription>Week 1: What GenAI Actually Is</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-foreground mb-4">
-                Start by understanding LLMs, how GenAI works at a high level, its strengths, limitations, and real business use cases.
-              </p>
-              <Button onClick={() => setLocation("/roadmap?week=1")}>
-                Go to Week 1
-              </Button>
-            </CardContent>
-          </Card>
-        )}
+        {allProgress && allProgress.length > 0 && (() => {
+          // Find the first incomplete week or the last completed week
+          const incompleteWeek = allProgress.find(w => w.completionPercentage < 100);
+          const currentWeek = incompleteWeek || allProgress[allProgress.length - 1];
+          const weekData = roadmapData.find(w => w.weekNumber === currentWeek.weekNumber);
+          
+          return (
+            <Card>
+              <CardHeader>
+                <CardTitle>Current Focus</CardTitle>
+                <CardDescription>Week {currentWeek.weekNumber}: {weekData?.title}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-foreground mb-4">
+                  {weekData?.goal}
+                </p>
+                <Button onClick={() => setLocation(`/roadmap?week=${currentWeek.weekNumber}`)}>
+                  Go to Week {currentWeek.weekNumber}
+                </Button>
+              </CardContent>
+            </Card>
+          );
+        })()}
       </div>
     </DashboardLayout>
   );
