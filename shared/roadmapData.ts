@@ -132,6 +132,21 @@ export const roadmapData: Week[] = [
         url: "https://www.figma.com/community/search?resource_type=file&q=user+journey",
         type: "tool",
       },
+      {
+        title: "YouTube – Conversion Rate Optimization Metrics (20 min)",
+        url: "https://www.youtube.com/watch?v=2Uw-4vPqJzQ",
+        type: "article",
+      },
+      {
+        title: "Miro – User Journey Mapping Whiteboard",
+        url: "https://miro.com/",
+        type: "tool",
+      },
+      {
+        title: "Google Analytics – Conversion Tracking Guide",
+        url: "https://www.google.com/analytics/",
+        type: "tool",
+      },
     ],
     miniProject: {
       title: "User Journey Mapping",
@@ -155,24 +170,39 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "CXL – A/B Testing Fundamentals (Free Course)",
+        title: "CXL - A/B Testing Fundamentals (Free Course)",
         url: "https://cxl.com/institute/online-course/a-b-testing-foundations/",
         type: "course",
       },
       {
-        title: "Optimizely – A/B Testing Best Practices",
+        title: "Optimizely - A/B Testing Best Practices",
         url: "https://www.optimizely.com/blog/ab-testing-best-practices/",
         type: "article",
       },
       {
-        title: "VWO – Statistical Significance Calculator",
+        title: "VWO - Statistical Significance Calculator",
         url: "https://vwo.com/tools/ab-test-calculator/",
         type: "tool",
       },
       {
-        title: "YouTube – A/B Testing Explained (20 min)",
+        title: "YouTube - A/B Testing Explained (20 min)",
         url: "https://www.youtube.com/watch?v=a5mRe0CPLMk",
         type: "article",
+      },
+      {
+        title: "YouTube - Hypothesis Generation for A/B Tests (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
+        type: "article",
+      },
+      {
+        title: "Shopify - A/B Testing Guide",
+        url: "https://www.shopify.com/blog/ab-testing",
+        type: "article",
+      },
+      {
+        title: "Convert - A/B Testing Platform",
+        url: "https://www.convert.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -212,9 +242,24 @@ export const roadmapData: Week[] = [
         type: "article",
       },
       {
-        title: "YouTube – Heatmap Analysis for UX (15 min)",
+        title: "YouTube - Heatmap Analysis for UX (15 min)",
         url: "https://www.youtube.com/watch?v=xjbIaHqMKzw",
         type: "article",
+      },
+      {
+        title: "YouTube - Session Recording Analysis (20 min)",
+        url: "https://www.youtube.com/watch?v=6dCHzrfnsKI",
+        type: "article",
+      },
+      {
+        title: "Crazy Egg - Heatmap & Scroll Map Tool",
+        url: "https://www.crazyegg.com/",
+        type: "tool",
+      },
+      {
+        title: "Mouseflow - Session Replay & Analytics",
+        url: "https://mouseflow.com/",
+        type: "tool",
       },
     ],
     miniProject: {
