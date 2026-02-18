@@ -92,7 +92,7 @@ export async function getUserByOpenId(openId: string) {
 // Weekly Progress Queries
 export async function getWeeklyProgress(userId: number, weekNumber: number) {
   const db = await getDb();
-  if (!db) return undefined;
+  if (!db) return { userId, weekNumber, progress: 0, completed: 0, createdAt: new Date(), updatedAt: new Date() };
 
   const result = await db
     .select()
@@ -100,7 +100,7 @@ export async function getWeeklyProgress(userId: number, weekNumber: number) {
     .where(and(eq(weeklyProgress.userId, userId), eq(weeklyProgress.weekNumber, weekNumber)))
     .limit(1);
 
-  return result.length > 0 ? result[0] : undefined;
+  return result.length > 0 ? result[0] : { userId, weekNumber, progress: 0, completed: 0, createdAt: new Date(), updatedAt: new Date() };
 }
 
 export async function getAllWeeklyProgress(userId: number) {

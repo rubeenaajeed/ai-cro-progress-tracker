@@ -9,10 +9,12 @@ import { trpc } from "@/lib/trpc";
 import { personalRoadmapData, Week } from "@shared/personalRoadmapData";
 import { ChevronLeft, ChevronRight, ExternalLink, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import QuizModal from "@/components/QuizModal";
 
 export default function RoadmapPersonal() {
   const { user } = useAuth();
+  const [, setLocation] = useLocation();
   const [currentWeekNumber, setCurrentWeekNumber] = useState(1);
   const [personalNote, setPersonalNote] = useState("");
   const [completedTasks, setCompletedTasks] = useState<Set<string>>(new Set());
@@ -168,6 +170,24 @@ export default function RoadmapPersonal() {
       )}
 
       <div className="space-y-6">
+        {/* Track Selector */}
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            onClick={() => setLocation("/roadmap")}
+            size="sm"
+          >
+            AI + CRO
+          </Button>
+          <Button
+            variant="default"
+            onClick={() => setLocation("/roadmap-personal")}
+            size="sm"
+          >
+            Personal + Business
+          </Button>
+        </div>
+
         {/* Header */}
         <div>
           <h1 className="text-3xl font-bold text-foreground">Personal + Business Roadmap</h1>

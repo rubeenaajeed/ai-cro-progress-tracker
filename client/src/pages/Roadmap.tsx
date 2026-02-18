@@ -9,10 +9,12 @@ import { trpc } from "@/lib/trpc";
 import { roadmapData, Week } from "@shared/roadmapData";
 import { ChevronLeft, ChevronRight, ExternalLink, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import QuizModal from "@/components/QuizModal";
 
 export default function Roadmap() {
   const { user } = useAuth();
+  const [, setLocation] = useLocation();
   const [currentPhase, setCurrentPhase] = useState<"phase1" | "phase2">("phase1");
   const [currentWeekNumber, setCurrentWeekNumber] = useState(1);
   const [personalNote, setPersonalNote] = useState("");
@@ -174,21 +176,21 @@ export default function Roadmap() {
       )}
 
       <div className="space-y-6">
-        {/* Track Selector */}
+        {/* Phase Selector */}
         <div className="flex gap-2">
           <Button
             variant={currentPhase === "phase1" ? "default" : "outline"}
             onClick={() => handlePhaseChange("phase1")}
             size="sm"
           >
-            AI + CRO Professional Track (Weeks 1-24)
+            AI + CRO
           </Button>
           <Button
             variant={currentPhase === "phase2" ? "default" : "outline"}
-            onClick={() => handlePhaseChange("phase2")}
+            onClick={() => setLocation("/roadmap-personal")}
             size="sm"
           >
-            Personal + Business Track (Weeks 1-30)
+            Personal + Business
           </Button>
         </div>
 
