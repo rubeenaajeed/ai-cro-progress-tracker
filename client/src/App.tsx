@@ -22,6 +22,8 @@ import ContentCreationProfessional from "./pages/ContentCreationProfessional";
 import ContentCreationPersonal from "@/pages/ContentCreationPersonal";
 import ProgressAnalyticsProfessional from "@/pages/ProgressAnalyticsProfessional";
 import ProgressAnalyticsPersonal from "@/pages/ProgressAnalyticsPersonal";
+import RoadmapProfessional from "@/pages/RoadmapProfessional";
+import RoadmapPersonal from "@/pages/RoadmapPersonal";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 function AppRoutes() {
@@ -38,6 +40,8 @@ function AppRoutes() {
       <Route path={"/"} component={Dashboard} />
       <Route path={"/ai-cro"} component={Dashboard} />
       <Route path={"/roadmap"} component={Roadmap} />
+      <Route path={"/roadmap-professional"} component={RoadmapProfessional} />
+      <Route path={"/roadmap-personal"} component={RoadmapPersonal} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/progress"} component={Progress} />
       <Route path={"/streak"} component={Streak} />

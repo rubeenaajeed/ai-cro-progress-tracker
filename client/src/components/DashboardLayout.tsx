@@ -55,6 +55,7 @@ const menuItems: MenuItem[] = [
         label: "AI+CRO",
         section: "AI+CRO",
         submenu: [
+          { icon: BookOpen, label: "Roadmap", path: "/roadmap-professional", section: "AI+CRO" },
           { icon: BookOpen, label: "Learning Proof", path: "/learning-proof-professional", section: "AI+CRO" },
           { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-professional", section: "AI+CRO" },
               { icon: Lightbulb, label: "Content Creation", path: "/content-creation-professional", section: "AI+CRO" },
@@ -66,6 +67,7 @@ const menuItems: MenuItem[] = [
         label: "Personal + Business",
         section: "Personal",
         submenu: [
+          { icon: BookOpen, label: "Roadmap", path: "/roadmap-personal", section: "Personal" },
           { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Personal" },
           { icon: BookOpen, label: "Learning Proof", path: "/learning-proof-personal", section: "Personal" },
           { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-personal", section: "Personal" },
