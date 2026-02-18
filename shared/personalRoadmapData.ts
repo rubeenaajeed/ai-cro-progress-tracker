@@ -47,7 +47,7 @@ export const personalRoadmapData: Week[] = [
     resources: [
       {
         title: "Cialdini's 6 Principles Explained (YouTube - 30 min)",
-        url: "https://www.youtube.com/results?search_query=cialdini+6+principles+explained",
+        url: "https://www.youtube.com/watch?v=eCNeOga965U",
         type: "article",
       },
       {
@@ -57,7 +57,17 @@ export const personalRoadmapData: Week[] = [
       },
       {
         title: "Why People Follow Influencers (Psychology Today)",
-        url: "https://www.psychologytoday.com/",
+        url: "https://www.psychologytoday.com/us/basics/social-media",
+        type: "article",
+      },
+      {
+        title: "CXL - Persuasion Psychology for Marketers (Free Course)",
+        url: "https://cxl.com/institute/programs/digital-psychology-persuasion-training/",
+        type: "course",
+      },
+      {
+        title: "Hooked: How to Build Habit-Forming Products (Blinkist Summary)",
+        url: "https://www.blinkist.com/books/hooked-en",
         type: "article",
       },
     ],
@@ -88,8 +98,23 @@ export const personalRoadmapData: Week[] = [
       },
       {
         title: "Understanding Your Target Market (YouTube - 20 min)",
-        url: "https://www.youtube.com/results?search_query=target+market+audience+analysis",
+        url: "https://www.youtube.com/watch?v=oCO5xvJlJIw",
         type: "article",
+      },
+      {
+        title: "Customer Persona Development Guide (Neil Patel)",
+        url: "https://neilpatel.com/blog/buyer-personas/",
+        type: "article",
+      },
+      {
+        title: "Market Research for Personal Brands (YouTube - 18 min)",
+        url: "https://www.youtube.com/watch?v=qvHvjUTgzKQ",
+        type: "article",
+      },
+      {
+        title: "Miro - Audience Analysis Whiteboard Template",
+        url: "https://miro.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -119,7 +144,12 @@ export const personalRoadmapData: Week[] = [
       },
       {
         title: "The Trust Factor in Personal Branding (YouTube - 15 min)",
-        url: "https://www.youtube.com/results?search_query=building+trust+personal+brand",
+        url: "https://www.youtube.com/watch?v=2m2rWlNvHM8",
+        type: "article",
+      },
+      {
+        title: "Building Authority & Credibility (YouTube - 18 min)",
+        url: "https://www.youtube.com/watch?v=qvHvjUTgzKQ",
         type: "article",
       },
     ],
@@ -173,12 +203,17 @@ export const personalRoadmapData: Week[] = [
     resources: [
       {
         title: "Storytelling Basics (YouTube - 20 min)",
-        url: "https://www.youtube.com/results?search_query=storytelling+basics+personal+brand",
+        url: "https://www.youtube.com/watch?v=Nj-uxc3Mvsw",
         type: "article",
       },
       {
         title: "The Hero's Journey (Article)",
         url: "https://www.masterclass.com/articles/what-is-the-heros-journey",
+        type: "article",
+      },
+      {
+        title: "Personal Brand Storytelling (YouTube - 22 min)",
+        url: "https://www.youtube.com/watch?v=_O1hM-Is_35",
         type: "article",
       },
     ],
@@ -623,7 +658,12 @@ export const personalRoadmapData: Week[] = [
       },
       {
         title: "Google Analytics for Creators (YouTube - 20 min)",
-        url: "https://www.youtube.com/results?search_query=google+analytics+for+creators",
+        url: "https://www.youtube.com/watch?v=gSiUB0mUi8s",
+        type: "article",
+      },
+      {
+        title: "YouTube Analytics Masterclass (YouTube - 25 min)",
+        url: "https://www.youtube.com/watch?v=1eFKHCnIJ3w",
         type: "article",
       },
     ],
@@ -791,7 +831,12 @@ export const personalRoadmapData: Week[] = [
       },
       {
         title: "Google Ads for Beginners (YouTube - 30 min)",
-        url: "https://www.youtube.com/results?search_query=google+ads+for+beginners",
+        url: "https://www.youtube.com/watch?v=xKVc67MYYkA",
+        type: "article",
+      },
+      {
+        title: "Google Ads Complete Guide (YouTube - 35 min)",
+        url: "https://www.youtube.com/watch?v=Kn-YyVpZNBo",
         type: "article",
       },
     ],
