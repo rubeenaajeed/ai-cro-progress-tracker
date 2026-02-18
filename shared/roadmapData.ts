@@ -240,14 +240,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Google – Generative AI for Everyone",
+        title: "DeepLearning.AI – Generative AI for Everyone (30 min)",
+        url: "https://www.deeplearning.ai/short-courses/generative-ai-for-everyone/",
+        type: "course",
+      },
+      {
+        title: "Google – Generative AI for Everyone (2 hours)",
         url: "https://www.cloudskillsboost.google/courses/216",
         type: "course",
       },
       {
-        title: "DeepLearning.AI – Generative AI for Everyone",
-        url: "https://www.deeplearning.ai/short-courses/generative-ai-for-everyone/",
-        type: "course",
+        title: "OpenAI – How LLMs Work (YouTube - 15 min)",
+        url: "https://www.youtube.com/watch?v=bZQun8Y4L2A",
+        type: "article",
+      },
+      {
+        title: "3Blue1Brown – Neural Networks (YouTube - 15 min)",
+        url: "https://www.youtube.com/watch?v=aircAruvnKk",
+        type: "article",
+      },
+      {
+        title: "McKinsey – The State of AI in 2024",
+        url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-in-2024-generative-ais-breakout-year",
+        type: "article",
+      },
+      {
+        title: "Andreessen Horowitz – AI Playbook",
+        url: "https://a16z.com/ai/",
+        type: "article",
       },
     ],
     learningFocus: ["LLM fundamentals", "GenAI capabilities", "Business applications"],
@@ -267,9 +287,29 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Prompt Engineering for Developers",
+        title: "DeepLearning.AI – Prompt Engineering for Developers (1 hour)",
         url: "https://www.deeplearning.ai/short-courses/prompt-engineering-for-developers/",
         type: "course",
+      },
+      {
+        title: "OpenAI – Prompt Engineering Best Practices",
+        url: "https://platform.openai.com/docs/guides/prompt-engineering",
+        type: "article",
+      },
+      {
+        title: "Anthropic – Prompt Engineering Guide",
+        url: "https://docs.anthropic.com/claude/docs/prompt-engineering",
+        type: "article",
+      },
+      {
+        title: "YouTube – Prompt Engineering Masterclass (30 min)",
+        url: "https://www.youtube.com/watch?v=dOxUroR57xs",
+        type: "article",
+      },
+      {
+        title: "PromptBase – Prompt Templates & Examples",
+        url: "https://promptbase.com/",
+        type: "tool",
       },
       {
         title: "ChatGPT",
@@ -299,14 +339,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Prompt Engineering for Developers",
-        url: "https://www.deeplearning.ai/short-courses/prompt-engineering-for-developers/",
+        title: "CXL – A/B Testing Masterclass (3 hours)",
+        url: "https://cxl.com/institute/programs/ab-testing-training/",
         type: "course",
       },
       {
-        title: "CRO blogs (Optimizely, VWO)",
+        title: "Optimizely – CRO Blog & Case Studies",
         url: "https://www.optimizely.com/blog/",
         type: "article",
+      },
+      {
+        title: "VWO – A/B Testing Guide",
+        url: "https://vwo.com/ab-testing/",
+        type: "article",
+      },
+      {
+        title: "YouTube – AI for A/B Testing (20 min)",
+        url: "https://www.youtube.com/watch?v=p7nGcY2r3qs",
+        type: "article",
+      },
+      {
+        title: "Statsig – Experimentation Platform",
+        url: "https://www.statsig.com/",
+        type: "tool",
+      },
+      {
+        title: "Convert – A/B Testing Platform",
+        url: "https://www.convert.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -331,13 +391,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Building Systems with ChatGPT",
+        title: "DeepLearning.AI – Building Systems with ChatGPT (1.5 hours)",
         url: "https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/",
         type: "course",
       },
       {
-        title: "Google Analytics (demo accounts)",
+        title: "Semrush – Content Audit Guide",
+        url: "https://www.semrush.com/blog/content-audit/",
+        type: "article",
+      },
+      {
+        title: "Ahrefs – Content Gap Analysis",
+        url: "https://ahrefs.com/blog/content-gap-analysis/",
+        type: "article",
+      },
+      {
+        title: "YouTube – AI Content Audit Framework (25 min)",
+        url: "https://www.youtube.com/watch?v=tYzMGcUty6s",
+        type: "article",
+      },
+      {
+        title: "Google Analytics",
         url: "https://analytics.google.com/",
+        type: "tool",
+      },
+      {
+        title: "Screaming Frog – SEO Spider (Content Analysis)",
+        url: "https://www.screamingfrog.co.uk/seo-spider/",
         type: "tool",
       },
     ],
