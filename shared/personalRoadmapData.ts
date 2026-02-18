@@ -139,7 +139,7 @@ export const personalRoadmapData: Week[] = [
     resources: [
       {
         title: "Building Authority as a Personal Brand (Article)",
-        url: "https://www.forbes.com/",
+        url: "https://www.forbes.com/sites/williamarruda/2013/10/21/the-science-of-personal-branding/",
         type: "article",
       },
       {
