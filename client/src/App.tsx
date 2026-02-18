@@ -1,22 +1,33 @@
-import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
 import Roadmap from "./pages/Roadmap";
 import Portfolio from "./pages/Portfolio";
 import Progress from "./pages/Progress";
 import Streak from "./pages/Streak";
-import ResourcesHub from "./pages/ResourcesHub";
+import Dashboard from "./pages/Dashboard";
 import ContentCalendar from "./pages/ContentCalendar";
+import ResourcesHub from "./pages/ResourcesHub";
+import LearningProof from "./pages/LearningProof";
+import WeeklyReflection from "./pages/WeeklyReflection";
+import ContentAngle from "./pages/ContentAngle";
+import { useAuth } from "@/_core/hooks/useAuth";
 
-function Router() {
+function AppRoutes() {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Home />;
+  }
+
+  // User is authenticated, show dashboard routes
+
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/"} component={Dashboard} />
       <Route path={"/ai-cro"} component={Dashboard} />
       <Route path={"/roadmap"} component={Roadmap} />
       <Route path={"/portfolio"} component={Portfolio} />
@@ -24,23 +35,24 @@ function Router() {
       <Route path={"/streak"} component={Streak} />
       <Route path={"/resources"} component={ResourcesHub} />
       <Route path={"/content-calendar"} component={ContentCalendar} />
+      <Route path={"/learning-proof"} component={LearningProof} />
+      <Route path={"/weekly-reflection"} component={WeeklyReflection} />
+      <Route path={"/content-angle"} component={ContentAngle} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
+      <ThemeProvider>
         <TooltipProvider>
-          <Toaster />
-          <Router />
+          <AppRoutes />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
 }
 
-export default App;

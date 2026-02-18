@@ -227,6 +227,122 @@ Return as JSON array with this exact structure (no markdown, no extra text):
       .mutation(async ({ ctx, input }) => {
         return await db.deleteContentPost(ctx.user.id, input.postId);
       }),
+
+
+    // Learning Proof procedures
+    createLearningProof: protectedProcedure
+      .input(z.object({
+        weekNumber: z.number(),
+        taskId: z.string(),
+        proof: z.string(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.createLearningProof(ctx.user.id, input.weekNumber, input.taskId, input.proof);
+      }),
+
+    getLearningProof: protectedProcedure
+      .input(z.object({
+        weekNumber: z.number(),
+        taskId: z.string(),
+      }))
+      .query(async ({ ctx, input }) => {
+        return await db.getLearningProof(ctx.user.id, input.weekNumber, input.taskId);
+      }),
+
+    getWeeklyProofs: protectedProcedure
+      .input(z.object({ weekNumber: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getWeeklyProofs(ctx.user.id, input.weekNumber);
+      }),
+
+    updateLearningProof: protectedProcedure
+      .input(z.object({
+        weekNumber: z.number(),
+        taskId: z.string(),
+        proof: z.string(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.updateLearningProof(ctx.user.id, input.weekNumber, input.taskId, input.proof);
+      }),
+
+    // Weekly Reflection procedures
+    createOrUpdateReflection: protectedProcedure
+      .input(z.object({
+        weekNumber: z.number(),
+        surprised: z.string(),
+        applicationToFashion: z.string(),
+        nextWeekTest: z.string(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.createOrUpdateReflection(
+          ctx.user.id,
+          input.weekNumber,
+          input.surprised,
+          input.applicationToFashion,
+          input.nextWeekTest
+        );
+      }),
+
+    getReflection: protectedProcedure
+      .input(z.object({ weekNumber: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getReflection(ctx.user.id, input.weekNumber);
+      }),
+
+    // Content Angle procedures
+    createContentAngleSuggestion: protectedProcedure
+      .input(z.object({
+        weekNumber: z.number(),
+        suggestion: z.string(),
+        platform: z.string(),
+        format: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.createContentAngleSuggestion(
+          ctx.user.id,
+          input.weekNumber,
+          input.suggestion,
+          input.platform,
+          input.format
+        );
+      }),
+
+    getContentAngleSuggestion: protectedProcedure
+      .input(z.object({ weekNumber: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getContentAngleSuggestion(ctx.user.id, input.weekNumber);
+      }),
+
+    getAllContentAngleSuggestions: protectedProcedure
+      .query(async ({ ctx }) => {
+        return await db.getAllContentAngleSuggestions(ctx.user.id);
+      }),
+
+    // Post Feedback procedures
+    createPostFeedback: protectedProcedure
+      .input(z.object({
+        postId: z.number(),
+        hookStrength: z.string(),
+        audienceAppeal: z.string(),
+        platformFit: z.string(),
+        suggestions: z.string(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.createPostFeedback(
+          ctx.user.id,
+          input.postId,
+          input.hookStrength,
+          input.audienceAppeal,
+          input.platformFit,
+          input.suggestions
+        );
+      }),
+
+    getPostFeedback: protectedProcedure
+      .input(z.object({ postId: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getPostFeedback(ctx.user.id, input.postId);
+      }),
   }),
 });
 

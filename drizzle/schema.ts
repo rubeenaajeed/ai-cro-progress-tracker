@@ -286,3 +286,75 @@ export const phase2Progress = mysqlTable("phase2_progress", {
 
 export type Phase2Progress = typeof phase2Progress.$inferSelect;
 export type InsertPhase2Progress = typeof phase2Progress.$inferInsert;
+
+
+/**
+ * Learning Proof Table
+ * Stores evidence of learning for each completed task
+ */
+export const learningProofs = mysqlTable("learning_proofs", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  taskId: varchar("taskId", { length: 64 }).notNull(),
+  proof: text("proof").notNull(), // Longer form text about what was learned
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LearningProof = typeof learningProofs.$inferSelect;
+export type InsertLearningProof = typeof learningProofs.$inferInsert;
+
+/**
+ * Weekly Reflection Prompts Table
+ * Stores answers to guided reflection questions
+ */
+export const weeklyReflections = mysqlTable("weekly_reflections", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  surprised: text("surprised"), // What surprised you this week?
+  applicationToFashion: text("applicationToFashion"), // How does this apply to your clothing brand?
+  nextWeekTest: text("nextWeekTest"), // What will you test next week?
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type WeeklyReflection = typeof weeklyReflections.$inferSelect;
+export type InsertWeeklyReflection = typeof weeklyReflections.$inferInsert;
+
+/**
+ * Content Angle Suggestions Table
+ * Stores AI-generated content ideas for each Phase 1 week
+ */
+export const contentAngleSuggestions = mysqlTable("content_angle_suggestions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  suggestion: text("suggestion").notNull(), // The content idea
+  platform: mysqlEnum("platform", ["instagram", "tiktok", "youtube", "blog"]).notNull(),
+  format: varchar("format", { length: 50 }), // video, carousel, reel, post, etc
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ContentAngleSuggestion = typeof contentAngleSuggestions.$inferSelect;
+export type InsertContentAngleSuggestion = typeof contentAngleSuggestions.$inferInsert;
+
+/**
+ * AI Feedback on Post Ideas Table
+ * Stores AI feedback for content calendar posts
+ */
+export const postFeedback = mysqlTable("post_feedback", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  postId: int("postId").notNull(),
+  hookStrength: varchar("hookStrength", { length: 20 }), // strong, medium, weak
+  audienceAppeal: varchar("audienceAppeal", { length: 20 }), // high, medium, low
+  platformFit: varchar("platformFit", { length: 20 }), // excellent, good, fair
+  suggestions: text("suggestions"), // AI suggestions for improvement
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PostFeedback = typeof postFeedback.$inferSelect;
+export type InsertPostFeedback = typeof postFeedback.$inferInsert;

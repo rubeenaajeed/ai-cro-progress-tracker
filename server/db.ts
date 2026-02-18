@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress } from "../drizzle/schema";
+import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, learningProofs, weeklyReflections, contentAngleSuggestions, postFeedback, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress, InsertLearningProof, InsertWeeklyReflection, InsertContentAngleSuggestion, InsertPostFeedback } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -465,5 +465,172 @@ export async function getPhase2ProgressByBrand(userId: number, brand: string) {
     ))
     .limit(1);
   
+  return result.length > 0 ? result[0] : null;
+}
+
+
+// ===== LEARNING PROOF QUERIES =====
+
+export async function createLearningProof(userId: number, weekNumber: number, taskId: string, proof: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  return await db.insert(learningProofs).values({
+    userId,
+    weekNumber,
+    taskId,
+    proof,
+  });
+}
+
+export async function getLearningProof(userId: number, weekNumber: number, taskId: string) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(learningProofs)
+    .where(and(
+      eq(learningProofs.userId, userId),
+      eq(learningProofs.weekNumber, weekNumber),
+      eq(learningProofs.taskId, taskId)
+    ))
+    .limit(1);
+
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getWeeklyProofs(userId: number, weekNumber: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db.select().from(learningProofs)
+    .where(and(
+      eq(learningProofs.userId, userId),
+      eq(learningProofs.weekNumber, weekNumber)
+    ));
+}
+
+export async function updateLearningProof(userId: number, weekNumber: number, taskId: string, proof: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  return await db.update(learningProofs)
+    .set({ proof })
+    .where(and(
+      eq(learningProofs.userId, userId),
+      eq(learningProofs.weekNumber, weekNumber),
+      eq(learningProofs.taskId, taskId)
+    ));
+}
+
+// ===== WEEKLY REFLECTION QUERIES =====
+
+export async function createOrUpdateReflection(userId: number, weekNumber: number, surprised: string, applicationToFashion: string, nextWeekTest: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const existing = await db.select().from(weeklyReflections)
+    .where(and(
+      eq(weeklyReflections.userId, userId),
+      eq(weeklyReflections.weekNumber, weekNumber)
+    ))
+    .limit(1);
+
+  if (existing.length > 0) {
+    return await db.update(weeklyReflections)
+      .set({ surprised, applicationToFashion, nextWeekTest })
+      .where(and(
+        eq(weeklyReflections.userId, userId),
+        eq(weeklyReflections.weekNumber, weekNumber)
+      ));
+  } else {
+    return await db.insert(weeklyReflections).values({
+      userId,
+      weekNumber,
+      surprised,
+      applicationToFashion,
+      nextWeekTest,
+    });
+  }
+}
+
+export async function getReflection(userId: number, weekNumber: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(weeklyReflections)
+    .where(and(
+      eq(weeklyReflections.userId, userId),
+      eq(weeklyReflections.weekNumber, weekNumber)
+    ))
+    .limit(1);
+
+  return result.length > 0 ? result[0] : null;
+}
+
+// ===== CONTENT ANGLE SUGGESTIONS QUERIES =====
+
+export async function createContentAngleSuggestion(userId: number, weekNumber: number, suggestion: string, platform: string, format?: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  return await db.insert(contentAngleSuggestions).values({
+    userId,
+    weekNumber,
+    suggestion,
+    platform: platform as any,
+    format: format || null,
+  });
+}
+
+export async function getContentAngleSuggestion(userId: number, weekNumber: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(contentAngleSuggestions)
+    .where(and(
+      eq(contentAngleSuggestions.userId, userId),
+      eq(contentAngleSuggestions.weekNumber, weekNumber)
+    ))
+    .limit(1);
+
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getAllContentAngleSuggestions(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db.select().from(contentAngleSuggestions)
+    .where(eq(contentAngleSuggestions.userId, userId))
+    .orderBy(contentAngleSuggestions.weekNumber);
+}
+
+// ===== POST FEEDBACK QUERIES =====
+
+export async function createPostFeedback(userId: number, postId: number, hookStrength: string, audienceAppeal: string, platformFit: string, suggestions: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  return await db.insert(postFeedback).values({
+    userId,
+    postId,
+    hookStrength,
+    audienceAppeal,
+    platformFit,
+    suggestions,
+  });
+}
+
+export async function getPostFeedback(userId: number, postId: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(postFeedback)
+    .where(and(
+      eq(postFeedback.userId, userId),
+      eq(postFeedback.postId, postId)
+    ))
+    .limit(1);
+
   return result.length > 0 ? result[0] : null;
 }

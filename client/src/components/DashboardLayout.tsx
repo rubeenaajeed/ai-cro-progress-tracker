@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -34,7 +34,10 @@ const menuItems = [
   { icon: CheckCircle2, label: "Progress", path: "/progress", section: "AI+CRO" },
   { icon: Flame, label: "Streak", path: "/streak", section: "AI+CRO" },
   { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Phase 2" },
-  { icon: Lightbulb, label: "Resources", path: "/resources", section: "Tools" },
+  { icon: BookOpen, label: "Learning Proof", path: "/learning-proof", section: "Phase 2" },
+  { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection", section: "Phase 2" },
+  { icon: Lightbulb, label: "Content Angle", path: "/content-angle", section: "Phase 2" },
+  { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
