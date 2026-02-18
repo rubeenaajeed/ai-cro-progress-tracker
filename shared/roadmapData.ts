@@ -47,12 +47,12 @@ export const roadmapData: Week[] = [
     resources: [
       {
         title: "Cialdini's 6 Principles Explained (YouTube - 30 min)",
-        url: "https://www.youtube.com/results?search_query=cialdini+6+principles+explained",
+        url: "https://www.youtube.com/watch?v=eCNeOga965U",
         type: "article",
       },
       {
         title: "CXL – Persuasion Psychology for Marketers (Free Course)",
-        url: "https://cxl.com/blog/persuasion-psychology/",
+        url: "https://cxl.com/institute/programs/digital-psychology-persuasion-training/",
         type: "course",
       },
       {
@@ -62,7 +62,7 @@ export const roadmapData: Week[] = [
       },
       {
         title: "Neil Patel – Cialdini's Principles in E-commerce",
-        url: "https://neilpatel.com/blog/",
+        url: "https://neilpatel.com/blog/how-to-use-cialdinis-principles-of-persuasion-to-improve-your-content-marketing-strategy/",
         type: "article",
       },
       {
@@ -71,13 +71,13 @@ export const roadmapData: Week[] = [
         type: "article",
       },
       {
-        title: "The Psychology of Selling by Brian Tracy (YouTube - 45 min)",
-        url: "https://www.youtube.com/results?search_query=psychology+of+selling+brian+tracy",
+        title: "The Psychology of Selling by Brian Tracy (YouTube - Full Audiobook)",
+        url: "https://www.youtube.com/watch?v=1IGdMLTG9YQ",
         type: "article",
       },
       {
-        title: "Derren Brown – Psychology of Persuasion (YouTube - 20 min)",
-        url: "https://www.youtube.com/results?search_query=derren+brown+psychology+persuasion",
+        title: "Derren Brown – Psychology of Persuasion (YouTube)",
+        url: "https://www.youtube.com/watch?v=kgF8xQc-Pu0",
         type: "article",
       },
       {
@@ -87,7 +87,7 @@ export const roadmapData: Week[] = [
       },
       {
         title: "Neuroscience of Persuasion (YouTube Animated - 15 min)",
-        url: "https://www.youtube.com/results?search_query=neuroscience+of+persuasion+animated",
+        url: "https://www.youtube.com/watch?v=UBVV8pch1dM",
         type: "article",
       },
     ],
@@ -114,7 +114,7 @@ export const roadmapData: Week[] = [
     resources: [
       {
         title: "CXL – CRO Fundamentals (Free Course)",
-        url: "https://cxl.com/blog/cro-fundamentals/",
+        url: "https://cxl.com/conversion-optimization/",
         type: "course",
       },
       {
@@ -124,7 +124,7 @@ export const roadmapData: Week[] = [
       },
       {
         title: "YouTube – E-commerce User Journey Mapping (15 min)",
-        url: "https://www.youtube.com/results?search_query=ecommerce+user+journey+mapping",
+        url: "https://www.youtube.com/watch?v=Ys9ydVVJXmQ",
         type: "article",
       },
       {
@@ -156,7 +156,7 @@ export const roadmapData: Week[] = [
     resources: [
       {
         title: "CXL – A/B Testing Fundamentals (Free Course)",
-        url: "https://cxl.com/blog/ab-testing/",
+        url: "https://cxl.com/institute/online-course/a-b-testing-foundations/",
         type: "course",
       },
       {
@@ -171,7 +171,7 @@ export const roadmapData: Week[] = [
       },
       {
         title: "YouTube – A/B Testing Explained (20 min)",
-        url: "https://www.youtube.com/results?search_query=ab+testing+explained",
+        url: "https://www.youtube.com/watch?v=a5mRe0CPLMk",
         type: "article",
       },
     ],
@@ -208,12 +208,12 @@ export const roadmapData: Week[] = [
       },
       {
         title: "CXL – Behavioral Analytics Guide",
-        url: "https://cxl.com/blog/behavioral-analytics/",
+        url: "https://cxl.com/conversion-optimization/how-to-use-psychology-in-cro/",
         type: "article",
       },
       {
         title: "YouTube – Heatmap Analysis for UX (15 min)",
-        url: "https://www.youtube.com/results?search_query=heatmap+analysis+ux",
+        url: "https://www.youtube.com/watch?v=xjbIaHqMKzw",
         type: "article",
       },
     ],
