@@ -865,8 +865,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Case Study Template",
+        title: "Google Docs - Case Study Template",
         url: "https://docs.google.com/document/",
+        type: "tool",
+      },
+      {
+        title: "HubSpot - Case Study Writing Guide",
+        url: "https://blog.hubspot.com/marketing/case-study-examples",
+        type: "article",
+      },
+      {
+        title: "YouTube - How to Write a Case Study (20 min)",
+        url: "https://www.youtube.com/watch?v=UtAqVvOYcAk",
+        type: "article",
+      },
+      {
+        title: "Figma - Case Study Design Template",
+        url: "https://www.figma.com/community/search?resource_type=file&q=case+study",
+        type: "tool",
+      },
+      {
+        title: "Notion - Portfolio & Case Study Template",
+        url: "https://www.notion.so/",
+        type: "tool",
+      },
+      {
+        title: "Coda - Collaborative Case Study Template",
+        url: "https://coda.io/",
         type: "tool",
       },
     ],
@@ -892,8 +917,33 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Figma – Design Documentation",
+        title: "Figma - Design Documentation & Prototyping",
         url: "https://www.figma.com/",
+        type: "tool",
+      },
+      {
+        title: "YouTube - UX Case Study Presentation (25 min)",
+        url: "https://www.youtube.com/watch?v=MkJZrRfXEtQ",
+        type: "article",
+      },
+      {
+        title: "Nielsen Norman - UX Case Study Best Practices",
+        url: "https://www.nngroup.com/articles/case-studies/",
+        type: "article",
+      },
+      {
+        title: "Miro - User Journey Mapping & Collaboration",
+        url: "https://miro.com/",
+        type: "tool",
+      },
+      {
+        title: "Adobe XD - Prototyping & Design",
+        url: "https://www.adobe.com/products/xd.html",
+        type: "tool",
+      },
+      {
+        title: "Maze - User Testing & Feedback",
+        url: "https://maze.co/",
         type: "tool",
       },
     ],
@@ -919,9 +969,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Google Sheets – Data Visualization",
+        title: "Google Sheets - Data Visualization & Analysis",
         url: "https://sheets.google.com/",
         type: "tool",
+      },
+      {
+        title: "YouTube - Data-Driven Decision Making (25 min)",
+        url: "https://www.youtube.com/watch?v=zHcQPKp5e8A",
+        type: "article",
+      },
+      {
+        title: "Looker Studio - Interactive Dashboards",
+        url: "https://lookerstudio.google.com/",
+        type: "tool",
+      },
+      {
+        title: "Power BI - Advanced Analytics & Reporting",
+        url: "https://www.microsoft.com/en-us/power-platform/products/power-bi",
+        type: "tool",
+      },
+      {
+        title: "Tableau - Data Storytelling",
+        url: "https://www.tableau.com/",
+        type: "tool",
+      },
+      {
+        title: "CXL - Data-Driven CRO Decision Framework",
+        url: "https://cxl.com/blog/data-driven-cro/",
+        type: "article",
       },
     ],
     miniProject: {
@@ -946,14 +1021,34 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Notion – Portfolio Template",
+        title: "Notion - Portfolio & Case Study Templates",
         url: "https://www.notion.so/",
         type: "tool",
       },
       {
-        title: "Google Docs – Portfolio Template",
+        title: "Google Docs - Professional Portfolio Template",
         url: "https://docs.google.com/document/",
         type: "tool",
+      },
+      {
+        title: "YouTube - Portfolio Presentation Tips (20 min)",
+        url: "https://www.youtube.com/watch?v=qwKjHWMCVKs",
+        type: "article",
+      },
+      {
+        title: "Webflow - Portfolio Website Builder",
+        url: "https://webflow.com/",
+        type: "tool",
+      },
+      {
+        title: "Carrd - Simple Portfolio Site",
+        url: "https://carrd.co/",
+        type: "tool",
+      },
+      {
+        title: "Dribbble - Design Portfolio Inspiration",
+        url: "https://dribbble.com/",
+        type: "article",
       },
     ],
     miniProject: {
