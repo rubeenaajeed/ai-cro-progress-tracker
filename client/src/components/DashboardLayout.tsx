@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -33,6 +33,7 @@ const menuItems = [
   { icon: Target, label: "Portfolio", path: "/portfolio", section: "AI+CRO" },
   { icon: CheckCircle2, label: "Progress", path: "/progress", section: "AI+CRO" },
   { icon: Flame, label: "Streak", path: "/streak", section: "AI+CRO" },
+  { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Phase 2" },
   { icon: Lightbulb, label: "Resources", path: "/resources", section: "Tools" },
 ];
 

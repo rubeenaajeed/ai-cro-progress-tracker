@@ -175,6 +175,59 @@ Return as JSON array with this exact structure (no markdown, no extra text):
         }
       }),
   }),
+
+
+  phase2: router({
+    // Content Calendar procedures
+    createContentPost: protectedProcedure
+      .input(z.object({
+        brand: z.enum(["personal", "business"]),
+        platform: z.enum(["instagram", "tiktok", "both"]),
+        scheduledDate: z.string(),
+        postIdea: z.string(),
+        contentType: z.string().optional(),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const data: any = {
+          brand: input.brand,
+          platform: input.platform,
+          scheduledDate: input.scheduledDate,
+          postIdea: input.postIdea,
+          status: "draft",
+        };
+        if (input.contentType) data.contentType = input.contentType;
+        if (input.notes) data.notes = input.notes;
+        return await db.createContentPost(ctx.user.id, data);
+      }),
+
+    getContentCalendar: protectedProcedure
+      .input(z.object({ brand: z.enum(["personal", "business"]).optional() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getContentCalendar(ctx.user.id, input.brand);
+      }),
+
+    updateContentPost: protectedProcedure
+      .input(z.object({
+        postId: z.number(),
+        status: z.enum(["draft", "scheduled", "published", "archived"]).optional(),
+        postIdea: z.string().optional(),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const data: any = {};
+        if (input.status) data.status = input.status;
+        if (input.postIdea) data.postIdea = input.postIdea;
+        if (input.notes) data.notes = input.notes;
+        return await db.updateContentPost(ctx.user.id, input.postId, data);
+      }),
+
+    deleteContentPost: protectedProcedure
+      .input(z.object({ postId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.deleteContentPost(ctx.user.id, input.postId);
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

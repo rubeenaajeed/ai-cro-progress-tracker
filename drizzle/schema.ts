@@ -213,3 +213,76 @@ export const pteUserNotes = mysqlTable("pte_user_notes", {
 
 export type PteUserNotes = typeof pteUserNotes.$inferSelect;
 export type InsertPteUserNotes = typeof pteUserNotes.$inferInsert;
+
+/**
+ * Content Calendar Table for Phase 2
+ * Stores post ideas for Personal Brand and Business Brand
+ */
+export const contentCalendar = mysqlTable("content_calendar", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  brand: mysqlEnum("brand", ["personal", "business"]).notNull(), // personal or business
+  platform: mysqlEnum("platform", ["instagram", "tiktok", "both"]).notNull(),
+  scheduledDate: varchar("scheduledDate", { length: 10 }).notNull(), // YYYY-MM-DD
+  postIdea: text("postIdea").notNull(),
+  contentType: varchar("contentType", { length: 50 }), // video, carousel, reel, story, etc
+  status: mysqlEnum("status", ["draft", "scheduled", "published", "archived"]).default("draft").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ContentCalendar = typeof contentCalendar.$inferSelect;
+export type InsertContentCalendar = typeof contentCalendar.$inferInsert;
+
+/**
+ * Phase 2 Metrics Table
+ * Tracks weekly KPIs for Personal Brand and Business Brand
+ */
+export const phase2Metrics = mysqlTable("phase2_metrics", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  brand: mysqlEnum("brand", ["personal", "business"]).notNull(),
+  // Personal Brand metrics
+  followersGained: int("followersGained").default(0),
+  engagementRate: varchar("engagementRate", { length: 10 }), // percentage
+  postsPublished: int("postsPublished").default(0),
+  // Business Brand metrics
+  ordersReceived: int("ordersReceived").default(0),
+  revenue: varchar("revenue", { length: 20 }), // decimal as string
+  conversionRate: varchar("conversionRate", { length: 10 }), // percentage
+  customerAcquisitionCost: varchar("customerAcquisitionCost", { length: 20 }), // CAC
+  // Common metrics
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Phase2Metrics = typeof phase2Metrics.$inferSelect;
+export type InsertPhase2Metrics = typeof phase2Metrics.$inferInsert;
+
+/**
+ * Phase 2 Progress Table
+ * Tracks cumulative progress for Personal Brand and Business Brand
+ */
+export const phase2Progress = mysqlTable("phase2_progress", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  brand: mysqlEnum("brand", ["personal", "business"]).notNull(),
+  // Personal Brand cumulative
+  totalFollowers: int("totalFollowers").default(0),
+  totalPostsPublished: int("totalPostsPublished").default(0),
+  averageEngagementRate: varchar("averageEngagementRate", { length: 10 }),
+  // Business Brand cumulative
+  totalOrders: int("totalOrders").default(0),
+  totalRevenue: varchar("totalRevenue", { length: 20 }),
+  averageConversionRate: varchar("averageConversionRate", { length: 10 }),
+  // Tracking
+  lastUpdatedWeek: int("lastUpdatedWeek"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Phase2Progress = typeof phase2Progress.$inferSelect;
+export type InsertPhase2Progress = typeof phase2Progress.$inferInsert;

@@ -11,6 +11,7 @@ import Portfolio from "./pages/Portfolio";
 import Progress from "./pages/Progress";
 import Streak from "./pages/Streak";
 import ResourcesHub from "./pages/ResourcesHub";
+import ContentCalendar from "./pages/ContentCalendar";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
       <Route path={"/progress"} component={Progress} />
       <Route path={"/streak"} component={Streak} />
       <Route path={"/resources"} component={ResourcesHub} />
+      <Route path={"/content-calendar"} component={ContentCalendar} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
