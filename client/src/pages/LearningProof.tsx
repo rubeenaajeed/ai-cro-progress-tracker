@@ -1,17 +1,20 @@
 import { useState, useMemo } from "react";
+import DashboardLayout from "@/components/DashboardLayout";
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, CheckCircle2, BookOpen } from "lucide-react";
+import { Loader2, CheckCircle2, BookOpen, Target } from "lucide-react";
+import { roadmapData } from "@shared/roadmapData";
 
-export default function LearningProof() {
+function LearningProofContent() {
   const [selectedWeek, setSelectedWeek] = useState<string>("1");
   const [proofs, setProofs] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
   const weekNumber = parseInt(selectedWeek);
+  const weekData = roadmapData.find(w => w.weekNumber === weekNumber);
 
   // Get weekly proofs
   const { data: weeklyProofs = [], isLoading } = trpc.phase2.getWeeklyProofs.useQuery(
@@ -51,9 +54,9 @@ export default function LearningProof() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Learning Proof</h1>
+        <h1 className="text-3xl font-bold">Learning Proof System</h1>
         <p className="text-muted-foreground mt-2">
-          Document what you learned each week. These proofs become your evidence of learning and can be shared as content.
+          Document what you learned each week and how it applies to your work at IQOS or your clothing business. These proofs become your evidence of learning and can be shared as content.
         </p>
       </div>
 
@@ -71,15 +74,54 @@ export default function LearningProof() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {Array.from({ length: 24 }, (_, i) => i + 1).map(week => (
-                <SelectItem key={week} value={week.toString()}>
-                  Week {week}
-                </SelectItem>
-              ))}
+              {Array.from({ length: 24 }, (_, i) => i + 1).map(week => {
+                const wd = roadmapData.find(w => w.weekNumber === week);
+                return (
+                  <SelectItem key={week} value={week.toString()}>
+                    Week {week}: {wd?.title || ""}
+                  </SelectItem>
+                );
+              })}
             </SelectContent>
           </Select>
         </CardContent>
       </Card>
+
+      {/* Week Context */}
+      {weekData && (
+        <Card className="border-blue-200 bg-blue-50">
+          <CardHeader>
+            <CardTitle className="text-lg">Week {weekNumber}: {weekData.title}</CardTitle>
+            <CardDescription>{weekData.goal}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4" />
+                Key Learning Objectives
+              </h4>
+              <ul className="space-y-2">
+                {weekData.objectives.map(obj => (
+                  <li key={obj.id} className="text-sm text-gray-700 flex gap-2">
+                    <span className="text-blue-600 font-bold">•</span>
+                    {obj.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-medium text-gray-600 mb-2">Learning Focus:</p>
+              <div className="flex flex-wrap gap-2">
+                {weekData.learningFocus.map(focus => (
+                  <span key={focus} className="text-xs bg-white px-2 py-1 rounded border border-blue-200">
+                    {focus}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Learning Proofs */}
       <div className="space-y-4">
@@ -105,12 +147,21 @@ export default function LearningProof() {
                     )}
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <Textarea
-                      placeholder="What did you learn from this task? How does it apply to your clothing brand? What surprised you?"
-                      value={currentText}
-                      onChange={(e) => setProofs(prev => ({ ...prev, [taskId]: e.target.value }))}
-                      className="min-h-32"
-                    />
+                    <div className="space-y-3">
+                      <div>
+                        <label className="text-sm font-medium text-foreground">What did you learn?</label>
+                        <Textarea
+                          placeholder="Describe the key concepts, insights, or skills you gained from this task..."
+                          value={currentText}
+                          onChange={(e) => setProofs(prev => ({ ...prev, [taskId]: e.target.value }))}
+                          className="min-h-32 mt-2"
+                        />
+                      </div>
+                      <div className="text-xs text-muted-foreground bg-blue-50 p-3 rounded-lg border border-blue-200">
+                        <p className="font-medium mb-1">💡 How Does This Apply?</p>
+                        <p>Optional: Add notes about how this applies to your IQOS work or clothing business. You can mention both contexts.</p>
+                      </div>
+                    </div>
                     <Button
                       onClick={() => handleSaveProof(taskId, currentText)}
                       disabled={saving || !currentText.trim()}
@@ -145,5 +196,13 @@ export default function LearningProof() {
         </Card>
       )}
     </div>
+  );
+}
+
+export default function LearningProof() {
+  return (
+    <DashboardLayout>
+      <LearningProofContent />
+    </DashboardLayout>
   );
 }

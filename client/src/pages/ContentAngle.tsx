@@ -1,15 +1,18 @@
 import { useState } from "react";
+import DashboardLayout from "@/components/DashboardLayout";
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Lightbulb, Video, Image as ImageIcon } from "lucide-react";
+import { Loader2, Lightbulb, Video, Image as ImageIcon, Target } from "lucide-react";
+import { roadmapData } from "@shared/roadmapData";
 
-export default function ContentAngle() {
+function ContentAngleContent() {
   const [selectedWeek, setSelectedWeek] = useState<string>("1");
   const [generating, setGenerating] = useState(false);
 
   const weekNumber = parseInt(selectedWeek);
+  const weekData = roadmapData.find(w => w.weekNumber === weekNumber);
 
   // Get all content angle suggestions
   const { data: allSuggestions = [], isLoading } = trpc.phase2.getAllContentAngleSuggestions.useQuery();
@@ -63,7 +66,7 @@ export default function ContentAngle() {
           Content Angle Ideas
         </h1>
         <p className="text-muted-foreground mt-2">
-          Get AI-generated content ideas for each week. Turn your learning into engaging content for your Personal Brand.
+          Get AI-generated content ideas for each week. Turn your learning into engaging content for your Personal Brand (fitness journey). These suggestions help you create posts that showcase your knowledge while building your audience.
         </p>
       </div>
 
@@ -78,15 +81,49 @@ export default function ContentAngle() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {Array.from({ length: 24 }, (_, i) => i + 1).map(week => (
-                <SelectItem key={week} value={week.toString()}>
-                  Week {week}
-                </SelectItem>
-              ))}
+              {Array.from({ length: 24 }, (_, i) => i + 1).map(week => {
+                const wd = roadmapData.find(w => w.weekNumber === week);
+                return (
+                  <SelectItem key={week} value={week.toString()}>
+                    Week {week}: {wd?.title || ""}
+                  </SelectItem>
+                );
+              })}
             </SelectContent>
           </Select>
         </CardContent>
       </Card>
+
+      {/* Week Context */}
+      {weekData && (
+        <Card className="border-yellow-200 bg-yellow-50">
+          <CardHeader>
+            <CardTitle className="text-lg">Week {weekNumber}: {weekData.title}</CardTitle>
+            <CardDescription>{weekData.goal}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4" />
+                Key Learning Objectives
+              </h4>
+              <ul className="space-y-2">
+                {weekData.objectives.map(obj => (
+                  <li key={obj.id} className="text-sm text-gray-700 flex gap-2">
+                    <span className="text-yellow-600 font-bold">•</span>
+                    {obj.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white p-3 rounded-lg border border-yellow-200 text-xs">
+              <p className="font-medium text-gray-700">
+                💡 <span className="font-semibold">Content Angle Tip:</span> Use these learning objectives to create educational content for your fitness journey. For example, if you're learning about psychological triggers, you could create a post about how understanding motivation psychology helped you stay consistent with workouts.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Current Suggestion */}
       {isLoading ? (
@@ -157,5 +194,13 @@ export default function ContentAngle() {
         </Card>
       )}
     </div>
+  );
+}
+
+export default function ContentAngle() {
+  return (
+    <DashboardLayout>
+      <ContentAngleContent />
+    </DashboardLayout>
   );
 }

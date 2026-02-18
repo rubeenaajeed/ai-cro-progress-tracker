@@ -1,12 +1,14 @@
 import { useState } from "react";
+import DashboardLayout from "@/components/DashboardLayout";
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Sparkles } from "lucide-react";
+import { Loader2, Sparkles, Target } from "lucide-react";
+import { roadmapData } from "@shared/roadmapData";
 
-export default function WeeklyReflection() {
+function WeeklyReflectionContent() {
   const [selectedWeek, setSelectedWeek] = useState<string>("1");
   const [surprised, setSurprised] = useState("");
   const [applicationToFashion, setApplicationToFashion] = useState("");
@@ -14,6 +16,7 @@ export default function WeeklyReflection() {
   const [saving, setSaving] = useState(false);
 
   const weekNumber = parseInt(selectedWeek);
+  const weekData = roadmapData.find(w => w.weekNumber === weekNumber);
 
   // Get reflection
   const { data: reflection, isLoading } = trpc.phase2.getReflection.useQuery(
@@ -74,15 +77,54 @@ export default function WeeklyReflection() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {Array.from({ length: 24 }, (_, i) => i + 1).map(week => (
-                <SelectItem key={week} value={week.toString()}>
-                  Week {week}
-                </SelectItem>
-              ))}
+              {Array.from({ length: 24 }, (_, i) => i + 1).map(week => {
+                const wd = roadmapData.find(w => w.weekNumber === week);
+                return (
+                  <SelectItem key={week} value={week.toString()}>
+                    Week {week}: {wd?.title || ""}
+                  </SelectItem>
+                );
+              })}
             </SelectContent>
           </Select>
         </CardContent>
       </Card>
+
+      {/* Week Context */}
+      {weekData && (
+        <Card className="border-purple-200 bg-purple-50">
+          <CardHeader>
+            <CardTitle className="text-lg">Week {weekNumber}: {weekData.title}</CardTitle>
+            <CardDescription>{weekData.goal}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4" />
+                Key Learning Objectives
+              </h4>
+              <ul className="space-y-2">
+                {weekData.objectives.map(obj => (
+                  <li key={obj.id} className="text-sm text-gray-700 flex gap-2">
+                    <span className="text-purple-600 font-bold">•</span>
+                    {obj.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-medium text-gray-600 mb-2">Learning Focus:</p>
+              <div className="flex flex-wrap gap-2">
+                {weekData.learningFocus.map(focus => (
+                  <span key={focus} className="text-xs bg-white px-2 py-1 rounded border border-purple-200">
+                    {focus}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Reflection Cards */}
       <div className="grid gap-6">
@@ -166,5 +208,13 @@ export default function WeeklyReflection() {
         </Card>
       )}
     </div>
+  );
+}
+
+export default function WeeklyReflection() {
+  return (
+    <DashboardLayout>
+      <WeeklyReflectionContent />
+    </DashboardLayout>
   );
 }
