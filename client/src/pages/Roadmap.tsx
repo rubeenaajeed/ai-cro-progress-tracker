@@ -130,6 +130,8 @@ export default function Roadmap() {
     "Analytics & Automation": "bg-green-100 text-green-800",
     "Portfolio": "bg-orange-100 text-orange-800",
     "Positioning": "bg-pink-100 text-pink-800",
+    "Personal Brand": "bg-rose-100 text-rose-800",
+    "Business Brand": "bg-amber-100 text-amber-800",
   };
 
   if (!currentWeek) {
@@ -184,8 +186,8 @@ export default function Roadmap() {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setCurrentWeekNumber(Math.min(24, currentWeekNumber + 1))}
-              disabled={currentWeekNumber === 24}
+              onClick={() => setCurrentWeekNumber(Math.min(30, currentWeekNumber + 1))}
+              disabled={currentWeekNumber === 30}
             >
               Next
               <ChevronRight size={16} className="ml-1" />
