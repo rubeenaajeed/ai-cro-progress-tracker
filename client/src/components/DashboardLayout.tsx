@@ -52,7 +52,7 @@ const menuItems: MenuItem[] = [
     submenu: [
       {
         icon: Brain,
-        label: "AI+CRO (Professional)",
+        label: "AI+CRO",
         section: "AI+CRO",
         submenu: [
           { icon: BookOpen, label: "Learning Proof", path: "/learning-proof-professional", section: "AI+CRO" },
