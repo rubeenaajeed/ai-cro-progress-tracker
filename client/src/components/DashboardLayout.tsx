@@ -76,7 +76,7 @@ const menuItems: MenuItem[] = [
     ],
   },
   { icon: Target, label: "Portfolio", path: "/portfolio", section: "Main" },
-  { icon: CheckCircle2, label: "Progress", path: "/progress", section: "Main" },
+  { icon: CheckCircle2, label: "Overall Progress", path: "/progress", section: "Main" },
   { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
   { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
 ];
