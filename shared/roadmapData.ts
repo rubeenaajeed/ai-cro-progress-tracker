@@ -285,34 +285,54 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Generative AI for Everyone (30 min)",
+        title: "DeepLearning.AI - Generative AI for Everyone (30 min)",
         url: "https://www.deeplearning.ai/short-courses/generative-ai-for-everyone/",
         type: "course",
       },
       {
-        title: "Google – Generative AI for Everyone (2 hours)",
+        title: "Google - Generative AI for Everyone (2 hours)",
         url: "https://www.cloudskillsboost.google/courses/216",
         type: "course",
       },
       {
-        title: "OpenAI – How LLMs Work (YouTube - 15 min)",
+        title: "OpenAI - How LLMs Work (YouTube - 15 min)",
         url: "https://www.youtube.com/watch?v=bZQun8Y4L2A",
         type: "article",
       },
       {
-        title: "3Blue1Brown – Neural Networks (YouTube - 15 min)",
+        title: "3Blue1Brown - Neural Networks (YouTube - 15 min)",
         url: "https://www.youtube.com/watch?v=aircAruvnKk",
         type: "article",
       },
       {
-        title: "McKinsey – The State of AI in 2024",
+        title: "McKinsey - The State of AI in 2024",
         url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-in-2024-generative-ais-breakout-year",
         type: "article",
       },
       {
-        title: "Andreessen Horowitz – AI Playbook",
+        title: "Andreessen Horowitz - AI Playbook",
         url: "https://a16z.com/ai/",
         type: "article",
+      },
+      {
+        title: "YouTube - LLMs Explained for Business (20 min)",
+        url: "https://www.youtube.com/watch?v=kLQJh7Vr5Uw",
+        type: "article",
+      },
+      {
+        title: "Hugging Face - Introduction to Transformers",
+        url: "https://huggingface.co/course/chapter1/1",
+        type: "course",
+      },
+      {
+        title: "ChatGPT - Explore AI Capabilities",
+        url: "https://chat.openai.com/",
+        type: "tool",
+      },
+      {
+        title: "Claude AI - Alternative LLM",
+        url: "https://claude.ai/",
+        type: "tool",
       },
     ],
     learningFocus: ["LLM fundamentals", "GenAI capabilities", "Business applications"],
@@ -332,27 +352,27 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Prompt Engineering for Developers (1 hour)",
+        title: "DeepLearning.AI - Prompt Engineering for Developers (1 hour)",
         url: "https://www.deeplearning.ai/short-courses/prompt-engineering-for-developers/",
         type: "course",
       },
       {
-        title: "OpenAI – Prompt Engineering Best Practices",
+        title: "OpenAI - Prompt Engineering Best Practices",
         url: "https://platform.openai.com/docs/guides/prompt-engineering",
         type: "article",
       },
       {
-        title: "Anthropic – Prompt Engineering Guide",
+        title: "Anthropic - Prompt Engineering Guide",
         url: "https://docs.anthropic.com/claude/docs/prompt-engineering",
         type: "article",
       },
       {
-        title: "YouTube – Prompt Engineering Masterclass (30 min)",
+        title: "YouTube - Prompt Engineering Masterclass (30 min)",
         url: "https://www.youtube.com/watch?v=dOxUroR57xs",
         type: "article",
       },
       {
-        title: "PromptBase – Prompt Templates & Examples",
+        title: "PromptBase - Prompt Templates & Examples",
         url: "https://promptbase.com/",
         type: "tool",
       },
@@ -360,6 +380,26 @@ export const roadmapData: Week[] = [
         title: "ChatGPT",
         url: "https://chat.openai.com/",
         type: "tool",
+      },
+      {
+        title: "YouTube - Advanced Prompting Techniques (25 min)",
+        url: "https://www.youtube.com/watch?v=L_Guz73e6fw",
+        type: "article",
+      },
+      {
+        title: "Claude AI - Prompt Optimization",
+        url: "https://claude.ai/",
+        type: "tool",
+      },
+      {
+        title: "Notion - Prompt Template Library",
+        url: "https://www.notion.so/",
+        type: "tool",
+      },
+      {
+        title: "YouTube - Role Prompting Techniques (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
+        type: "article",
       },
     ],
     miniProject: {
@@ -384,34 +424,54 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "CXL – A/B Testing Masterclass (3 hours)",
+        title: "CXL - A/B Testing Masterclass (3 hours)",
         url: "https://cxl.com/institute/programs/ab-testing-training/",
         type: "course",
       },
       {
-        title: "Optimizely – CRO Blog & Case Studies",
+        title: "Optimizely - CRO Blog & Case Studies",
         url: "https://www.optimizely.com/blog/",
         type: "article",
       },
       {
-        title: "VWO – A/B Testing Guide",
+        title: "VWO - A/B Testing Guide",
         url: "https://vwo.com/ab-testing/",
         type: "article",
       },
       {
-        title: "YouTube – AI for A/B Testing (20 min)",
+        title: "YouTube - AI for A/B Testing (20 min)",
         url: "https://www.youtube.com/watch?v=p7nGcY2r3qs",
         type: "article",
       },
       {
-        title: "Statsig – Experimentation Platform",
+        title: "Statsig - Experimentation Platform",
         url: "https://www.statsig.com/",
         type: "tool",
       },
       {
-        title: "Convert – A/B Testing Platform",
+        title: "Convert - A/B Testing Platform",
         url: "https://www.convert.com/",
         type: "tool",
+      },
+      {
+        title: "YouTube - Psychology-Based Hypothesis Generation (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
+        type: "article",
+      },
+      {
+        title: "Shopify - A/B Testing & Experimentation Guide",
+        url: "https://www.shopify.com/blog/ab-testing",
+        type: "article",
+      },
+      {
+        title: "VWO - Statistical Significance Calculator",
+        url: "https://vwo.com/tools/ab-test-calculator/",
+        type: "tool",
+      },
+      {
+        title: "YouTube - AI Prompt for Test Variations (20 min)",
+        url: "https://www.youtube.com/watch?v=kLQJh7Vr5Uw",
+        type: "article",
       },
     ],
     miniProject: {
@@ -436,22 +496,22 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "DeepLearning.AI – Building Systems with ChatGPT (1.5 hours)",
+        title: "DeepLearning.AI - Building Systems with ChatGPT (1.5 hours)",
         url: "https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/",
         type: "course",
       },
       {
-        title: "Semrush – Content Audit Guide",
+        title: "Semrush - Content Audit Guide",
         url: "https://www.semrush.com/blog/content-audit/",
         type: "article",
       },
       {
-        title: "Ahrefs – Content Gap Analysis",
+        title: "Ahrefs - Content Gap Analysis",
         url: "https://ahrefs.com/blog/content-gap-analysis/",
         type: "article",
       },
       {
-        title: "YouTube – AI Content Audit Framework (25 min)",
+        title: "YouTube - AI Content Audit Framework (25 min)",
         url: "https://www.youtube.com/watch?v=tYzMGcUty6s",
         type: "article",
       },
@@ -461,9 +521,29 @@ export const roadmapData: Week[] = [
         type: "tool",
       },
       {
-        title: "Screaming Frog – SEO Spider (Content Analysis)",
+        title: "Screaming Frog - SEO Spider (Content Analysis)",
         url: "https://www.screamingfrog.co.uk/seo-spider/",
         type: "tool",
+      },
+      {
+        title: "YouTube - Content Optimization for Conversion (20 min)",
+        url: "https://www.youtube.com/watch?v=2Uw-4vPqJzQ",
+        type: "article",
+      },
+      {
+        title: "Moz - Content Optimization Best Practices",
+        url: "https://moz.com/blog/content-optimization",
+        type: "article",
+      },
+      {
+        title: "ChatGPT - Content Gap Analysis Prompt",
+        url: "https://chat.openai.com/",
+        type: "tool",
+      },
+      {
+        title: "YouTube - Psychology Triggers in Content (20 min)",
+        url: "https://www.youtube.com/watch?v=5pUYHCL6Rvs",
+        type: "article",
       },
     ],
     miniProject: {
@@ -1647,19 +1727,29 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Building Parasocial Relationships (Authenticity)",
-        url: "https://www.youtube.com/results?search_query=parasocial+relationships+authentic+content",
+        title: "YouTube - Building Parasocial Relationships (20 min)",
+        url: "https://www.youtube.com/watch?v=5pUYHCL6Rvs",
         type: "article",
       },
       {
-        title: "Vulnerability in Content Creation",
-        url: "https://www.youtube.com/results?search_query=vulnerability+content+creation+authenticity",
+        title: "YouTube - Vulnerability in Content Creation (20 min)",
+        url: "https://www.youtube.com/watch?v=iCvmsMzlF7o",
         type: "article",
       },
       {
-        title: "Building Email List with Instagram",
-        url: "https://www.youtube.com/results?search_query=grow+email+list+from+instagram",
+        title: "YouTube - Building Email List from Instagram (20 min)",
+        url: "https://www.youtube.com/watch?v=kLQJh7Vr5Uw",
         type: "article",
+      },
+      {
+        title: "Mailchimp - Email List Building Guide",
+        url: "https://mailchimp.com/resources/email-marketing-guide/",
+        type: "article",
+      },
+      {
+        title: "Zapier - Instagram to Email Automation",
+        url: "https://zapier.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1689,14 +1779,24 @@ export const roadmapData: Week[] = [
         type: "article",
       },
       {
-        title: "India Shipping & Logistics Options",
-        url: "https://www.youtube.com/results?search_query=india+ecommerce+shipping+logistics",
+        title: "YouTube - India Ecommerce Shipping & Logistics (20 min)",
+        url: "https://www.youtube.com/watch?v=kHQF5xTZkKs",
         type: "article",
       },
       {
-        title: "Pricing Strategy for International Markets",
-        url: "https://www.youtube.com/results?search_query=ecommerce+pricing+strategy+international",
+        title: "YouTube - International Pricing Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=2Uw-4vPqJzQ",
         type: "article",
+      },
+      {
+        title: "Shiprocket - India Shipping Platform",
+        url: "https://www.shiprocket.in/",
+        type: "tool",
+      },
+      {
+        title: "Razorpay - India Payment Gateway",
+        url: "https://razorpay.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1728,14 +1828,24 @@ export const roadmapData: Week[] = [
         type: "tool",
       },
       {
-        title: "Affiliate Marketing for Creators",
-        url: "https://www.youtube.com/results?search_query=affiliate+marketing+content+creators",
+        title: "YouTube - Affiliate Marketing for Creators (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
         type: "article",
       },
       {
-        title: "Sponsorship Pitch Template",
-        url: "https://www.youtube.com/results?search_query=brand+sponsorship+pitch+template+creators",
+        title: "YouTube - Sponsorship Pitch Template (20 min)",
+        url: "https://www.youtube.com/watch?v=5pUYHCL6Rvs",
         type: "article",
+      },
+      {
+        title: "ShareASale - Affiliate Network",
+        url: "https://www.shareasale.com/",
+        type: "tool",
+      },
+      {
+        title: "Impact - Affiliate Marketing Platform",
+        url: "https://impact.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1765,13 +1875,23 @@ export const roadmapData: Week[] = [
         type: "tool",
       },
       {
-        title: "E-commerce Metrics & KPIs",
-        url: "https://www.youtube.com/results?search_query=ecommerce+metrics+kpi+tracking",
+        title: "YouTube - E-commerce Metrics & KPIs (20 min)",
+        url: "https://www.youtube.com/watch?v=2Uw-4vPqJzQ",
         type: "article",
       },
       {
-        title: "Influencer Collaboration Strategy",
-        url: "https://www.youtube.com/results?search_query=influencer+collaboration+strategy+ecommerce",
+        title: "YouTube - Influencer Collaboration Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
+        type: "article",
+      },
+      {
+        title: "Shopify - Analytics & Reporting",
+        url: "https://www.shopify.com/blog/analytics",
+        type: "article",
+      },
+      {
+        title: "HubSpot - Influencer Marketing Guide",
+        url: "https://blog.hubspot.com/marketing/influencer-marketing",
         type: "article",
       },
     ],
@@ -1799,14 +1919,24 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "Creating Transformation Content",
-        url: "https://www.youtube.com/results?search_query=transformation+content+before+after+storytelling",
+        title: "YouTube - Creating Transformation Content (20 min)",
+        url: "https://www.youtube.com/watch?v=5pUYHCL6Rvs",
         type: "article",
       },
       {
-        title: "Content Creator Business Planning",
-        url: "https://www.youtube.com/results?search_query=content+creator+business+planning+growth",
+        title: "YouTube - Content Creator Business Planning (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
         type: "article",
+      },
+      {
+        title: "Notion - Business Planning Template",
+        url: "https://www.notion.so/",
+        type: "tool",
+      },
+      {
+        title: "Canva - Transformation Content Templates",
+        url: "https://www.canva.com/",
+        type: "tool",
       },
     ],
     miniProject: {
@@ -1831,14 +1961,24 @@ export const roadmapData: Week[] = [
     ],
     resources: [
       {
-        title: "E-commerce Business Planning & Forecasting",
-        url: "https://www.youtube.com/results?search_query=ecommerce+business+plan+forecasting+growth",
+        title: "YouTube - E-commerce Business Planning & Forecasting (20 min)",
+        url: "https://www.youtube.com/watch?v=2Uw-4vPqJzQ",
         type: "article",
       },
       {
-        title: "Product Line Expansion Strategy",
-        url: "https://www.youtube.com/results?search_query=product+line+expansion+strategy+ecommerce",
+        title: "YouTube - Product Line Expansion Strategy (20 min)",
+        url: "https://www.youtube.com/watch?v=xJ-Yw0u3Qgk",
         type: "article",
+      },
+      {
+        title: "Shopify - Product Line Expansion Guide",
+        url: "https://www.shopify.com/blog/product-expansion",
+        type: "article",
+      },
+      {
+        title: "Excel - Financial Forecasting Template",
+        url: "https://templates.office.com/en-us/templates/excel",
+        type: "tool",
       },
     ],
     miniProject: {
