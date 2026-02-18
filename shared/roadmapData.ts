@@ -1,4 +1,4 @@
-export type Phase = "Foundations" | "Content & CRO" | "Analytics & Automation" | "Portfolio" | "Positioning";
+export type Phase = "Foundations" | "Content & CRO" | "Analytics & Automation" | "Portfolio" | "Positioning" | "Personal Brand" | "Business Brand";
 
 export interface Resource {
   title: string;
