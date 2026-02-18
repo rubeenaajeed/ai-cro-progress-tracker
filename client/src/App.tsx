@@ -10,6 +10,7 @@ import Roadmap from "./pages/Roadmap";
 import Portfolio from "./pages/Portfolio";
 import Progress from "./pages/Progress";
 import Streak from "./pages/Streak";
+import ResourcesHub from "./pages/ResourcesHub";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/progress"} component={Progress} />
       <Route path={"/streak"} component={Streak} />
+      <Route path={"/resources"} component={ResourcesHub} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
