@@ -255,6 +255,41 @@ Return as JSON array with this exact structure (no markdown, no extra text):
       .mutation(async ({ ctx, input }) => {
         return await db.deleteAiCroMetric(ctx.user.id, input.metricId);
       }),
+
+    getUserBadges: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserBadges(ctx.user.id);
+    }),
+
+    getBadgesByTrack: protectedProcedure
+      .input(z.object({ track: z.enum(["ai-cro", "personal-brand", "business"]) }))
+      .query(async ({ ctx, input }) => {
+        return await db.getBadgesByTrack(ctx.user.id, input.track);
+      }),
+
+    earnBadge: protectedProcedure
+      .input(z.object({
+        badgeType: z.string(),
+        badgeName: z.string(),
+        description: z.string().optional(),
+        icon: z.string().optional(),
+        weekNumber: z.number().optional(),
+        track: z.enum(["ai-cro", "personal-brand", "business"]).optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const exists = await db.checkBadgeExists(ctx.user.id, input.badgeType);
+        if (exists) {
+          return { success: false, message: "Badge already earned" };
+        }
+        await db.createBadge(ctx.user.id, {
+          badgeType: input.badgeType,
+          badgeName: input.badgeName,
+          description: input.description || null,
+          icon: input.icon || null,
+          weekNumber: input.weekNumber || null,
+          track: input.track || null,
+        } as any);
+        return { success: true, message: "Badge earned!" };
+      }),
   }),
 
 

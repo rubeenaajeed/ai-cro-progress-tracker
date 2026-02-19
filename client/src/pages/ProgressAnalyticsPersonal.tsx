@@ -47,6 +47,19 @@ function ProgressAnalyticsPersonalContent() {
     }
   }
 
+  // Prepare trend chart data from historical metrics
+  const trendChartData = historicalMetrics
+    .sort((a: any, b: any) => new Date(a.recordDate).getTime() - new Date(b.recordDate).getTime())
+    .map((metric: any) => ({
+      date: new Date(metric.recordDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      instagramFollowers: metric.instagramFollowers || 0,
+      instagramEngagement: metric.instagramEngagement || 0,
+      youtubeFollowers: metric.youtubeFollowers || 0,
+      youtubeEngagement: metric.youtubeEngagement || 0,
+      tiktokFollowers: metric.tiktokFollowers || 0,
+      tiktokEngagement: metric.tiktokEngagement || 0,
+    }));
+
   // Monthly breakdown
   const monthlyData = [
     { month: "Month 1", weeks: 4, completed: personalProgress.filter(p => p.weekNumber <= 4 && p.completionPercentage >= 100).length },
@@ -392,6 +405,145 @@ function ProgressAnalyticsPersonalContent() {
           <Button onClick={handleSavePersonalBrandMetrics} disabled={savingMetrics} size="lg" className="w-full">
             {savingMetrics ? "Saving..." : "Save Personal Brand Metrics"}
           </Button>
+
+          {/* Trend Charts */}
+          {trendChartData.length > 0 && (
+            <div className="space-y-6 mt-8">
+              <h3 className="text-lg font-semibold">Growth Trends</h3>
+              
+              {/* Instagram Followers Trend */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Instagram className="w-5 h-5 text-pink-500" />
+                    Instagram Followers Trend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={trendChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line type="monotone" dataKey="instagramFollowers" stroke="#EC4899" name="Followers" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              {/* Instagram Engagement Trend */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Instagram className="w-5 h-5 text-pink-500" />
+                    Instagram Engagement Rate Trend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={trendChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line type="monotone" dataKey="instagramEngagement" stroke="#F472B6" name="Engagement %" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              {/* YouTube Followers Trend */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Youtube className="w-5 h-5 text-red-500" />
+                    YouTube Subscribers Trend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={trendChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line type="monotone" dataKey="youtubeFollowers" stroke="#EF4444" name="Subscribers" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              {/* YouTube Engagement Trend */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Youtube className="w-5 h-5 text-red-500" />
+                    YouTube Engagement Rate Trend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={trendChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line type="monotone" dataKey="youtubeEngagement" stroke="#FCA5A5" name="Engagement %" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              {/* TikTok Followers Trend */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Music className="w-5 h-5 text-black" />
+                    TikTok Followers Trend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={trendChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line type="monotone" dataKey="tiktokFollowers" stroke="#000000" name="Followers" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              {/* TikTok Engagement Trend */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Music className="w-5 h-5 text-black" />
+                    TikTok Engagement Rate Trend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={trendChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line type="monotone" dataKey="tiktokEngagement" stroke="#404040" name="Engagement %" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+            </div>
+          )}
         </TabsContent>
 
         {/* Clothing Business Tab */}

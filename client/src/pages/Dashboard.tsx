@@ -10,12 +10,14 @@ import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { MetricsInputModal } from "@/components/MetricsInputModal";
+import { BadgesDisplay } from "@/components/BadgesDisplay";
 
 export default function Dashboard() {
   const { user } = useAuth();
   const [, setLocation] = useLocation();
   const { data: allProgress, isLoading } = trpc.roadmap.getAllProgress.useQuery();
   const { data: recentCheckIns } = trpc.roadmap.getRecentCheckIns.useQuery({ days: 30 });
+  const { data: badges = [] } = trpc.roadmap.getUserBadges.useQuery();
   const [currentStreak, setCurrentStreak] = useState(0);
   const [metricsModalOpen, setMetricsModalOpen] = useState(false);
 
@@ -222,7 +224,10 @@ export default function Dashboard() {
             </Card>
           );
         })()}
-      </div>
+       </div>
+
+      {/* Achievements Section */}
+      <BadgesDisplay badges={badges} title="Your Achievements" />
 
       <MetricsInputModal
         open={metricsModalOpen}

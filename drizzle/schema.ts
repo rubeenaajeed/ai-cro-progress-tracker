@@ -410,3 +410,41 @@ export const postFeedback = mysqlTable("post_feedback", {
 
 export type PostFeedback = typeof postFeedback.$inferSelect;
 export type InsertPostFeedback = typeof postFeedback.$inferInsert;
+
+
+/**
+ * Badges and Achievements Table
+ * Tracks user achievements and badges earned
+ */
+export const badges = mysqlTable("badges", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  badgeType: varchar("badgeType", { length: 50 }).notNull(), // psychology-master, ai-expert, etc
+  badgeName: varchar("badgeName", { length: 100 }).notNull(), // Display name
+  description: text("description"), // Badge description
+  icon: varchar("icon", { length: 50 }), // Icon name or emoji
+  earnedAt: timestamp("earnedAt").defaultNow().notNull(),
+  weekNumber: int("weekNumber"), // Week when badge was earned
+  track: mysqlEnum("track", ["ai-cro", "personal-brand", "business"]), // Which track
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Badge = typeof badges.$inferSelect;
+export type InsertBadge = typeof badges.$inferInsert;
+
+/**
+ * Badge Definitions (Reference table)
+ */
+export const badgeDefinitions = mysqlTable("badge_definitions", {
+  id: int("id").autoincrement().primaryKey(),
+  badgeType: varchar("badgeType", { length: 50 }).notNull().unique(),
+  badgeName: varchar("badgeName", { length: 100 }).notNull(),
+  description: text("description"),
+  icon: varchar("icon", { length: 50 }),
+  requiredWeek: int("requiredWeek"), // Week number to earn this badge
+  track: mysqlEnum("track", ["ai-cro", "personal-brand", "business"]),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type BadgeDefinition = typeof badgeDefinitions.$inferSelect;
+export type InsertBadgeDefinition = typeof badgeDefinitions.$inferInsert;

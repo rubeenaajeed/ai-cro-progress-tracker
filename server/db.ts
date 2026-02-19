@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, learningProofs, weeklyReflections, contentAngleSuggestions, postFeedback, historicalMetrics, aiCroMetrics, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress, InsertLearningProof, InsertWeeklyReflection, InsertContentAngleSuggestion, InsertPostFeedback, InsertHistoricalMetric, InsertAiCroMetric } from "../drizzle/schema";
+import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, learningProofs, weeklyReflections, contentAngleSuggestions, postFeedback, historicalMetrics, aiCroMetrics, badges, badgeDefinitions, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress, InsertLearningProof, InsertWeeklyReflection, InsertContentAngleSuggestion, InsertPostFeedback, InsertHistoricalMetric, InsertAiCroMetric, InsertBadge, InsertBadgeDefinition } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -748,4 +748,67 @@ export async function deleteAiCroMetric(userId: number, metricId: number) {
       eq(aiCroMetrics.id, metricId),
       eq(aiCroMetrics.userId, userId)
     ));
+}
+
+
+// ===== BADGES & ACHIEVEMENTS QUERIES =====
+export async function createBadge(userId: number, data: InsertBadge) {
+  const db = await getDb();
+  if (!db) return undefined;
+  return await db.insert(badges).values({
+    ...data,
+    userId,
+  });
+}
+
+export async function getUserBadges(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return await db.select().from(badges)
+    .where(eq(badges.userId, userId))
+    .orderBy(desc(badges.earnedAt));
+}
+
+export async function getBadgesByTrack(userId: number, track: 'ai-cro' | 'personal-brand' | 'business') {
+  const db = await getDb();
+  if (!db) return [];
+  return await db.select().from(badges)
+    .where(and(
+      eq(badges.userId, userId),
+      eq(badges.track, track)
+    ))
+    .orderBy(desc(badges.earnedAt));
+}
+
+export async function checkBadgeExists(userId: number, badgeType: string) {
+  const db = await getDb();
+  if (!db) return false;
+  const result = await db.select().from(badges)
+    .where(and(
+      eq(badges.userId, userId),
+      eq(badges.badgeType, badgeType)
+    ))
+    .limit(1);
+  return result.length > 0;
+}
+
+export async function getBadgeDefinitions() {
+  const db = await getDb();
+  if (!db) return [];
+  return await db.select().from(badgeDefinitions);
+}
+
+export async function getBadgeDefinitionByType(badgeType: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(badgeDefinitions)
+    .where(eq(badgeDefinitions.badgeType, badgeType))
+    .limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function createBadgeDefinition(data: InsertBadgeDefinition) {
+  const db = await getDb();
+  if (!db) return undefined;
+  return await db.insert(badgeDefinitions).values(data);
 }
