@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Flame, TrendingUp, CheckCircle2, Calendar, Target, Instagram, Youtube, Music } from "lucide-react";
+import React from "react";
 
 function ProgressAnalyticsPersonalContent() {
   const [personalBrandMetrics, setPersonalBrandMetrics] = useState({
@@ -68,6 +69,29 @@ function ProgressAnalyticsPersonalContent() {
 
   // Get latest metrics from historical data for combined metrics display
   const latestMetrics = historicalMetrics && historicalMetrics.length > 0 ? historicalMetrics[historicalMetrics.length - 1] : null;
+
+  // Update individual platform metrics when historical data changes
+  React.useEffect(() => {
+    if (latestMetrics) {
+      setPersonalBrandMetrics({
+        instagram: {
+          followers: latestMetrics.instagramFollowers || 0,
+          engagement: latestMetrics.instagramEngagement ? parseFloat(latestMetrics.instagramEngagement) : 0,
+          views: latestMetrics.instagramViews || 0,
+        },
+        youtube: {
+          followers: latestMetrics.youtubeFollowers || 0,
+          engagement: latestMetrics.youtubeEngagement ? parseFloat(latestMetrics.youtubeEngagement) : 0,
+          views: latestMetrics.youtubeViews || 0,
+        },
+        tiktok: {
+          followers: latestMetrics.tiktokFollowers || 0,
+          engagement: latestMetrics.tiktokEngagement ? parseFloat(latestMetrics.tiktokEngagement) : 0,
+          views: latestMetrics.tiktokViews || 0,
+        },
+      });
+    }
+  }, [latestMetrics]);
 
   // Calculate combined Personal Brand metrics from latest historical data or manual input
   const totalFollowers = (latestMetrics?.instagramFollowers || personalBrandMetrics.instagram.followers) + 
