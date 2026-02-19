@@ -66,10 +66,19 @@ function ProgressAnalyticsPersonalContent() {
     };
   });
 
-  // Calculate combined Personal Brand metrics
-  const totalFollowers = personalBrandMetrics.instagram.followers + personalBrandMetrics.youtube.followers + personalBrandMetrics.tiktok.followers;
-  const avgEngagement = (personalBrandMetrics.instagram.engagement + personalBrandMetrics.youtube.engagement + personalBrandMetrics.tiktok.engagement) / 3;
-  const totalViews = personalBrandMetrics.instagram.views + personalBrandMetrics.youtube.views + personalBrandMetrics.tiktok.views;
+  // Get latest metrics from historical data for combined metrics display
+  const latestMetrics = historicalMetrics && historicalMetrics.length > 0 ? historicalMetrics[historicalMetrics.length - 1] : null;
+
+  // Calculate combined Personal Brand metrics from latest historical data or manual input
+  const totalFollowers = (latestMetrics?.instagramFollowers || personalBrandMetrics.instagram.followers) + 
+                         (latestMetrics?.youtubeFollowers || personalBrandMetrics.youtube.followers) + 
+                         (latestMetrics?.tiktokFollowers || personalBrandMetrics.tiktok.followers);
+  const avgEngagement = ((latestMetrics?.instagramEngagement || personalBrandMetrics.instagram.engagement) + 
+                         (latestMetrics?.youtubeEngagement || personalBrandMetrics.youtube.engagement) + 
+                         (latestMetrics?.tiktokEngagement || personalBrandMetrics.tiktok.engagement)) / 3;
+  const totalViews = (latestMetrics?.instagramViews || personalBrandMetrics.instagram.views) + 
+                     (latestMetrics?.youtubeViews || personalBrandMetrics.youtube.views) + 
+                     (latestMetrics?.tiktokViews || personalBrandMetrics.tiktok.views);
 
   // Calculate estimated revenue
   const estimatedRevenue = clothingMetrics.ordersPerMonth * 50; // Assuming ~$50 per order

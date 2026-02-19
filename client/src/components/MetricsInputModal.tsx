@@ -55,6 +55,13 @@ export function MetricsInputModal({ open, onOpenChange, onSuccess }: MetricsInpu
   const createHistoricalMetric = (trpc.roadmap as any).createHistoricalMetric.useMutation();
 
   const handleAiCroSubmit = async () => {
+    // Validate that at least one field is filled
+    const hasData = aiCroData.courseCompletionPercentage || aiCroData.skillsAcquired || aiCroData.linkedinConnections || aiCroData.linkedinEngagement;
+    if (!hasData) {
+      alert("Please enter at least one metric value before saving");
+      return;
+    }
+
     try {
       await createAiCroMetric.mutateAsync({
         recordDate,
@@ -82,6 +89,15 @@ export function MetricsInputModal({ open, onOpenChange, onSuccess }: MetricsInpu
   };
 
   const handlePersonalBrandSubmit = async () => {
+    // Validate that at least one field is filled
+    const hasData = personalBrandData.instagramFollowers || personalBrandData.instagramEngagement || personalBrandData.instagramViews ||
+                    personalBrandData.youtubeFollowers || personalBrandData.youtubeEngagement || personalBrandData.youtubeViews ||
+                    personalBrandData.tiktokFollowers || personalBrandData.tiktokEngagement || personalBrandData.tiktokViews;
+    if (!hasData) {
+      alert("Please enter at least one metric value before saving");
+      return;
+    }
+
     try {
       await createHistoricalMetric.mutateAsync({
         recordDate,
@@ -118,6 +134,13 @@ export function MetricsInputModal({ open, onOpenChange, onSuccess }: MetricsInpu
   };
 
   const handleBusinessSubmit = async () => {
+    // Validate that at least one field is filled
+    const hasData = businessData.ordersPerMonth || businessData.conversionRate || businessData.estimatedRevenue;
+    if (!hasData) {
+      alert("Please enter at least one metric value before saving");
+      return;
+    }
+
     try {
       await createHistoricalMetric.mutateAsync({
         recordDate,
