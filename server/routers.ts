@@ -378,6 +378,52 @@ Return as JSON array with this exact structure (no markdown, no extra text):
       .mutation(async ({ ctx, input }) => {
         return await db.deleteHistoricalMetric(ctx.user.id, input.metricId);
       }),
+
+    createAiCroMetric: protectedProcedure
+      .input(z.object({
+        recordDate: z.string(),
+        courseCompletionPercentage: z.number().optional(),
+        skillsAcquired: z.number().optional(),
+        linkedinVisibility: z.string().optional(),
+        linkedinConnections: z.number().optional(),
+        linkedinEngagement: z.string().optional(),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.createAiCroMetric(ctx.user.id, input as any);
+      }),
+
+    getAiCroMetrics: protectedProcedure
+      .query(async ({ ctx }) => {
+        return await db.getAiCroMetrics(ctx.user.id);
+      }),
+
+    getAiCroMetricByDate: protectedProcedure
+      .input(z.object({ recordDate: z.string() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getAiCroMetricByDate(ctx.user.id, input.recordDate);
+      }),
+
+    updateAiCroMetric: protectedProcedure
+      .input(z.object({
+        metricId: z.number(),
+        courseCompletionPercentage: z.number().optional(),
+        skillsAcquired: z.number().optional(),
+        linkedinVisibility: z.string().optional(),
+        linkedinConnections: z.number().optional(),
+        linkedinEngagement: z.string().optional(),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const { metricId, ...data } = input;
+        return await db.updateAiCroMetric(ctx.user.id, metricId, data as any);
+      }),
+
+    deleteAiCroMetric: protectedProcedure
+      .input(z.object({ metricId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.deleteAiCroMetric(ctx.user.id, input.metricId);
+      }),
   }),
 });
 

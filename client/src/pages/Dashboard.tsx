@@ -9,6 +9,7 @@ import { CheckCircle2, Flame, TrendingUp, BookOpen } from "lucide-react";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { MetricsInputModal } from "@/components/MetricsInputModal";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -16,6 +17,7 @@ export default function Dashboard() {
   const { data: allProgress, isLoading } = trpc.roadmap.getAllProgress.useQuery();
   const { data: recentCheckIns } = trpc.roadmap.getRecentCheckIns.useQuery({ days: 30 });
   const [currentStreak, setCurrentStreak] = useState(0);
+  const [metricsModalOpen, setMetricsModalOpen] = useState(false);
 
   // Calculate overall progress
   const overallProgress = allProgress
@@ -208,14 +210,27 @@ export default function Dashboard() {
                 <p className="text-sm text-foreground mb-4">
                   {weekData?.objectives?.[0]?.text}
                 </p>
-                <Button onClick={() => setLocation("/roadmap")}>
-                  Go to Week {currentWeek.weekNumber}
-                </Button>
+                <div className="flex gap-2">
+                  <Button onClick={() => setLocation("/roadmap")} className="flex-1">
+                    Go to Week {currentWeek.weekNumber}
+                  </Button>
+                  <Button onClick={() => setMetricsModalOpen(true)} variant="outline">
+                    Add Metrics
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           );
         })()}
       </div>
+
+      <MetricsInputModal
+        open={metricsModalOpen}
+        onOpenChange={setMetricsModalOpen}
+        onSuccess={() => {
+          // Optionally refresh data after adding metrics
+        }}
+      />
     </DashboardLayout>
   );
 }

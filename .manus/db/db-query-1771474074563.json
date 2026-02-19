@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `ai_cro_metrics` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `userId` int NOT NULL,\n  `recordDate` varchar(10) NOT NULL,\n  `courseCompletionPercentage` int DEFAULT 0,\n  `skillsAcquired` int DEFAULT 0,\n  `linkedinVisibility` varchar(20),\n  `linkedinConnections` int DEFAULT 0,\n  `linkedinEngagement` varchar(10),\n  `notes` text,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  CONSTRAINT `ai_cro_metrics_id` PRIMARY KEY(`id`)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Z84eR9hGvjGXHm.root --database NP47tTynZmxVqthUU3GTN2 --execute CREATE TABLE IF NOT EXISTS `ai_cro_metrics` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `userId` int NOT NULL,\n  `recordDate` varchar(10) NOT NULL,\n  `courseCompletionPercentage` int DEFAULT 0,\n  `skillsAcquired` int DEFAULT 0,\n  `linkedinVisibility` varchar(20),\n  `linkedinConnections` int DEFAULT 0,\n  `linkedinEngagement` varchar(10),\n  `notes` text,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  CONSTRAINT `ai_cro_metrics_id` PRIMARY KEY(`id`)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1725
+}

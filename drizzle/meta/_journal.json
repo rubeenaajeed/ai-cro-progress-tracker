@@ -43,6 +43,13 @@
       "when": 1771412550747,
       "tag": "0005_bitter_reavers",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1771474039582,
+      "tag": "0006_sticky_paper_doll",
+      "breakpoints": true
     }
   ]
 }

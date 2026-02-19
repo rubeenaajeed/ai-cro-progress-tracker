@@ -288,6 +288,27 @@ export type Phase2Progress = typeof phase2Progress.$inferSelect;
 export type InsertPhase2Progress = typeof phase2Progress.$inferInsert;
 
 /**
+ * AI+CRO Track Metrics Table
+ * Tracks metrics for AI+CRO learning progress track
+ */
+export const aiCroMetrics = mysqlTable("ai_cro_metrics", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  recordDate: varchar("recordDate", { length: 10 }).notNull(), // YYYY-MM-DD format
+  courseCompletionPercentage: int("courseCompletionPercentage").default(0), // 0-100
+  skillsAcquired: int("skillsAcquired").default(0), // count of skills learned
+  linkedinVisibility: varchar("linkedinVisibility", { length: 20 }), // low, medium, high
+  linkedinConnections: int("linkedinConnections").default(0),
+  linkedinEngagement: varchar("linkedinEngagement", { length: 10 }), // percentage
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AiCroMetric = typeof aiCroMetrics.$inferSelect;
+export type InsertAiCroMetric = typeof aiCroMetrics.$inferInsert;
+
+/**
  * Historical Metrics Table
  * Tracks historical data points for Personal Brand and Clothing Business
  */

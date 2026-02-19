@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, learningProofs, weeklyReflections, contentAngleSuggestions, postFeedback, historicalMetrics, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress, InsertLearningProof, InsertWeeklyReflection, InsertContentAngleSuggestion, InsertPostFeedback, InsertHistoricalMetric } from "../drizzle/schema";
+import { InsertUser, users, weeklyProgress, dailyCheckIns, portfolioProjects, personalNotes, taskCompletions, contentCalendar, phase2Metrics, phase2Progress, learningProofs, weeklyReflections, contentAngleSuggestions, postFeedback, historicalMetrics, aiCroMetrics, InsertContentCalendar, InsertPhase2Metrics, InsertPhase2Progress, InsertLearningProof, InsertWeeklyReflection, InsertContentAngleSuggestion, InsertPostFeedback, InsertHistoricalMetric, InsertAiCroMetric } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -695,5 +695,57 @@ export async function deleteHistoricalMetric(userId: number, metricId: number) {
     .where(and(
       eq(historicalMetrics.id, metricId),
       eq(historicalMetrics.userId, userId)
+    ));
+}
+
+
+// ===== AI+CRO METRICS QUERIES =====
+export async function createAiCroMetric(userId: number, data: InsertAiCroMetric) {
+  const db = await getDb();
+  if (!db) return undefined;
+  return await db.insert(aiCroMetrics).values({
+    ...data,
+    userId,
+  });
+}
+
+export async function getAiCroMetrics(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return await db.select().from(aiCroMetrics)
+    .where(eq(aiCroMetrics.userId, userId))
+    .orderBy(desc(aiCroMetrics.recordDate));
+}
+
+export async function getAiCroMetricByDate(userId: number, recordDate: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(aiCroMetrics)
+    .where(and(
+      eq(aiCroMetrics.userId, userId),
+      eq(aiCroMetrics.recordDate, recordDate)
+    ))
+    .limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function updateAiCroMetric(userId: number, metricId: number, data: Partial<InsertAiCroMetric>) {
+  const db = await getDb();
+  if (!db) return undefined;
+  return await db.update(aiCroMetrics)
+    .set(data)
+    .where(and(
+      eq(aiCroMetrics.id, metricId),
+      eq(aiCroMetrics.userId, userId)
+    ));
+}
+
+export async function deleteAiCroMetric(userId: number, metricId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  return await db.delete(aiCroMetrics)
+    .where(and(
+      eq(aiCroMetrics.id, metricId),
+      eq(aiCroMetrics.userId, userId)
     ));
 }
