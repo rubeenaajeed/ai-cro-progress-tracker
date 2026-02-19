@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MetricsInputModal } from "@/components/MetricsInputModal";
 import DashboardLayout from "@/components/DashboardLayout";
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,6 +22,9 @@ function ProgressAnalyticsPersonalContent() {
   });
 
   const [savingMetrics, setSavingMetrics] = useState(false);
+  const [metricsModalOpen, setMetricsModalOpen] = useState(false);
+  const { data: historicalMetrics = [] } = (trpc.roadmap as any).getHistoricalMetrics.useQuery({ brand: "personal" });
+  const { data: businessMetrics = [] } = (trpc.roadmap as any).getHistoricalMetrics.useQuery({ brand: "business" });
 
   // Get all progress data
   const { data: progressData = [] } = trpc.roadmap.getAllProgress.useQuery();
@@ -103,14 +107,19 @@ function ProgressAnalyticsPersonalContent() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold flex items-center gap-2">
-          <TrendingUp className="w-8 h-8 text-purple-500" />
-          Personal + Business Progress Analytics
-        </h1>
-        <p className="text-muted-foreground mt-2">
-          Track your learning progress and personal brand + business growth metrics.
-        </p>
+      <div className="flex justify-between items-start">
+        <div>
+          <h1 className="text-3xl font-bold flex items-center gap-2">
+            <TrendingUp className="w-8 h-8 text-purple-500" />
+            Personal + Business Progress Analytics
+          </h1>
+          <p className="text-muted-foreground mt-2">
+            Track your learning progress and personal brand + business growth metrics.
+          </p>
+        </div>
+        <Button onClick={() => setMetricsModalOpen(true)} className="mt-2">
+          Add Historical Data
+        </Button>
       </div>
 
       {/* Learning Progress Cards */}
@@ -462,6 +471,15 @@ function ProgressAnalyticsPersonalContent() {
           </p>
         </CardContent>
       </Card>
+
+      <MetricsInputModal
+        open={metricsModalOpen}
+        onOpenChange={setMetricsModalOpen}
+        onSuccess={() => {
+          // Refresh metrics data
+          window.location.reload();
+        }}
+      />
     </div>
   );
 }
