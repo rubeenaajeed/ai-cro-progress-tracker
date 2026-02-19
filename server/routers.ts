@@ -344,7 +344,7 @@ Return as JSON array with this exact structure (no markdown, no extra text):
         return await db.getPostFeedback(ctx.user.id, input.postId);
       }),
 
-    // Historical Metrics procedures
+    // Historical Metrics & AI+CRO Metrics procedures
     createHistoricalMetric: protectedProcedure
       .input(z.object({
         recordDate: z.string(),
