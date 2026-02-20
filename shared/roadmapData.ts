@@ -28,6 +28,8 @@ export interface Week {
   resources: Resource[];
   miniProject?: MiniProject;
   learningFocus: string[];
+  difficulty?: "Beginner" | "Intermediate" | "Advanced";
+  priority?: "High" | "Medium" | "Low";
 }
 
 export const roadmapData: Week[] = [
@@ -38,6 +40,8 @@ export const roadmapData: Week[] = [
     phase: "Foundations",
     title: "Consumer Psychology Fundamentals",
     goal: "Understand the core principles that drive human behavior and purchasing decisions. Learn Cialdini's 6 Principles of Persuasion.",
+    difficulty: "Beginner",
+    priority: "High",
     objectives: [
       { id: "1-1", text: "Learn Cialdini's 6 Principles of Persuasion (Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity)" },
       { id: "1-2", text: "Understand psychological triggers in e-commerce" },
@@ -104,6 +108,8 @@ export const roadmapData: Week[] = [
     phase: "Foundations",
     title: "CRO Fundamentals & User Journey Mapping",
     goal: "Learn the CRO process, key metrics, and how to map user journeys to identify friction points and conversion opportunities.",
+    difficulty: "Beginner",
+    priority: "High",
     objectives: [
       { id: "2-1", text: "Learn the CRO process and methodology" },
       { id: "2-2", text: "Master key CRO metrics (Conversion Rate, AOV, Bounce Rate, CTR)" },
@@ -161,6 +167,8 @@ export const roadmapData: Week[] = [
     phase: "Foundations",
     title: "Psychology in Action: A/B Testing & Experimentation",
     goal: "Learn how to design A/B tests based on psychological principles. Understand hypothesis generation, test design, and statistical significance.",
+    difficulty: "Intermediate",
+    priority: "High",
     objectives: [
       { id: "3-1", text: "Learn hypothesis generation based on psychology" },
       { id: "3-2", text: "Master A/B test design and execution" },

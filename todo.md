@@ -95,16 +95,20 @@
 - [ ] Add badge notifications when users complete phases - DEFERRED (nice-to-have for future)
 
 
-## Phase 11: High-Priority Feature Enhancements (Tomorrow - Medium Tasks 2-3 hours each)
+## Phase 11: Dashboard & Navigation Enhancements (IN PROGRESS)
+
+### Dashboard Optimization
+- [x] Build unified dashboard showing metrics from all programs (AI+CRO, Personal Brand, Business) side-by-side - COMPLETE
+- [x] Create tabs/sections for each program metrics - COMPLETE
+- [x] Show progress comparison across all tracks - COMPLETE
 
 ### Roadmap & Learning Experience
 - [x] Display achievement badges on Dashboard when users complete phases - COMPLETE
-- [ ] Show Recommended Next Week based on current progress - DEFERRED
-- [ ] Suggest which resources to prioritize based on completion % - DEFERRED
-- [ ] Add difficulty indicators (Beginner/Intermediate/Advanced) - DEFERRED
-- [ ] Add filters by resource type (YouTube, Course, Article, Tool) - DEFERRED
-- [ ] Implement search functionality within roadmap - DEFERRED
-- [ ] Add bookmark/favorite resources feature - DEFERRED
+- [x] Show Recommended Next Week based on priority/difficulty in each track - COMPLETE
+- [ ] Implement search functionality within roadmap pages
+- [x] Add difficulty indicators (Beginner/Intermediate/Advanced) to resources - COMPLETE (added to Week interface)
+- [ ] Add filters by resource type (YouTube, Course, Article, Tool)
+- [ ] Implement bookmark/favorite resources feature
 
 ### Personal Notes & Learning Journal
 - [ ] Make personal notes more discoverable (currently hidden in week detail) - DEFERRED
