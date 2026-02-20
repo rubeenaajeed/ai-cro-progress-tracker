@@ -7,10 +7,13 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
 import { personalRoadmapData, Week } from "@shared/personalRoadmapData";
-import { ChevronLeft, ChevronRight, ExternalLink, Loader2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Loader2, Bookmark } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import QuizModal from "@/components/QuizModal";
+import { RoadmapSearch } from "@/components/RoadmapSearch";
+import { BookmarkedResources, useBookmarks } from "@/components/BookmarkedResources";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function RoadmapPersonal() {
   const { user } = useAuth();
@@ -22,9 +25,11 @@ export default function RoadmapPersonal() {
   const [quizData, setQuizData] = useState<any>(null);
   const [pendingTaskId, setPendingTaskId] = useState<string | null>(null);
   const [quizLoading, setQuizLoading] = useState(false);
+  const { isBookmarked, addBookmark, removeBookmark } = useBookmarks();
 
   // Show weeks 1-30 for Personal track
   const currentWeek = personalRoadmapData.find(w => w.weekNumber === currentWeekNumber);
+  const personalPhaseWeeks = personalRoadmapData;
   
   // Queries
   const { data: weekProgress } = trpc.roadmap.getWeekProgress.useQuery({ weekNumber: currentWeekNumber });
@@ -188,6 +193,16 @@ export default function RoadmapPersonal() {
           </Button>
         </div>
 
+        {/* Search and Bookmarks */}
+        <RoadmapSearch
+          weeks={personalPhaseWeeks}
+          onSelectWeek={setCurrentWeekNumber}
+          currentWeekNumber={currentWeekNumber}
+        />
+
+        {/* Bookmarked Resources */}
+        <BookmarkedResources />
+
         {/* Header */}
         <div>
           <h1 className="text-3xl font-bold text-foreground">Personal + Business Roadmap</h1>
@@ -230,9 +245,21 @@ export default function RoadmapPersonal() {
                 <CardTitle>{currentWeek.title}</CardTitle>
                 <CardDescription className="mt-2">{currentWeek.goal}</CardDescription>
               </div>
-              <Badge className={phaseColors[currentWeek.phase] || "bg-gray-100 text-gray-800"}>
-                {currentWeek.phase}
-              </Badge>
+              <div className="flex gap-2 flex-wrap justify-end">
+                <Badge className={phaseColors[currentWeek.phase] || "bg-gray-100 text-gray-800"}>
+                  {currentWeek.phase}
+                </Badge>
+                {currentWeek.difficulty && (
+                  <Badge variant="outline">
+                    {currentWeek.difficulty}
+                  </Badge>
+                )}
+                {currentWeek.priority && (
+                  <Badge variant="outline" className="bg-orange-50">
+                    {currentWeek.priority} Priority
+                  </Badge>
+                )}
+              </div>
             </div>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -296,18 +323,49 @@ export default function RoadmapPersonal() {
               <div>
                 <h4 className="text-sm font-medium mb-3">Resources</h4>
                 <div className="space-y-2">
-                  {currentWeek.resources.map((resource, idx) => (
-                    <a
-                      key={idx}
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-2 rounded hover:bg-muted/50 text-primary hover:underline text-sm"
-                    >
-                      <ExternalLink size={14} />
-                      {resource.title}
-                    </a>
-                  ))}
+                  {currentWeek.resources.map((resource, idx) => {
+                    const bookmarkId = `${currentWeekNumber}-${resource.url}`;
+                    const isResourceBookmarked = isBookmarked(resource, currentWeekNumber);
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-2 p-2 rounded hover:bg-muted/50 group"
+                      >
+                        <a
+                          href={resource.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 flex-1 min-w-0"
+                        >
+                          <ExternalLink size={14} className="flex-shrink-0" />
+                          <span className="text-primary hover:underline text-sm flex-1 truncate">
+                            {resource.title}
+                          </span>
+                          <Badge variant="outline" className="text-xs flex-shrink-0 capitalize">
+                            {resource.type}
+                          </Badge>
+                        </a>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-6 w-6 p-0 flex-shrink-0"
+                          onClick={() => {
+                            if (isResourceBookmarked) {
+                              removeBookmark(bookmarkId);
+                            } else {
+                              addBookmark(resource, currentWeekNumber);
+                            }
+                          }}
+                          title={isResourceBookmarked ? "Remove bookmark" : "Add bookmark"}
+                        >
+                          <Bookmark
+                            size={16}
+                            className={isResourceBookmarked ? "fill-amber-500 text-amber-500" : "text-muted-foreground"}
+                          />
+                        </Button>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
