@@ -224,6 +224,7 @@ export const roadmapData: Week[] = [
     weekNumber: 4,
     month: 1,
     phase: "Foundations",
+    difficulty: "Beginner",
     title: "Behavioral Data & User Friction Analysis",
     goal: "Learn to analyze user behavior data (heatmaps, session replays) to identify friction points and apply psychology to improve UX.",
     objectives: [
@@ -283,6 +284,7 @@ export const roadmapData: Week[] = [
     weekNumber: 5,
     month: 2,
     phase: "Content & CRO",
+    difficulty: "Beginner",
     title: "What GenAI Actually Is",
     goal: "Understand LLMs, how GenAI works at a high level, its strengths, limitations, and real business use cases.",
     objectives: [
@@ -349,6 +351,7 @@ export const roadmapData: Week[] = [
     weekNumber: 6,
     month: 2,
     phase: "Content & CRO",
+    difficulty: "Beginner",
     title: "Prompting Fundamentals",
     goal: "Learn role prompting, context windows, constraints, iteration, and output evaluation. Apply to CRO and psychology-based tasks.",
     objectives: [
@@ -421,6 +424,7 @@ export const roadmapData: Week[] = [
     weekNumber: 7,
     month: 2,
     phase: "Content & CRO",
+    difficulty: "Beginner",
     title: "AI for CRO Hypothesis Generation & Testing",
     goal: "Learn to use AI to generate CRO hypotheses based on psychology, create A/B test variations, and analyze results.",
     objectives: [
@@ -493,6 +497,7 @@ export const roadmapData: Week[] = [
     weekNumber: 8,
     month: 2,
     phase: "Content & CRO",
+    difficulty: "Beginner",
     title: "AI for Content Audits & CRO Opportunities",
     goal: "Learn to use AI to identify content gaps, optimize for psychology triggers, and find CRO opportunities.",
     objectives: [
@@ -567,6 +572,7 @@ export const roadmapData: Week[] = [
     weekNumber: 9,
     month: 3,
     phase: "Content & CRO",
+    difficulty: "Beginner",
     title: "AI for Content Operations & CRO Workflows",
     goal: "Understand how AI ensures style consistency, streamlines editorial workflows, and scales content while maintaining psychology and CRO best practices.",
     objectives: [
@@ -619,6 +625,7 @@ export const roadmapData: Week[] = [
     weekNumber: 10,
     month: 3,
     phase: "Content & CRO",
+    difficulty: "Intermediate",
     title: "AI-Powered User Segmentation & Personalization",
     goal: "Learn about behavioral clustering and smart targeting with AI. Apply this to personalize content and offers based on psychology for CRO.",
     objectives: [
@@ -671,6 +678,7 @@ export const roadmapData: Week[] = [
     weekNumber: 11,
     month: 3,
     phase: "Content & CRO",
+    difficulty: "Intermediate",
     title: "AI + CMS Thinking (SFCC & CRO Integration)",
     goal: "Explore where AI sits within CMS workflows, governance, and human-in-the-loop models. Focus on dynamic content for personalization and testing.",
     objectives: [
@@ -723,6 +731,7 @@ export const roadmapData: Week[] = [
     weekNumber: 12,
     month: 3,
     phase: "Content & CRO",
+    difficulty: "Intermediate",
     title: "Content Performance + AI (GA4, Power BI & CRO)",
     goal: "Learn to use AI to analyze GA4 data, summarize reports, and turn insights into actionable CRO decisions.",
     objectives: [
@@ -777,6 +786,7 @@ export const roadmapData: Week[] = [
     weekNumber: 13,
     month: 4,
     phase: "Analytics & Automation",
+    difficulty: "Intermediate",
     title: "AI + Analytics Storytelling for CRO (GA4 & Power BI)",
     goal: "Focus on asking the right questions, avoiding vanity metrics, and delivering decision-focused insights using AI to drive CRO.",
     objectives: [
@@ -829,6 +839,7 @@ export const roadmapData: Week[] = [
     weekNumber: 14,
     month: 4,
     phase: "Analytics & Automation",
+    difficulty: "Intermediate",
     title: "Automation Basics (APIs & Webhooks) for CRO",
     goal: "Understand what APIs and webhooks are conceptually, and explore no-code automation possibilities for CRO and marketing tasks.",
     objectives: [
@@ -881,6 +892,7 @@ export const roadmapData: Week[] = [
     weekNumber: 15,
     month: 4,
     phase: "Analytics & Automation",
+    difficulty: "Intermediate",
     title: "RAG & Internal AI Tools for Growth",
     goal: "Learn about Retrieval Augmented Generation (RAG) and its application in internal knowledge assistants for marketing and CRO.",
     objectives: [
@@ -933,6 +945,7 @@ export const roadmapData: Week[] = [
     weekNumber: 16,
     month: 4,
     phase: "Analytics & Automation",
+    difficulty: "Intermediate",
     title: "Ethics, Governance & Trust in AI for CRO",
     goal: "Understand data privacy, brand voice control, and the importance of human oversight in AI applications, especially in personalized marketing.",
     objectives: [
@@ -987,6 +1000,7 @@ export const roadmapData: Week[] = [
     weekNumber: 17,
     month: 5,
     phase: "Portfolio",
+    difficulty: "Intermediate",
     title: "Psychology-Driven CRO Case Study",
     goal: "Detail a project where you applied psychology principles to improve conversion (e.g., adding social proof, scarcity, or urgency to your clothing brand).",
     objectives: [
@@ -1039,6 +1053,7 @@ export const roadmapData: Week[] = [
     weekNumber: 18,
     month: 5,
     phase: "Portfolio",
+    difficulty: "Advanced",
     title: "AI-Powered User Experience & Personalization for Conversion",
     goal: "Showcase a project where AI was used to design or enhance a user journey and personalization strategy, leading to improved conversion.",
     objectives: [
@@ -1091,6 +1106,7 @@ export const roadmapData: Week[] = [
     weekNumber: 19,
     month: 5,
     phase: "Portfolio",
+    difficulty: "Advanced",
     title: "Analytics → AI Insights → CRO Business Decision",
     goal: "Present a project demonstrating how you used AI to extract actionable insights from GA4/Power BI data, leading to a specific, implemented CRO decision.",
     objectives: [
@@ -1143,6 +1159,7 @@ export const roadmapData: Week[] = [
     weekNumber: 20,
     month: 5,
     phase: "Portfolio",
+    difficulty: "Advanced",
     title: "Polish & Document Portfolio",
     goal: "Refine all projects, clearly articulating the problem, why psychology/AI and CRO were used, what changed, and the measurable impact.",
     objectives: [
@@ -1197,6 +1214,7 @@ export const roadmapData: Week[] = [
     weekNumber: 21,
     month: 6,
     phase: "Positioning",
+    difficulty: "Advanced",
     title: "CV Repositioning",
     goal: "Update your CV to highlight your new psychology, CRO, and AI skills, shifting from 'content' to 'Growth & CRO Specialist (AI-Powered)' with impact-driven bullets.",
     objectives: [
@@ -1249,6 +1267,7 @@ export const roadmapData: Week[] = [
     weekNumber: 22,
     month: 6,
     phase: "Positioning",
+    difficulty: "Advanced",
     title: "LinkedIn Positioning",
     goal: "Optimize your LinkedIn profile: headline, about section, and feature your new psychology + CRO + AI portfolio projects.",
     objectives: [
@@ -1301,6 +1320,7 @@ export const roadmapData: Week[] = [
     weekNumber: 23,
     month: 6,
     phase: "Positioning",
+    difficulty: "Advanced",
     title: "Job Targeting & Networking",
     goal: "Actively search for roles like Growth Marketing Manager, CRO Specialist, Martech Specialist (AI), E-commerce Optimization Specialist. Network with professionals in these fields.",
     objectives: [
@@ -1353,6 +1373,7 @@ export const roadmapData: Week[] = [
     weekNumber: 24,
     month: 6,
     phase: "Positioning",
+    difficulty: "Advanced",
     title: "Interview Preparation",
     goal: "Practice explaining psychology, CRO, and AI concepts simply, discussing trade-offs, and demonstrating judgment over hype and a focus on measurable results.",
     objectives: [
@@ -1406,6 +1427,7 @@ export const roadmapData: Week[] = [
     weekNumber: 25,
     month: 7,
     phase: "Personal Brand",
+    difficulty: "Advanced",
     title: "Define Your Brand Voice & Narrative",
     goal: "Establish your authentic personal brand voice and craft your core narrative around your 5-year weight loss journey - the struggle, cycles, and resilience.",
     objectives: [
