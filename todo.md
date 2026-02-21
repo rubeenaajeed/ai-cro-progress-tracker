@@ -170,3 +170,10 @@
 - [x] Ensure navbar is accessible from Overview page (no dead ends) - COMPLETE
 - [x] Make page responsive for mobile - COMPLETE
 - [ ] Update overview when new features are added (badges, metrics, Learning Journal, etc.) - DEFERRED
+
+## Phase 15: User Manual & Documentation (COMPLETE)
+- [x] Create comprehensive User Manual/Documentation page - COMPLETE
+- [x] Document all features built with 'where', 'why', and 'how to use' - COMPLETE
+- [x] Create step-by-step user guide for each feature - COMPLETE
+- [x] Add FAQ section - COMPLETE
+- [x] Add Documentation link to sidebar navigation - COMPLETE

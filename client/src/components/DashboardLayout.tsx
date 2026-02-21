@@ -82,6 +82,7 @@ const menuItems: MenuItem[] = [
   { icon: CheckCircle2, label: "Overall Progress", path: "/progress", section: "Main" },
   { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
   { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
+  { icon: BookOpen, label: "Documentation", path: "/documentation", section: "Tools" },
   { icon: Lightbulb, label: "About", path: "/overview", section: "Tools" },
 ];
 
