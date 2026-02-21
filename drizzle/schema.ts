@@ -448,3 +448,46 @@ export const badgeDefinitions = mysqlTable("badge_definitions", {
 
 export type BadgeDefinition = typeof badgeDefinitions.$inferSelect;
 export type InsertBadgeDefinition = typeof badgeDefinitions.$inferInsert;
+
+/**
+ * Quiz Results Table
+ * Tracks quiz attempts and performance for each week
+ */
+export const quizResults = mysqlTable("quiz_results", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  track: mysqlEnum("track", ["ai-cro", "personal-brand", "business"]).notNull(),
+  questionsAsked: int("questionsAsked").notNull(), // Total questions in quiz
+  questionsCorrect: int("questionsCorrect").notNull(), // Correct answers
+  scorePercentage: int("scorePercentage").notNull(), // 0-100
+  timeSpentSeconds: int("timeSpentSeconds").default(0), // Time to complete quiz
+  attemptNumber: int("attemptNumber").default(1), // 1st attempt, 2nd attempt, etc
+  feedback: text("feedback"), // AI feedback on performance
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type QuizResult = typeof quizResults.$inferSelect;
+export type InsertQuizResult = typeof quizResults.$inferInsert;
+
+/**
+ * Learning Journal Table
+ * Stores user notes and reflections for each week
+ */
+export const learningJournal = mysqlTable("learning_journal", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  weekNumber: int("weekNumber").notNull(),
+  track: mysqlEnum("track", ["ai-cro", "personal-brand", "business"]).notNull(),
+  title: varchar("title", { length: 255 }), // Optional title for the note
+  content: text("content").notNull(), // Main note content
+  tags: varchar("tags", { length: 500 }), // Comma-separated tags for filtering
+  category: varchar("category", { length: 50 }), // learning, reflection, implementation, etc
+  isPinned: int("isPinned").default(0), // 0 or 1 - for marking important notes
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LearningJournal = typeof learningJournal.$inferSelect;
+export type InsertLearningJournal = typeof learningJournal.$inferInsert;
