@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag, Award } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag, Award, Info } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -45,6 +45,7 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   { icon: BarChart3, label: "Dashboard", path: "/", section: "Main" },
+  { icon: BookOpen, label: "Overview", path: "/overview", section: "Main" },
   {
     icon: Target,
     label: "Trackers",
@@ -81,6 +82,7 @@ const menuItems: MenuItem[] = [
   { icon: CheckCircle2, label: "Overall Progress", path: "/progress", section: "Main" },
   { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
   { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
+  { icon: Lightbulb, label: "About", path: "/overview", section: "Tools" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";

@@ -152,21 +152,21 @@
 - [ ] Custom learning goals per week
 - [ ] Progress-based recommendations
 
-## Phase 13: Database & Performance Optimization (Future Priority)
-- [ ] Add indexes for faster queries
-- [ ] Implement caching for frequent data
+## Phase 13: Database & Performance Optimization (IN PROGRESS)
+- [ ] Add indexes for faster queries (userId, weekNumber, track columns)
+- [ ] Implement caching for frequent data (weekly progress, metrics)
 - [ ] Automated backups
 - [ ] Performance monitoring and analytics
 
 
-## Phase 14: Project Overview Page (Future - After Core Features Complete)
-- [ ] Create Project Overview page with comprehensive information
-- [ ] Add AI+CRO track section: Purpose, 24-week structure, topics covered, outcomes achieved
-- [ ] Add Personal+Business track section: Purpose, 30-week structure, topics covered, outcomes achieved
-- [ ] Include feature list and capabilities overview
-- [ ] Add timeline and milestones section
-- [ ] Create "How to Get Started" guide
-- [ ] Add Overview page to navbar navigation
-- [ ] Ensure navbar is accessible from Overview page (no dead ends)
-- [ ] Make page responsive for mobile
-- [ ] Update overview when new features are added (badges, metrics, Learning Journal, etc.)
+## Phase 14: Project Overview Page (COMPLETE)
+- [x] Create Project Overview page with comprehensive information - COMPLETE
+- [x] Add AI+CRO track section: Purpose, 24-week structure, topics covered, outcomes achieved - COMPLETE
+- [x] Add Personal+Business track section: Purpose, 30-week structure, topics covered, outcomes achieved - COMPLETE
+- [x] Include feature list and capabilities overview - COMPLETE
+- [x] Add timeline and milestones section - COMPLETE
+- [x] Create "How to Get Started" guide - COMPLETE
+- [x] Add Overview page to navbar navigation - COMPLETE
+- [x] Ensure navbar is accessible from Overview page (no dead ends) - COMPLETE
+- [x] Make page responsive for mobile - COMPLETE
+- [ ] Update overview when new features are added (badges, metrics, Learning Journal, etc.) - DEFERRED
