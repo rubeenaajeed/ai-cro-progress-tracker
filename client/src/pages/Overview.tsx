@@ -76,7 +76,7 @@ export default function Overview() {
             Master AI, CRO, Personal Branding, and Business Growth through structured learning and real-time progress tracking
           </p>
           {user ? (
-            <Button onClick={() => navigate("/dashboard")} size="lg">
+            <Button onClick={() => navigate("/")} size="lg">
               Go to Dashboard
             </Button>
           ) : (

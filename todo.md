@@ -180,4 +180,5 @@
 
 ## Bug Fixes (Current)
 - [x] Fix AI+CRO roadmap navigation - should use unified roadmap page with tabs like Personal+Business - COMPLETE
+- [x] Fix Overview page "Go to Dashboard" button - currently returns 404 error - COMPLETE
 - [ ] Remove old separate Roadmap.tsx page and consolidate to RoadmapPersonal.tsx pattern
