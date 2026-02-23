@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag, Award, Info } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag, Award, BookMarked } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -45,6 +45,8 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   { icon: BarChart3, label: "Dashboard", path: "/", section: "Main" },
+  { icon: BookMarked, label: "Overview", path: "/overview", section: "Main" },
+  { icon: BookOpen, label: "Documentation", path: "/documentation", section: "Main" },
   {
     icon: Brain,
     label: "Trackers",
@@ -58,10 +60,10 @@ const menuItems: MenuItem[] = [
           { icon: BookOpen, label: "Learning Plan", path: "/roadmap-personal", section: "AI+CRO" },
           { icon: Award, label: "Key Takeaways", path: "/learning-proof-professional", section: "AI+CRO" },
           { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-professional", section: "AI+CRO" },
-              { icon: Lightbulb, label: "Content Creation", path: "/content-creation-professional", section: "AI+CRO" },
-              { icon: BarChart3, label: "Progress Analytics", path: "/progress-analytics-professional", section: "AI+CRO" },
-            ],
-          },
+          { icon: Lightbulb, label: "Content Creation", path: "/content-creation-professional", section: "AI+CRO" },
+          { icon: BarChart3, label: "Progress Analytics", path: "/progress-analytics-professional", section: "AI+CRO" },
+        ],
+      },
       {
         icon: ShoppingBag,
         label: "Personal + Business",
@@ -73,16 +75,14 @@ const menuItems: MenuItem[] = [
           { icon: BarChart3, label: "Progress Analytics", path: "/progress-analytics-personal", section: "Personal" },
           { icon: Lightbulb, label: "Content Creation", path: "/content-creation-personal", section: "Personal" },
           { icon: Calendar, label: "Content Calendar", path: "/content-calendar", section: "Personal" },
-            ],
-          },
+        ],
+      },
     ],
   },
   { icon: Target, label: "Portfolio", path: "/portfolio", section: "Main" },
   { icon: CheckCircle2, label: "Overall Progress", path: "/progress", section: "Main" },
   { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
   { icon: Lightbulb, label: "Resources", path: "/resources", section: "Tools" },
-  { icon: BookOpen, label: "Documentation", path: "/documentation", section: "Tools" },
-  { icon: Info, label: "Overview", path: "/overview", section: "Tools" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -302,11 +302,10 @@ function DashboardLayoutContent({
           <SidebarMenuButton
             asChild
             isActive={isActive}
-            tooltip={item.label}
-            className="h-10 transition-all font-normal"
+            className="h-10 text-sm"
           >
             <a href={item.path}>
-              <item.icon className={`h-4 w-4 ${isActive ? "text-primary" : ""}`} />
+              <item.icon className="h-4 w-4" />
               <span>{item.label}</span>
             </a>
           </SidebarMenuButton>
@@ -317,94 +316,62 @@ function DashboardLayoutContent({
 
   return (
     <>
-      <div className="relative" ref={sidebarRef}>
-        <Sidebar
-          collapsible="icon"
-          className="border-r-0"
-          disableTransition={isResizing}
-        >
-          <SidebarHeader className="h-16 justify-center">
-            <div className="flex items-center gap-3 px-2 transition-all w-full">
+      <Sidebar ref={sidebarRef} className="border-r border-border">
+        <SidebarHeader className="border-b border-border">
+          <div className="flex items-center justify-between px-2 py-4">
+            <h1 className="text-lg font-semibold">Progress Tracker</h1>
+            {isMobile && (
               <button
-                onClick={toggleSidebar}
-                className="h-8 w-8 flex items-center justify-center hover:bg-accent rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring shrink-0"
-                aria-label="Toggle navigation"
+                onClick={() => toggleSidebar()}
+                className="p-1 hover:bg-accent rounded-lg transition-colors"
               >
-                <PanelLeft className="h-4 w-4 text-muted-foreground" />
+                <PanelLeft className="h-4 w-4" />
               </button>
-              {!isCollapsed ? (
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="font-semibold tracking-tight truncate">
-                    Navigation
-                  </span>
-                </div>
-              ) : null}
+            )}
+          </div>
+        </SidebarHeader>
+        <SidebarContent className="px-2">
+          <SidebarMenu>
+            {renderMenuItems(menuItems)}
+          </SidebarMenu>
+        </SidebarContent>
+        <SidebarFooter className="border-t border-border">
+          <div className="flex items-center justify-between px-2 py-3">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+              <Avatar className="h-8 w-8">
+                <AvatarFallback className="text-xs">
+                  {user?.name?.charAt(0).toUpperCase() || "U"}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium truncate">{user?.name}</p>
+                <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+              </div>
             </div>
-          </SidebarHeader>
-
-          <SidebarContent className="gap-0">
-            <SidebarMenu className="px-2 py-1">
-              {renderMenuItems(menuItems)}
-            </SidebarMenu>
-          </SidebarContent>
-
-          <SidebarFooter className="p-3">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-3 rounded-lg px-1 py-1 hover:bg-accent/50 transition-colors w-full text-left group-data-[collapsible=icon]:justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                  <Avatar className="h-9 w-9 border shrink-0">
-                    <AvatarFallback className="text-xs font-medium">
-                      {user?.name?.charAt(0).toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 min-w-0 group-data-[collapsible=icon]:hidden">
-                    <p className="text-sm font-medium truncate leading-none">
-                      {user?.name || "-"}
-                    </p>
-                    <p className="text-xs text-muted-foreground truncate mt-1.5">
-                      {user?.email || "-"}
-                    </p>
-                  </div>
+                <button className="p-1 hover:bg-accent rounded-lg transition-colors">
+                  <LogOut className="h-4 w-4" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem
-                  onClick={logout}
-                  className="cursor-pointer text-destructive focus:text-destructive"
-                >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Sign out</span>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => logout()}>
+                  Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </SidebarFooter>
-        </Sidebar>
-        <div
-          className={`absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-primary/20 transition-colors ${isCollapsed ? "hidden" : ""}`}
-          onMouseDown={() => {
-            if (isCollapsed) return;
-            setIsResizing(true);
-          }}
-          style={{ zIndex: 50 }}
-        />
-      </div>
-
-      <SidebarInset>
-        {isMobile && (
-          <div className="flex border-b h-14 items-center justify-between bg-background/95 px-2 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-40">
-            <div className="flex items-center gap-2">
-              <SidebarTrigger className="h-9 w-9 rounded-lg bg-background" />
-              <div className="flex items-center gap-3">
-                <div className="flex flex-col gap-1">
-                  <span className="tracking-tight text-foreground">
-                    Dashboard
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
-        )}
-        <main className="flex-1 p-4">{children}</main>
+        </SidebarFooter>
+      </Sidebar>
+      <SidebarInset>
+        <div className="flex flex-col h-full">
+          <div className="border-b border-border px-4 py-3 flex items-center justify-between">
+            <SidebarTrigger />
+          </div>
+          <main className="flex-1 overflow-auto">
+            {children}
+          </main>
+        </div>
       </SidebarInset>
     </>
   );
