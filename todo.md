@@ -177,3 +177,7 @@
 - [x] Create step-by-step user guide for each feature - COMPLETE
 - [x] Add FAQ section - COMPLETE
 - [x] Add Documentation link to sidebar navigation - COMPLETE
+
+## Bug Fixes (Current)
+- [x] Fix AI+CRO roadmap navigation - should use unified roadmap page with tabs like Personal+Business - COMPLETE
+- [ ] Remove old separate Roadmap.tsx page and consolidate to RoadmapPersonal.tsx pattern

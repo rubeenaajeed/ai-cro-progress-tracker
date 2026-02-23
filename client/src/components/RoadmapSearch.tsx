@@ -13,6 +13,7 @@ interface RoadmapSearchProps {
 }
 
 export function RoadmapSearch({ weeks, onSelectWeek, currentWeekNumber }: RoadmapSearchProps) {
+  console.log("RoadmapSearch rendering");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedResourceTypes, setSelectedResourceTypes] = useState<Set<string>>(new Set());
   const [selectedDifficulty, setSelectedDifficulty] = useState<Set<string>>(new Set());

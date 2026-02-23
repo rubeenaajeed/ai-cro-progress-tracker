@@ -55,7 +55,7 @@ const menuItems: MenuItem[] = [
         label: "AI+CRO",
         section: "AI+CRO",
         submenu: [
-          { icon: BookOpen, label: "Learning Plan", path: "/roadmap-professional", section: "AI+CRO" },
+          { icon: BookOpen, label: "Learning Plan", path: "/roadmap-personal", section: "AI+CRO" },
           { icon: Award, label: "Key Takeaways", path: "/learning-proof-professional", section: "AI+CRO" },
           { icon: Sparkles, label: "Weekly Reflection", path: "/weekly-reflection-professional", section: "AI+CRO" },
               { icon: Lightbulb, label: "Content Creation", path: "/content-creation-professional", section: "AI+CRO" },
