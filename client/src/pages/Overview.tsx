@@ -300,9 +300,8 @@ export default function Overview() {
           </p>
           {user ? (
             <Button 
-              onClick={() => navigate("/dashboard")} 
+              onClick={() => navigate("/")} 
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100"
             >
               Go to Dashboard
             </Button>
@@ -310,7 +309,6 @@ export default function Overview() {
             <Button 
               onClick={() => navigate("/")} 
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100"
             >
               Get Started Now
             </Button>

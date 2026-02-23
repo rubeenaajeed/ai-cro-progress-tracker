@@ -45,9 +45,8 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   { icon: BarChart3, label: "Dashboard", path: "/", section: "Main" },
-  { icon: BookOpen, label: "Overview", path: "/overview", section: "Main" },
   {
-    icon: Target,
+    icon: Brain,
     label: "Trackers",
     section: "Main",
     submenu: [
@@ -81,8 +80,9 @@ const menuItems: MenuItem[] = [
   { icon: Target, label: "Portfolio", path: "/portfolio", section: "Main" },
   { icon: CheckCircle2, label: "Overall Progress", path: "/progress", section: "Main" },
   { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
-  { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
+  { icon: Lightbulb, label: "Resources", path: "/resources", section: "Tools" },
   { icon: BookOpen, label: "Documentation", path: "/documentation", section: "Tools" },
+  { icon: Info, label: "Overview", path: "/overview", section: "Tools" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";

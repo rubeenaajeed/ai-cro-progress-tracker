@@ -17,6 +17,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 export default function Roadmap() {
   const { user } = useAuth();
   const [, setLocation] = useLocation();
+  const [currentTrack, setCurrentTrack] = useState("ai-cro");
   const [currentPhase, setCurrentPhase] = useState<"phase1" | "phase2">("phase1");
   const [currentWeekNumber, setCurrentWeekNumber] = useState(1);
   const [personalNote, setPersonalNote] = useState("");
