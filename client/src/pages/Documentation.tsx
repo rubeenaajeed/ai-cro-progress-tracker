@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BookOpen, BarChart3, Zap, Award, Search, Bookmark, TrendingUp, CheckCircle2, Flame, Target } from "lucide-react";
 import { useLocation } from "wouter";
+import DashboardLayout from "@/components/DashboardLayout";
 
 export default function Documentation() {
   const { user } = useAuth();
@@ -301,7 +302,7 @@ export default function Documentation() {
     }
   ];
 
-  return (
+  const content = (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <section className="border-b bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 py-12 px-4">
@@ -489,5 +490,15 @@ export default function Documentation() {
         </div>
       </section>
     </div>
+  );
+
+  if (!user) {
+    return null;
+  }
+
+  return (
+    <DashboardLayout>
+      {content}
+    </DashboardLayout>
   );
 }

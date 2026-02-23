@@ -83,7 +83,6 @@ const menuItems: MenuItem[] = [
   { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
   { icon: BookOpen, label: "Resources", path: "/resources", section: "Tools" },
   { icon: BookOpen, label: "Documentation", path: "/documentation", section: "Tools" },
-  { icon: Lightbulb, label: "About", path: "/overview", section: "Tools" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
