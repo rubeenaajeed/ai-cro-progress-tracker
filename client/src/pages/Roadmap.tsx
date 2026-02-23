@@ -181,17 +181,17 @@ export default function Roadmap() {
       )}
 
       <div className="space-y-6">
-        {/* Phase Selector */}
+        {/* Track Selector */}
         <div className="flex gap-2">
           <Button
-            variant={currentPhase === "phase1" ? "default" : "outline"}
-            onClick={() => handlePhaseChange("phase1")}
+            variant="default"
+            onClick={() => setLocation("/roadmap")}
             size="sm"
           >
             AI + CRO
           </Button>
           <Button
-            variant={currentPhase === "phase2" ? "default" : "outline"}
+            variant="outline"
             onClick={() => setLocation("/roadmap-personal")}
             size="sm"
           >
@@ -201,7 +201,7 @@ export default function Roadmap() {
 
         {/* Search and Bookmarks */}
         <RoadmapSearch
-          weeks={currentPhaseWeeks}
+          weeks={roadmapData.slice(0, 24)}
           onSelectWeek={setCurrentWeekNumber}
           currentWeekNumber={currentWeekNumber}
         />
