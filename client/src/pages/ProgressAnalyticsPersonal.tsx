@@ -1,6 +1,6 @@
-import { useState } from "react";
+
 import { MetricsInputModal } from "@/components/MetricsInputModal";
-import DashboardLayout from "@/components/DashboardLayout";
+import { DashboardLayout } from "@/components/DashboardLayout";
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Flame, TrendingUp, CheckCircle2, Calendar, Target, Instagram, Youtube, Music } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 function ProgressAnalyticsPersonalContent() {
   const [personalBrandMetrics, setPersonalBrandMetrics] = useState({
@@ -21,6 +21,9 @@ function ProgressAnalyticsPersonalContent() {
     ordersPerMonth: 0,
     conversionRate: 0,
   });
+
+  // Track if we're loading initial data to avoid overwriting user input
+  const [isInitialLoad, setIsInitialLoad] = React.useState(true);
 
   const [savingMetrics, setSavingMetrics] = useState(false);
   const [metricsModalOpen, setMetricsModalOpen] = useState(false);
@@ -47,18 +50,37 @@ function ProgressAnalyticsPersonalContent() {
     }
   }
 
-  // Prepare trend chart data from historical metrics
-  const trendChartData = historicalMetrics
+  // Prepare trend chart data from historical metrics - aggregate multiple entries on same date
+  const trendChartDataMap = new Map();
+  historicalMetrics
     .sort((a: any, b: any) => new Date(a.recordDate).getTime() - new Date(b.recordDate).getTime())
-    .map((metric: any) => ({
-      date: new Date(metric.recordDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-      instagramFollowers: metric.instagramFollowers || 0,
-      instagramEngagement: metric.instagramEngagement || 0,
-      youtubeFollowers: metric.youtubeFollowers || 0,
-      youtubeEngagement: metric.youtubeEngagement || 0,
-      tiktokFollowers: metric.tiktokFollowers || 0,
-      tiktokEngagement: metric.tiktokEngagement || 0,
-    }));
+    .forEach((metric: any) => {
+      const date = new Date(metric.recordDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      if (trendChartDataMap.has(date)) {
+        // If date already exists, take the latest values (last entry wins)
+        const existing = trendChartDataMap.get(date);
+        trendChartDataMap.set(date, {
+          date,
+          instagramFollowers: metric.instagramFollowers || existing.instagramFollowers,
+          instagramEngagement: metric.instagramEngagement || existing.instagramEngagement,
+          youtubeFollowers: metric.youtubeFollowers || existing.youtubeFollowers,
+          youtubeEngagement: metric.youtubeEngagement || existing.youtubeEngagement,
+          tiktokFollowers: metric.tiktokFollowers || existing.tiktokFollowers,
+          tiktokEngagement: metric.tiktokEngagement || existing.tiktokEngagement,
+        });
+      } else {
+        trendChartDataMap.set(date, {
+          date,
+          instagramFollowers: metric.instagramFollowers || 0,
+          instagramEngagement: metric.instagramEngagement || 0,
+          youtubeFollowers: metric.youtubeFollowers || 0,
+          youtubeEngagement: metric.youtubeEngagement || 0,
+          tiktokFollowers: metric.tiktokFollowers || 0,
+          tiktokEngagement: metric.tiktokEngagement || 0,
+        });
+      }
+    });
+  const trendChartData = Array.from(trendChartDataMap.values());
 
   // Monthly breakdown
   const monthlyData = [
@@ -83,9 +105,9 @@ function ProgressAnalyticsPersonalContent() {
   // Get latest metrics from historical data for combined metrics display
   const latestMetrics = historicalMetrics && historicalMetrics.length > 0 ? historicalMetrics[historicalMetrics.length - 1] : null;
 
-  // Update individual platform metrics when historical data changes
+  // Update individual platform metrics when historical data changes - only on initial load
   React.useEffect(() => {
-    if (latestMetrics) {
+    if (latestMetrics && isInitialLoad) {
       setPersonalBrandMetrics({
         instagram: {
           followers: latestMetrics.instagramFollowers || 0,
@@ -103,16 +125,24 @@ function ProgressAnalyticsPersonalContent() {
           views: latestMetrics.tiktokViews || 0,
         },
       });
+      setIsInitialLoad(false);
     }
-  }, [latestMetrics]);
+  }, [latestMetrics, isInitialLoad]);
 
   // Calculate combined Personal Brand metrics from latest historical data or manual input
   const totalFollowers = (latestMetrics?.instagramFollowers || personalBrandMetrics.instagram.followers) + 
                          (latestMetrics?.youtubeFollowers || personalBrandMetrics.youtube.followers) + 
                          (latestMetrics?.tiktokFollowers || personalBrandMetrics.tiktok.followers);
-  const avgEngagement = ((latestMetrics?.instagramEngagement || personalBrandMetrics.instagram.engagement) + 
-                         (latestMetrics?.youtubeEngagement || personalBrandMetrics.youtube.engagement) + 
-                         (latestMetrics?.tiktokEngagement || personalBrandMetrics.tiktok.engagement)) / 3;
+  
+  // Fix NaN% issue - parse engagement values and filter out zeros
+  const instagramEngagement = parseFloat(latestMetrics?.instagramEngagement || String(personalBrandMetrics.instagram.engagement)) || 0;
+  const youtubeEngagement = parseFloat(latestMetrics?.youtubeEngagement || String(personalBrandMetrics.youtube.engagement)) || 0;
+  const tiktokEngagement = parseFloat(latestMetrics?.tiktokEngagement || String(personalBrandMetrics.tiktok.engagement)) || 0;
+  
+  // Only calculate average if at least one engagement value is non-zero
+  const engagementValues = [instagramEngagement, youtubeEngagement, tiktokEngagement].filter(v => v > 0);
+  const avgEngagement = engagementValues.length > 0 ? engagementValues.reduce((a, b) => a + b, 0) / engagementValues.length : 0;
+  
   const totalViews = (latestMetrics?.instagramViews || personalBrandMetrics.instagram.views) + 
                      (latestMetrics?.youtubeViews || personalBrandMetrics.youtube.views) + 
                      (latestMetrics?.tiktokViews || personalBrandMetrics.tiktok.views);
@@ -121,16 +151,44 @@ function ProgressAnalyticsPersonalContent() {
   const estimatedRevenue = clothingMetrics.ordersPerMonth * 50; // Assuming ~$50 per order
 
   const saveMetrics = trpc.roadmap.updateWeekProgress.useMutation();
+  const createHistoricalMetric = trpc.roadmap.createHistoricalMetric.useMutation();
+  const utils = trpc.useUtils();
 
   const handleSavePersonalBrandMetrics = async () => {
     setSavingMetrics(true);
     try {
-      // Save metrics (extend schema as needed)
-      await saveMetrics.mutateAsync({
-        weekNumber: 25,
-        tasksCompleted: totalFollowers,
-        totalTasks: 10000,
+      // Get today's date in YYYY-MM-DD format
+      const today = new Date().toISOString().split('T')[0];
+      
+      // Save only non-zero values to avoid overwriting existing data
+      const dataToSave: any = {
+        recordDate: today,
+        brand: "personal",
+      };
+      
+      // Only include values that were actually changed (non-zero)
+      if (personalBrandMetrics.instagram.followers > 0) dataToSave.instagramFollowers = personalBrandMetrics.instagram.followers;
+      if (personalBrandMetrics.instagram.engagement > 0) dataToSave.instagramEngagement = String(personalBrandMetrics.instagram.engagement);
+      if (personalBrandMetrics.instagram.views > 0) dataToSave.instagramViews = personalBrandMetrics.instagram.views;
+      if (personalBrandMetrics.youtube.followers > 0) dataToSave.youtubeFollowers = personalBrandMetrics.youtube.followers;
+      if (personalBrandMetrics.youtube.engagement > 0) dataToSave.youtubeEngagement = String(personalBrandMetrics.youtube.engagement);
+      if (personalBrandMetrics.youtube.views > 0) dataToSave.youtubeViews = personalBrandMetrics.youtube.views;
+      if (personalBrandMetrics.tiktok.followers > 0) dataToSave.tiktokFollowers = personalBrandMetrics.tiktok.followers;
+      if (personalBrandMetrics.tiktok.engagement > 0) dataToSave.tiktokEngagement = String(personalBrandMetrics.tiktok.engagement);
+      if (personalBrandMetrics.tiktok.views > 0) dataToSave.tiktokViews = personalBrandMetrics.tiktok.views;
+      
+      await createHistoricalMetric.mutateAsync(dataToSave);
+      
+      // Invalidate the query to refresh the data
+      await utils.roadmap.getHistoricalMetrics.invalidate({ brand: "personal" });
+      
+      // Reset form for next entry
+      setPersonalBrandMetrics({
+        instagram: { followers: 0, engagement: 0, views: 0 },
+        youtube: { followers: 0, engagement: 0, views: 0 },
+        tiktok: { followers: 0, engagement: 0, views: 0 },
       });
+      
       alert("Personal Brand metrics saved!");
     } finally {
       setSavingMetrics(false);
@@ -140,11 +198,29 @@ function ProgressAnalyticsPersonalContent() {
   const handleSaveClothingMetrics = async () => {
     setSavingMetrics(true);
     try {
-      await saveMetrics.mutateAsync({
-        weekNumber: 25,
-        tasksCompleted: clothingMetrics.ordersPerMonth,
-        totalTasks: 100,
+      // Get today's date in YYYY-MM-DD format
+      const today = new Date().toISOString().split('T')[0];
+      
+      // Save only non-zero values to avoid overwriting existing data
+      const dataToSave: any = {
+        recordDate: today,
+        brand: "business",
+      };
+      
+      if (clothingMetrics.ordersPerMonth > 0) dataToSave.ordersPerMonth = clothingMetrics.ordersPerMonth;
+      if (clothingMetrics.conversionRate > 0) dataToSave.conversionRate = String(clothingMetrics.conversionRate);
+      
+      await createHistoricalMetric.mutateAsync(dataToSave);
+      
+      // Invalidate the query to refresh the data
+      await utils.roadmap.getHistoricalMetrics.invalidate({ brand: "business" });
+      
+      // Reset form for next entry
+      setClothingMetrics({
+        ordersPerMonth: 0,
+        conversionRate: 0,
       });
+      
       alert("Clothing Business metrics saved!");
     } finally {
       setSavingMetrics(false);
