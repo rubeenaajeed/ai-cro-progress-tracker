@@ -179,8 +179,10 @@ function ProgressAnalyticsPersonalContent() {
       
       await createHistoricalMetric.mutateAsync(dataToSave);
       
-      // Invalidate the query to refresh the data
+      // Invalidate the query to refresh the data and wait for refetch
       await utils.roadmap.getHistoricalMetrics.invalidate({ brand: "personal" });
+      // Force a refetch
+      await utils.roadmap.getHistoricalMetrics.refetch({ brand: "personal" });
       
       // Reset form for next entry
       setPersonalBrandMetrics({
@@ -212,8 +214,10 @@ function ProgressAnalyticsPersonalContent() {
       
       await createHistoricalMetric.mutateAsync(dataToSave);
       
-      // Invalidate the query to refresh the data
+      // Invalidate the query to refresh the data and wait for refetch
       await utils.roadmap.getHistoricalMetrics.invalidate({ brand: "business" });
+      // Force a refetch
+      await utils.roadmap.getHistoricalMetrics.refetch({ brand: "business" });
       
       // Reset form for next entry
       setClothingMetrics({
