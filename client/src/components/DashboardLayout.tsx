@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag, Award, BookMarked } from "lucide-react";
+import { LogOut, PanelLeft, BarChart3, BookOpen, CheckCircle2, Flame, Target, Lightbulb, Calendar, Sparkles, ChevronDown, Brain, ShoppingBag, Award, BookMarked, TrendingUp } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -82,6 +82,7 @@ const menuItems: MenuItem[] = [
   { icon: Target, label: "Portfolio", path: "/portfolio", section: "Main" },
   { icon: CheckCircle2, label: "Overall Progress", path: "/progress", section: "Main" },
   { icon: Flame, label: "Streak", path: "/streak", section: "Main" },
+  { icon: BarChart3, label: "Quiz Results", path: "/quiz-results", section: "Main" },
   { icon: Lightbulb, label: "Resources", path: "/resources", section: "Tools" },
 ];
 
@@ -368,7 +369,7 @@ function DashboardLayoutContent({
           <div className="border-b border-border px-4 py-3 flex items-center justify-between">
             <SidebarTrigger />
           </div>
-          <main className="flex-1 overflow-auto">
+          <main className="flex-1 overflow-auto px-6">
             {children}
           </main>
         </div>
@@ -376,3 +377,5 @@ function DashboardLayoutContent({
     </>
   );
 }
+
+export { DashboardLayout };

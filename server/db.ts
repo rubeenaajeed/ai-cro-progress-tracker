@@ -812,3 +812,81 @@ export async function createBadgeDefinition(data: InsertBadgeDefinition) {
   if (!db) return undefined;
   return await db.insert(badgeDefinitions).values(data);
 }
+
+
+/**
+ * Quiz Results Functions
+ */
+import { quizResults, InsertQuizResult } from "../drizzle/schema";
+import { eq, and, desc } from "drizzle-orm";
+
+export async function createQuizResult(data: InsertQuizResult) {
+  const db = await getDb();
+  if (!db) return undefined;
+  return await db.insert(quizResults).values(data);
+}
+
+export async function getQuizResultsByWeek(userId: number, weekNumber: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return await db.select().from(quizResults)
+    .where(and(
+      eq(quizResults.userId, userId),
+      eq(quizResults.weekNumber, weekNumber)
+    ))
+    .orderBy(desc(quizResults.createdAt));
+}
+
+export async function getQuizResultsByTrack(userId: number, track: 'ai-cro' | 'personal-brand' | 'business') {
+  const db = await getDb();
+  if (!db) return [];
+  return await db.select().from(quizResults)
+    .where(and(
+      eq(quizResults.userId, userId),
+      eq(quizResults.track, track)
+    ))
+    .orderBy(desc(quizResults.createdAt));
+}
+
+export async function getQuizAnalytics(userId: number, track: 'ai-cro' | 'personal-brand' | 'business') {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const results = await db.select().from(quizResults)
+    .where(and(
+      eq(quizResults.userId, userId),
+      eq(quizResults.track, track)
+    ));
+  
+  if (results.length === 0) return null;
+  
+  const totalAttempts = results.length;
+  const averageScore = Math.round(
+    results.reduce((sum, r) => sum + r.scorePercentage, 0) / totalAttempts
+  );
+  const bestScore = Math.max(...results.map(r => r.scorePercentage));
+  const latestScore = results[0].scorePercentage;
+  const totalTimeSpent = results.reduce((sum, r) => sum + r.timeSpentSeconds, 0);
+  
+  return {
+    totalAttempts,
+    averageScore,
+    bestScore,
+    latestScore,
+    totalTimeSpent,
+    improvementTrend: results.length > 1 ? latestScore - results[results.length - 1].scorePercentage : 0,
+  };
+}
+
+export async function getLatestQuizResult(userId: number, weekNumber: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(quizResults)
+    .where(and(
+      eq(quizResults.userId, userId),
+      eq(quizResults.weekNumber, weekNumber)
+    ))
+    .orderBy(desc(quizResults.createdAt))
+    .limit(1);
+  return result.length > 0 ? result[0] : null;
+}

@@ -461,9 +461,8 @@ Return as JSON array with this exact structure (no markdown, no extra text):
       }),
   }),
 
-
-    // Content Calendar procedures
-    createContentPost: protectedProcedure
+  quiz: router({
+    createResult: protectedProcedure
       .input(z.object({
         brand: z.enum(["personal", "business"]),
         platform: z.enum(["instagram", "tiktok", "both"]),
@@ -627,7 +626,58 @@ Return as JSON array with this exact structure (no markdown, no extra text):
       .query(async ({ ctx, input }) => {
         return await db.getPostFeedback(ctx.user.id, input.postId);
       }),
+  }),
 
+  quiz: router({
+    createResult: protectedProcedure
+      .input(z.object({
+        weekNumber: z.number(),
+        track: z.enum(["ai-cro", "personal-brand", "business"]),
+        questionsAsked: z.number(),
+        questionsCorrect: z.number(),
+        scorePercentage: z.number(),
+        timeSpentSeconds: z.number().optional().default(0),
+        attemptNumber: z.number().optional().default(1),
+        feedback: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.createQuizResult({
+          userId: ctx.user.id,
+          weekNumber: input.weekNumber,
+          track: input.track,
+          questionsAsked: input.questionsAsked,
+          questionsCorrect: input.questionsCorrect,
+          scorePercentage: input.scorePercentage,
+          timeSpentSeconds: input.timeSpentSeconds,
+          attemptNumber: input.attemptNumber,
+          feedback: input.feedback,
+        });
+      }),
+
+    getResultsByWeek: protectedProcedure
+      .input(z.object({ weekNumber: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getQuizResultsByWeek(ctx.user.id, input.weekNumber);
+      }),
+
+    getResultsByTrack: protectedProcedure
+      .input(z.object({ track: z.enum(["ai-cro", "personal-brand", "business"]) }))
+      .query(async ({ ctx, input }) => {
+        return await db.getQuizResultsByTrack(ctx.user.id, input.track);
+      }),
+
+    getAnalytics: protectedProcedure
+      .input(z.object({ track: z.enum(["ai-cro", "personal-brand", "business"]) }))
+      .query(async ({ ctx, input }) => {
+        return await db.getQuizAnalytics(ctx.user.id, input.track);
+      }),
+
+    getLatestResult: protectedProcedure
+      .input(z.object({ weekNumber: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getLatestQuizResult(ctx.user.id, input.weekNumber);
+      }),
+  }),
 
 });
 
